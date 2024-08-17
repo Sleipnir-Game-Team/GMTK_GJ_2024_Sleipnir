@@ -79,4 +79,3 @@ func fatal(message: String, back_trace: Array[Dictionary]) -> void:
 ## Cria o arquivo de log com tudo dentro
 func create_log_file(): # TODO
 	pass
-
