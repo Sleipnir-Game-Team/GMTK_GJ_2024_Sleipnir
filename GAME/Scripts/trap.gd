@@ -1,24 +1,31 @@
 extends Node2D
 
+class_name Trap
+
 signal success
 signal failure
 
-@export var teste = 10
+var _enabled := false
 
-var damage := 10
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+func _ready() -> void:
+	get_parent().activate.connect(_set_enabled.bind(true))
+	get_parent().deactivate.connect(_set_enabled.bind(false))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not _enabled: return
 	
 	if _win_condition():
-		success.emit(damage)
+		success.emit()
+	elif _loss_condition():
+		failure.emit()
 
+func _set_enabled(enable):
+	_enabled = enable
+	
 
 func _win_condition():
-	# TODO
-	return false
+	printerr('Must override "_win_condition" in Trap Subclasses')
+	
+func _loss_condition():
+	printerr('Must override "_loss_condition" in Trap Subclasses')

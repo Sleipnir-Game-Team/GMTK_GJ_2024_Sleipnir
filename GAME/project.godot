@@ -21,6 +21,9 @@ Globals="*res://Singletons/globals.gd"
 UI_Controller="*res://FrontEnd/Scripts/UI_Controller.gd"
 UI_Displayer="*res://FrontEnd/Scripts/UI_Displayer.gd"
 Logger="*res://Scripts/Managers/Logger.gd"
+SleipnirMaestro="*res://Singletons/Maestro/SleipnirMaestro.tscn"
+AudioManager="*res://Singletons/SFXSystem/AudioManager.gd"
+SfxGlobals="*res://Singletons/SFXSystem/SFX Globals.tscn"
 
 [input]
 

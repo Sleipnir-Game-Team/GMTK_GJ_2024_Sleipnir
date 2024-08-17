@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq7lvdpdewp3"]
+
+[ext_resource type="Script" path="res://Singletons/Maestro/sleipnir_maestro.gd" id="1_w4j76"]
+
+[node name="SleipnirMaestro" type="Node" node_paths=PackedStringArray("MainPlayer", "TriggerPlayer", "Clock")]
+script = ExtResource("1_w4j76")
+MainPlayer = NodePath("Main")
+TriggerPlayer = NodePath("Triggers")
+Clock = NodePath("Conductor")
+log_level = 0
+
+[node name="Main" type="AudioStreamPlayer" parent="."]
+
+[node name="Triggers" type="Node" parent="."]
+
+[node name="Conductor" type="Timer" parent="."]
+
+[connection signal="timeout" from="Conductor" to="." method="_on_conductor_timeout"]

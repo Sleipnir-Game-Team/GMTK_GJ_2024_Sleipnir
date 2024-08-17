@@ -1,17 +1,16 @@
 extends Area2D
 
-
 enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
 
-const possible_traps := ["acid", "spikes", "lava"]
 const path_instance := preload("res://Prefabs/paths.tscn")
+const Adventurer := preload("res://Actors/adventurer.tscn")
 
-var active := false
-var has_trap := false
-var rng_trap := RandomNumberGenerator.new()
+signal activate
+signal deactivate
+
 var paths_dict := {"right" = false, "down" = false}
 
-var trap_kind
+@export var _trap: Trap
 
 @onready var collision_shape := $CollisionShape2D
 
@@ -21,39 +20,42 @@ var trap_kind
 @onready var down_spawn := $down_path_spawn as Marker2D
 @onready var right_spawn := $right_path_spawn as Marker2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	set_trap()
+func _ready() -> void:
+	print('Ready ' + name)
+	if _trap:
+		print('Deactivate trap')
+		deactivate.emit()
+		
+	print()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-func _on_area_entered(area):
-	pass
-	
-func trigger():
-	active = true
-	
-	# Called to start minigame in this room
 
-# SETUP FUNCTIONS
-func set_trap():
-	var is_trap_number := rng_trap.randf_range(0, 10.0)
-	if is_trap_number >= 5:
-		has_trap = true
-		trap_kind = possible_traps.pick_random()
+func _on_body_entered(body):
+	print('ROOM ENTERED BY ADVENTURER')
+	if _trap:
+		activate.emit()
+	if body:
+		body.last_room = self
+		body.entered_room.emit()
+	
+func _on_body_left(body):
+	if body:
+		body.left_room.emit()
+	
+## Add trap to room
+func set_trap(trap: Trap):
+	_trap = trap
+	deactivate.emit() # start disabled
+	add_child(_trap)
 
 ## Checks if there are adjacent rooms and spawns corresponding paths
 func update_paths():
 	_detect_adjacent_rooms()
 	_spawn_paths()
 
-
 func _detect_adjacent_rooms():
 	paths_dict["down"] = down_detector.is_colliding()
 	paths_dict["right"] = right_detector.is_colliding()
-		
+
 func _spawn_paths():
 	if paths_dict["down"]:
 		var path = path_instance.instantiate()
