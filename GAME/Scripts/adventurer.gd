@@ -69,25 +69,6 @@ func _physics_process(delta):
 			#else:
 				#minimum_rest_chance += 5
 	
-<<<<<<< HEAD
-	if area.name == "core_room":
-		has_arrived_to_the_core = true
-		next_path = null
-		print("Game-Over")
-	
-	if adventurer_life > 0 and has_arrived_to_the_core == false:
-		if area.paths_dict["right"] == true:
-			possible_paths.append("right")
-		if area.paths_dict["down"] == true:
-			possible_paths.append("down")
-			
-		var path_choise := rng_paths.randi_range(1, possible_paths.size())
-		print(path_choise)
-		print(possible_paths)
-		next_path = possible_paths[path_choise-1]
-	elif adventurer_life <= 0:
-		queue_free()
-=======
 	#if area.name == "core_room":
 		#has_arrived_to_the_core = true
 		#next_path = null
@@ -103,5 +84,4 @@ func _physics_process(delta):
 		#next_path = possible_paths[path_choise - 1]
 	#elif adventurer_life <= 0:
 		#queue_free()
->>>>>>> b5b0dded4279b3c0fce335217cd22563d758f1ee
 			
