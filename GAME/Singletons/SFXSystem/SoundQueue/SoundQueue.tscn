@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3onkk2tdjglk"]
+
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="1_c5ydq"]
+
+[node name="SoundQueue" type="Node2D"]
+
+[node name="SoundQueue" type="Node" parent="."]
+script = ExtResource("1_c5ydq")
