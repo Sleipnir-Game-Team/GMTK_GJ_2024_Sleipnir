@@ -28,10 +28,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+	
 func _on_area_entered(area):
-	_detect_adjacent_rooms()
-
+	pass
+	
 func trigger():
 	active = true
 	
@@ -46,17 +46,14 @@ func set_trap():
 
 ## Checks if there are adjacent rooms and spawns corresponding paths
 func update_paths():
-	print(paths_dict)
 	_detect_adjacent_rooms()
-	print(paths_dict)	
 	_spawn_paths()
 
 
 func _detect_adjacent_rooms():
-	right_detector.force_raycast_update()
 	paths_dict["down"] = down_detector.is_colliding()
 	paths_dict["right"] = right_detector.is_colliding()
-
+		
 func _spawn_paths():
 	if paths_dict["down"]:
 		var path = path_instance.instantiate()
@@ -68,5 +65,3 @@ func _spawn_paths():
 		var path = path_instance.instantiate()
 		path.position = right_spawn.position
 		add_child(path)
-
-

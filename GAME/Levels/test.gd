@@ -8,7 +8,7 @@ func _ready():
 	var rows = INITIAL_SIZE[0]
 	var columns = INITIAL_SIZE[1]
 	
-	create_grid(rows, columns)
+	_create_grid(rows, columns)
 	_fill_paths()
 
 
@@ -16,8 +16,7 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func create_grid(rows: int, columns: int):
+func _create_grid(rows: int, columns: int):
 	# Create a room to calculate the distance between each room
 	var distance = null
 	
@@ -39,4 +38,4 @@ func create_grid(rows: int, columns: int):
 
 func _fill_paths():
 	for child in get_children():
-		child.update_paths()
+		child.call_deferred("update_paths")

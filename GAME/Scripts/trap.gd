@@ -1,8 +1,9 @@
 extends Node2D
 
-
 signal success
 signal failure
+
+@export var teste = 10
 
 var damage := 10
 
@@ -16,7 +17,6 @@ func _process(delta):
 	
 	if _win_condition():
 		success.emit(damage)
-	
 
 
 func _win_condition():
