@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
 size = Vector2(86, 90)
 
-[node name="room" type="Area2D" groups=["rooms"]]
+[node name="room" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_iria3")
 
@@ -20,17 +20,17 @@ shape = SubResource("RectangleShape2D_i1l6g")
 
 [node name="down_path_detector" type="RayCast2D" parent="."]
 position = Vector2(0, 45)
-exclude_parent = false
-target_position = Vector2(0, 138)
-collision_mask = 2
+target_position = Vector2(0, 20)
+hit_from_inside = true
 collide_with_areas = true
+collide_with_bodies = false
 
 [node name="right_path_detector" type="RayCast2D" parent="."]
 position = Vector2(43, 0)
-exclude_parent = false
-target_position = Vector2(138, 0)
-collision_mask = 2
-hit_from_inside = true
+target_position = Vector2(20, 0)
+collision_mask = 5
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="right_path_spawn" type="Marker2D" parent="."]
 position = Vector2(112, 0)

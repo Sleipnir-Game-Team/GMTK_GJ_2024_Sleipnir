@@ -22,20 +22,26 @@ func _process(delta):
 
 func _on_area_entered(area):
 	possible_paths.clear()
+	
+	# If the adventurer has encountered a new room
 	if area.name == "room":
-		if area.has_trap == true:
-			adventurer_life -= 1
-			print("adventurer life points: ", adventurer_life)
-			minimum_rest_chance += 10
-		else:
-			var rest_chance := rng_rest.randi_range(minimum_rest_chance, 100)
-			print("rest chance: ", rest_chance)
-			if rest_chance == 100 or minimum_rest_chance >= 100:
-				minimum_rest_chance = 1
-				adventurer_life = total_life
-				print("Descansados")
-			else:
-				minimum_rest_chance += 5
+		area.trigger();
+		
+		# If room has a trap, damage adventurer
+		#if area.has_trap == true:
+			#adventurer_life -= 1
+			#print("adventurer life points: ", adventurer_life)
+			#minimum_rest_chance += 10
+		# If it doesn't have a trap, test if the adventurer will rest
+		#else:
+			#var rest_chance := rng_rest.randi_range(minimum_rest_chance, 100)
+			#print("rest chance: ", rest_chance)
+			#if rest_chance == 100 or minimum_rest_chance >= 100:
+				#minimum_rest_chance = 1
+				#adventurer_life = total_life
+				#print("Descansados")
+			#else:
+				#minimum_rest_chance += 5
 	
 	if area.name == "core_room":
 		has_arrived_to_the_core = true
@@ -43,12 +49,8 @@ func _on_area_entered(area):
 		print("Game-Over")
 	
 	if adventurer_life > 0 and has_arrived_to_the_core == false:
-		if area.paths_dict["left"] == true:
-			possible_paths.append("left")
 		if area.paths_dict["right"] == true:
 			possible_paths.append("right")
-		if area.paths_dict["up"] == true:
-			possible_paths.append("up")
 		if area.paths_dict["down"] == true:
 			possible_paths.append("down")
 			

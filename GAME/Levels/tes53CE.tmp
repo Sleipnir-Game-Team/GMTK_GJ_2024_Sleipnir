@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqimv51rx276l"]
+
+[ext_resource type="Script" path="res://Levels/test.gd" id="1_wh42s"]
+[ext_resource type="PackedScene" uid="uid://ouvctt3pubcp" path="res://Actors/adventurer.tscn" id="2_g13lw"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_wh42s")
+
+[node name="adventurer" parent="." instance=ExtResource("2_g13lw")]
+position = Vector2(99, 54)
