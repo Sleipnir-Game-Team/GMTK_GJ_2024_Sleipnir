@@ -13,12 +13,15 @@ var last_room: Node
 var target_room: Node
 var time := 0.0 # Time used in movement interpolation
 
+signal entered_room
+signal left_room
+
 @onready var right_detector = $right_path_detector
 @onready var down_detector = $down_path_detector
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,7 +38,7 @@ func _process(delta):
 	if len(possible_moves) > 0:
 		target_room = possible_moves.pick_random()
 		moving = true
-	
+
 	
 func _physics_process(delta):
 	if not moving: return

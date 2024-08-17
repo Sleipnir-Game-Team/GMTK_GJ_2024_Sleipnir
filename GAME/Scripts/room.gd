@@ -35,6 +35,11 @@ func _on_body_entered(body):
 		activate.emit()
 	if body:
 		body.last_room = self
+		body.entered_room.emit()
+	
+func _on_body_left(body):
+	if body:
+		body.left_room.emit()
 	
 ## Add trap to room
 func set_trap(trap: Trap):
