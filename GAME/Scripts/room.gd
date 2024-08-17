@@ -3,8 +3,11 @@ extends Area2D
 enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
 
 const path_instance := preload("res://Prefabs/paths.tscn")
+const Adventurer := preload("res://Actors/adventurer.tscn")
 
-var active := false
+signal activate
+signal deactivate
+
 var paths_dict := {"right" = false, "down" = false}
 
 @export var _trap: Trap
@@ -18,17 +21,25 @@ var paths_dict := {"right" = false, "down" = false}
 @onready var right_spawn := $right_path_spawn as Marker2D
 
 func _ready() -> void:
+	print('Ready ' + name)
 	if _trap:
-		_trap.set_process(false)
+		print('Deactivate trap')
+		deactivate.emit()
+		
+	print()
 
-func _on_area_entered(area):
-	print('ENTERED')
-	_trap.set_process(true)
+
+func _on_body_entered(body):
+	print('ROOM ENTERED BY ADVENTURER')
+	if _trap:
+		activate.emit()
+	if body:
+		body.last_room = self
 	
 ## Add trap to room
 func set_trap(trap: Trap):
 	_trap = trap
-	_trap.set_process(false) # start disabled
+	deactivate.emit() # start disabled
 	add_child(_trap)
 
 ## Checks if there are adjacent rooms and spawns corresponding paths

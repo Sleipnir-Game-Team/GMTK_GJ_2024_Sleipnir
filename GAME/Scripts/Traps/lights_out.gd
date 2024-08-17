@@ -13,6 +13,11 @@ var timed_out := false
 func _ready() -> void:
 	end_timer.timeout.connect(func (): timed_out = true)
 	torch_timer.timeout.connect(spawn_torch)
+	
+	get_parent().activate.connect(end_timer.start)
+	get_parent().activate.connect(torch_timer.start)
+	get_parent().deactivate.connect(end_timer.stop)
+	get_parent().deactivate.connect(torch_timer.stop)
 
 func spawn_torch():
 	print('spawning torch')

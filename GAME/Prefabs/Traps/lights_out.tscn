@@ -6,12 +6,10 @@
 script = ExtResource("1_3nxgi")
 
 [node name="LightTorch" type="Timer" parent="."]
-autostart = true
 
 [node name="Duration" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
-autostart = true
 
 [node name="TopLeft" type="Marker2D" parent="."]
 position = Vector2(-20, -20)
