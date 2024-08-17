@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ivcnfjoalrdn"]
+
+[ext_resource type="Texture2D" uid="uid://bmjef71act43r" path="res://Assets/Dungeon Path.png" id="1_lhjqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2faj2"]
+size = Vector2(128, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrgl2"]
+size = Vector2(20, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xu1o6"]
+size = Vector2(20, 64)
+
+[node name="paths" type="Area2D"]
+collision_layer = 5
+collision_mask = 0
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -1.90735e-06)
+scale = Vector2(1.06667, 1.2)
+texture = ExtResource("1_lhjqc")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2faj2")
+
+[node name="left_area" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 2
+
+[node name="left_collision" type="CollisionShape2D" parent="left_area"]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_wrgl2")
+
+[node name="right_area" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 2
+
+[node name="right_collision" type="CollisionShape2D" parent="right_area"]
+position = Vector2(64, 0)
+shape = SubResource("RectangleShape2D_xu1o6")

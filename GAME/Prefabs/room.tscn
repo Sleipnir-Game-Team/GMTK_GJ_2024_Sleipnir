@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://cehnl6n2ko8x6"]
+
+[ext_resource type="Script" path="res://Scripts/room.gd" id="1_iria3"]
+[ext_resource type="Texture2D" uid="uid://cr5tuynd26gwy" path="res://Assets/Dungeon_Ground_Placeholder.png" id="1_j1baj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
+size = Vector2(86, 90)
+
+[node name="room" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_iria3")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-07, -3.33786e-06)
+scale = Vector2(0.716667, 0.743802)
+texture = ExtResource("1_j1baj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i1l6g")
+
+[node name="up_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -43)
+target_position = Vector2(0, -20)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="down_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, 43)
+target_position = Vector2(0, 20)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left_path_detector" type="RayCast2D" parent="."]
+position = Vector2(-43, 0)
+target_position = Vector2(-20, 0)
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_detector" type="RayCast2D" parent="."]
+position = Vector2(43, 0)
+target_position = Vector2(20, 0)
+collision_mask = 5
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left_path_spawn" type="Marker2D" parent="."]
+position = Vector2(-112, 0)
+
+[node name="right_path_spawn" type="Marker2D" parent="."]
+position = Vector2(112, 0)
+
+[node name="up_path_spawn" type="Marker2D" parent="."]
+position = Vector2(0, -112)
+
+[node name="down_path_spawn" type="Marker2D" parent="."]
+position = Vector2(0, 112)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
