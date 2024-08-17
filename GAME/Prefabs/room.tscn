@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cehnl6n2ko8x6"]
 
 [ext_resource type="Script" path="res://Scripts/room.gd" id="1_iria3"]
-[ext_resource type="Texture2D" uid="uid://cr5tuynd26gwy" path="res://Assets/Dungeon_Ground_Placeholder.png" id="1_j1baj"]
+[ext_resource type="Texture2D" uid="uid://cr5tuynd26gwy" path="res://Assets/Placeholder/Dungeon_Ground_Placeholder.png" id="2_a6of8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
 size = Vector2(86, 90)
 
 [node name="room" type="Area2D" groups=["rooms"]]
 collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_iria3")
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(-5.96046e-07, -3.33786e-06)
 scale = Vector2(0.716667, 0.743802)
-texture = ExtResource("1_j1baj")
+texture = ExtResource("2_a6of8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i1l6g")
