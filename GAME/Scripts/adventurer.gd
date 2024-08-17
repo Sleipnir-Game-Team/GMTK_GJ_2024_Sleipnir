@@ -1,6 +1,7 @@
 extends Area2D
 
 var adventurer_life := 10
+var total_life := 10
 var adventurer_is_resing := false 
 var minimum_rest_chance := 1
 var rng_rest := RandomNumberGenerator.new()
@@ -24,10 +25,15 @@ func _on_area_entered(area):
 	if area.name == "room":
 		if area.has_trap == true:
 			adventurer_life -= 1
+			print("adventurer life points: ", adventurer_life)
+			minimum_rest_chance += 10
 		else:
-			var rest_chance := rng_rest.randf_range(minimum_rest_chance, 100)
+			var rest_chance := rng_rest.randi_range(minimum_rest_chance, 100)
+			print("rest chance: ", rest_chance)
 			if rest_chance == 100 or minimum_rest_chance >= 100:
 				minimum_rest_chance = 1
+				adventurer_life = total_life
+				print("Descansados")
 			else:
 				minimum_rest_chance += 5
 	
@@ -48,4 +54,6 @@ func _on_area_entered(area):
 			
 		var path_choise := rng_paths.randi_range(1, possible_paths.size())
 		next_path = possible_paths[path_choise - 1]
+	elif adventurer_life <= 0:
+		queue_free()
 			
