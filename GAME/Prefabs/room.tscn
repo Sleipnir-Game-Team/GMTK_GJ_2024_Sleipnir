@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cehnl6n2ko8x6"]
 
 [ext_resource type="Script" path="res://Scripts/room.gd" id="1_iria3"]
-[ext_resource type="Texture2D" uid="uid://cr5tuynd26gwy" path="res://Assets/Dungeon_Ground_Placeholder.png" id="1_j1baj"]
+[ext_resource type="Texture2D" uid="uid://c8cu4pgw883h4" path="res://Assets/Placeholder/Dungeon_Ground_Placeholder.png" id="1_j1baj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
 size = Vector2(86, 90)

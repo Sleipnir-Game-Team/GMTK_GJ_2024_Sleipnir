@@ -55,7 +55,9 @@ func _on_area_entered(area):
 			possible_paths.append("down")
 			
 		var path_choise := rng_paths.randi_range(1, possible_paths.size())
-		next_path = possible_paths[path_choise - 1]
+		print(path_choise)
+		print(possible_paths)
+		next_path = possible_paths[path_choise-1]
 	elif adventurer_life <= 0:
 		queue_free()
 			
