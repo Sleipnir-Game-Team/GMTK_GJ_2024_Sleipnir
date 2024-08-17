@@ -1,6 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://ivcnfjoalrdn"]
 
+<<<<<<< HEAD
+[ext_resource type="Texture2D" uid="uid://bkv1uufgp7u4d" path="res://Assets/Placeholder/Dungeon Path.png" id="1_vnev6"]
+=======
 [ext_resource type="Texture2D" uid="uid://bkv1uufgp7u4d" path="res://Assets/Placeholder/Dungeon Path.png" id="1_lhjqc"]
+>>>>>>> b5b0dded4279b3c0fce335217cd22563d758f1ee
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2faj2"]
 size = Vector2(128, 48)
@@ -18,7 +22,7 @@ collision_mask = 0
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, -1.90735e-06)
 scale = Vector2(1.06667, 1.2)
-texture = ExtResource("1_lhjqc")
+texture = ExtResource("1_vnev6")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2faj2")
