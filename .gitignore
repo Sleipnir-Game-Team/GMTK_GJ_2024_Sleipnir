@@ -16,3 +16,4 @@ mono_crash.*.json
 
 # Folder ingores
 GAME/Assets/
+GAME/Assets.lnk
