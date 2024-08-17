@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="GMTK_GJ_2024"
-run/main_scene="res://Levels/principal_scene.tscn"
+run/main_scene="res://FrontEnd/Prefabs/Screen_MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://Singletons/globals.gd"
+UI_Controller="*res://FrontEnd/Scripts/UI_Controller.gd"
+UI_Displayer="*res://FrontEnd/Scripts/UI_Displayer.gd"
+Logger="*res://Scripts/Managers/Logger.gd"
 
 [input]
 
