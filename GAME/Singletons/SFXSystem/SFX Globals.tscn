@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://lg6kuv3fkktu"]
+
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SFXGlobals.gd" id="1_p5jl5"]
+
+[node name="SfxGlobals" type="Node"]
+script = ExtResource("1_p5jl5")
+
+[node name="PlaceHolder" type="Node" parent="."]
+
+[node name="UI" type="Node" parent="."]
