@@ -8,6 +8,9 @@ var current_life := 10
 var last_room: Node
 var target_room: Node
 
+var rng_event := RandomNumberGenerator.new()
+var minimun_event_chance := 50
+
 signal entered_room(adventurer, room)
 signal left_room(adventurer, room)
 
@@ -81,7 +84,7 @@ func _find_possible_moves():
 	
 	if down_detector.is_colliding():
 		possible_moves.append(down_detector.get_collider())
-	
+	Logger.debug("Se movendo para as"+str(possible_moves))
 	target_room = possible_moves.pick_random()
 	var target_direction = (target_room.position - position).normalized()
 	
@@ -99,11 +102,16 @@ func _handle_enter_event(adventurer, room):
 		room._active_event.finish.connect(_find_possible_moves)
 	# This is an empty room
 	else:
-		# Add a temporary rest event to the room
-		var event = LightsOutEvent.instantiate()
-		event.finish.connect(_find_possible_moves) # Trigger movement once it's over
-		room.add_temporary_event(event)
-		room.activate.emit() # Trigger event activation!
+		var event_chance := rng_event.randi_range(0, 99)
+		if event_chance <= minimun_event_chance:
+			# Add a temporary rest event to the room
+			var event = LightsOutEvent.instantiate()
+			event.finish.connect(_find_possible_moves) # Trigger movement once it's over
+			room.add_temporary_event(event)
+			room.activate.emit() # Trigger event activation!
+		else:
+			Logger.debug("Vai DESGRAÇA")
+			_find_possible_moves()
 
 func _handle_leave_event(adventurer, room):
 	last_room = room
