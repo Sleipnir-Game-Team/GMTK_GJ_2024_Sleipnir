@@ -10,6 +10,8 @@ var timed_out := false
 
 var torches := {}
 
+@export var points_worth := 5
+
 @onready var end_timer = $Duration
 @onready var torch_timer = $LightTorch
 
@@ -79,7 +81,11 @@ func _on_finish(affected: Array[Adventurer]):
 	for adventurer in affected:
 		adventurer.animation_handler.play('walk')
 
+## +5 Score for successfully beating the game
+## Deal 10 damage to each affected Adventurer
 func _on_success(affected: Array[Adventurer]):
+	Globals.score += points_worth
+	
 	for adventurer in affected:
 		adventurer.damage.emit(10)
 

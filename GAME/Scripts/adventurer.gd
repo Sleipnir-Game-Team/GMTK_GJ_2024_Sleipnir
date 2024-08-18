@@ -21,6 +21,7 @@ signal heal(amount)
 
 @export var total_life := 10
 @export var speed := 45
+@export var points_worth := 15
 
 @onready var animation_handler := $AnimatedSprite2D as AnimatedSprite2D
 
@@ -64,11 +65,14 @@ func _find_possible_moves():
 		# TODO teoricamente (tudo dando certo) isso daqui significa que chegou na última sala
 		pass
 
-
+## Play death animation, add to score and delete node
 func die():
 	stop_moving()
+	
 	animation_handler.play('death')
 	animation_handler.animation_finished.connect(queue_free)
+	
+	Globals.score += points_worth
 
 func _on_damage(amount: Variant) -> void:
 	current_life -= amount

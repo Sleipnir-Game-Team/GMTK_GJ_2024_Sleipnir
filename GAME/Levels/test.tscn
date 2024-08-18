@@ -19,3 +19,9 @@ _is_entrance = true
 [node name="paths" parent="SpawnRoom" instance=ExtResource("3_k1sel")]
 position = Vector2(0, 112)
 rotation = 1.57079
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer"]

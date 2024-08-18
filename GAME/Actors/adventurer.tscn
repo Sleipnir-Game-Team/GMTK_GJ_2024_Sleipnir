@@ -1,79 +1,50 @@
-[gd_scene load_steps=114 format=3 uid="uid://ouvctt3pubcp"]
+[gd_scene load_steps=86 format=3 uid="uid://ouvctt3pubcp"]
 
 [ext_resource type="Script" path="res://Scripts/adventurer.gd" id="1_wg4fw"]
 [ext_resource type="Texture2D" uid="uid://bxjbeh07bmoyt" path="res://Assets/Level/Adventurers/Arte/Animação/death_0000.png" id="2_0klwe"]
-[ext_resource type="Texture2D" uid="uid://bgxqdiw6cvdpy" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0000.png" id="2_mlo3u"]
 [ext_resource type="Texture2D" uid="uid://ef42j6bt78m5" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0000.png" id="2_yf6n6"]
-[ext_resource type="Texture2D" uid="uid://blicon5cah41" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0002.png" id="3_fpj71"]
 [ext_resource type="Texture2D" uid="uid://6kmiejrfuyk1" path="res://Assets/Level/Adventurers/Arte/Animação/death_0001.png" id="3_h4fxc"]
 [ext_resource type="Texture2D" uid="uid://ig3ccqi0d5qk" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0001.png" id="3_xqngb"]
 [ext_resource type="Texture2D" uid="uid://buntqo5q5o78r" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0002.png" id="4_2pet6"]
-[ext_resource type="Texture2D" uid="uid://ciao5bksd003b" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0003.png" id="4_5gndf"]
 [ext_resource type="Texture2D" uid="uid://c0f8dugb34d4c" path="res://Assets/Level/Adventurers/Arte/Animação/death_0002.png" id="4_uunyp"]
 [ext_resource type="Texture2D" uid="uid://qt427h2t8dn4" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0003.png" id="5_evx61"]
 [ext_resource type="Texture2D" uid="uid://b23nh58etlqjm" path="res://Assets/Level/Adventurers/Arte/Animação/death_0003.png" id="5_gja4a"]
-[ext_resource type="Texture2D" uid="uid://cvwav71hrgmv5" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0004.png" id="5_u3jqw"]
-[ext_resource type="Texture2D" uid="uid://diktcqng8c2cw" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0005.png" id="6_2s52p"]
 [ext_resource type="Texture2D" uid="uid://cpm2xt3tohxxv" path="res://Assets/Level/Adventurers/Arte/Animação/death_0004.png" id="6_hag8g"]
 [ext_resource type="Texture2D" uid="uid://b278j4rgwyt5p" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0004.png" id="6_k5a21"]
 [ext_resource type="Texture2D" uid="uid://s4cet6t5o3uj" path="res://Assets/Level/Adventurers/Arte/Animação/death_0005.png" id="7_js282"]
-[ext_resource type="Texture2D" uid="uid://da3y01qe700me" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0006.png" id="7_moaw2"]
 [ext_resource type="Texture2D" uid="uid://cm1q2qw56vdja" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0005.png" id="7_p0jy2"]
-[ext_resource type="Texture2D" uid="uid://dkvsygjmly266" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0007.png" id="8_5w2d5"]
 [ext_resource type="Texture2D" uid="uid://clw8q4frupr8c" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0006.png" id="8_u5hkr"]
 [ext_resource type="Texture2D" uid="uid://bplmnxivh7s4y" path="res://Assets/Level/Adventurers/Arte/Animação/death_0006.png" id="8_xfl6y"]
 [ext_resource type="Texture2D" uid="uid://bugq6ef5hmpwm" path="res://Assets/Level/Adventurers/Arte/Animação/death_0007.png" id="9_ghemn"]
 [ext_resource type="Texture2D" uid="uid://dc7sg11xmkqx8" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0007.png" id="9_p8i71"]
-[ext_resource type="Texture2D" uid="uid://c8w8hdw3l48ta" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0008.png" id="9_yrmbv"]
 [ext_resource type="Texture2D" uid="uid://45wm6rn8im4u" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0008.png" id="10_3qu1t"]
-[ext_resource type="Texture2D" uid="uid://broew6aq8xcn6" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0009.png" id="10_aum5v"]
 [ext_resource type="Texture2D" uid="uid://hamrynr6oc6r" path="res://Assets/Level/Adventurers/Arte/Animação/death_0008.png" id="10_cns7r"]
-[ext_resource type="Texture2D" uid="uid://bcmw4okgnjmnw" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0010.png" id="11_1mgjd"]
 [ext_resource type="Texture2D" uid="uid://d1n37uqr0h6r2" path="res://Assets/Level/Adventurers/Arte/Animação/death_0009.png" id="11_hs884"]
 [ext_resource type="Texture2D" uid="uid://buqcpv55e40tp" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0009.png" id="11_iqcyc"]
 [ext_resource type="Texture2D" uid="uid://7xaugr0ecafo" path="res://Assets/Level/Adventurers/Arte/Animação/death_0010.png" id="12_hm1df"]
-[ext_resource type="Texture2D" uid="uid://b2b4rvy2ngrgd" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0011.png" id="12_mwty6"]
 [ext_resource type="Texture2D" uid="uid://d2y0s5hl0fr8v" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0010.png" id="12_v3qmr"]
-[ext_resource type="Texture2D" uid="uid://b1i2ilovoowv2" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0012.png" id="13_b3g1m"]
 [ext_resource type="Texture2D" uid="uid://r8l7atlmmjm7" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0011.png" id="13_htdf2"]
 [ext_resource type="Texture2D" uid="uid://u64okjpcrar4" path="res://Assets/Level/Adventurers/Arte/Animação/death_0011.png" id="13_mwgmf"]
 [ext_resource type="Texture2D" uid="uid://ba7ck5ubspb1q" path="res://Assets/Level/Adventurers/Arte/Animação/death_0012.png" id="14_4nual"]
-[ext_resource type="Texture2D" uid="uid://iyueq1nn7too" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0013.png" id="14_152yj"]
 [ext_resource type="Texture2D" uid="uid://b2ni23ccyetw" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0012.png" id="14_h1bvw"]
-[ext_resource type="Texture2D" uid="uid://d2xwtpcxp23jj" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0014.png" id="15_3b0to"]
 [ext_resource type="Texture2D" uid="uid://bwa7gvoes2bmi" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0013.png" id="15_27gno"]
 [ext_resource type="Texture2D" uid="uid://midefp5l04hw" path="res://Assets/Level/Adventurers/Arte/Animação/death_0013.png" id="15_sehqs"]
 [ext_resource type="Texture2D" uid="uid://bi2fvh3ghmnf1" path="res://Assets/Level/Adventurers/Arte/Animação/death_0014.png" id="16_3coj2"]
-[ext_resource type="Texture2D" uid="uid://b4pfpkbroe7km" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0015.png" id="16_fxale"]
 [ext_resource type="Texture2D" uid="uid://bshkj6a00x6gf" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0014.png" id="16_ikt3f"]
 [ext_resource type="Texture2D" uid="uid://du80axbdlv81j" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0015.png" id="17_n8ej4"]
-[ext_resource type="Texture2D" uid="uid://b7br7a1vww2nf" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0016.png" id="17_trhof"]
 [ext_resource type="Texture2D" uid="uid://boramygfil05y" path="res://Assets/Level/Adventurers/Arte/Animação/death_0015.png" id="17_y6wgk"]
 [ext_resource type="Texture2D" uid="uid://dhyarkpuvch7l" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0016.png" id="18_4toud"]
-[ext_resource type="Texture2D" uid="uid://ckrr1o8g8qu1y" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0017.png" id="18_m2b01"]
 [ext_resource type="Texture2D" uid="uid://mlhkqggohhk4" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0017.png" id="19_swsyy"]
-[ext_resource type="Texture2D" uid="uid://b5kb25shnor48" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0018.png" id="19_vrii4"]
 [ext_resource type="Texture2D" uid="uid://73oxopm1muo7" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0018.png" id="20_ee0ts"]
-[ext_resource type="Texture2D" uid="uid://du5177c5620ff" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0019.png" id="20_h1cfg"]
 [ext_resource type="Texture2D" uid="uid://dam4leon3b5b1" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0019.png" id="21_d0c8l"]
-[ext_resource type="Texture2D" uid="uid://kuyfhl4q4mgi" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0020.png" id="21_goqfo"]
 [ext_resource type="Texture2D" uid="uid://c182abwefgukk" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0020.png" id="22_0voyr"]
-[ext_resource type="Texture2D" uid="uid://cnljymkkpsxi7" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0021.png" id="22_4uxjp"]
 [ext_resource type="Texture2D" uid="uid://tvs681n45ruk" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0021.png" id="23_jbspk"]
-[ext_resource type="Texture2D" uid="uid://bykxghoygiynn" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0022.png" id="23_o1omo"]
-[ext_resource type="Texture2D" uid="uid://bfteioihvqq4g" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0023.png" id="24_sg8ou"]
 [ext_resource type="Texture2D" uid="uid://jws2xvusrrgg" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0022.png" id="24_vb6tj"]
-[ext_resource type="Texture2D" uid="uid://bfs8w1gf4ifj5" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0024.png" id="25_fupr2"]
 [ext_resource type="Texture2D" uid="uid://v3fphntyjjq4" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0023.png" id="25_n1n26"]
-[ext_resource type="Texture2D" uid="uid://kktg6oolm0bv" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0025.png" id="26_7v0g0"]
 [ext_resource type="Texture2D" uid="uid://gt5bchxsjqfq" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0024.png" id="26_rg66n"]
-[ext_resource type="Texture2D" uid="uid://oa0utm0ydvka" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0026.png" id="27_o3ys8"]
 [ext_resource type="Texture2D" uid="uid://cieyn56hi4256" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0025.png" id="27_y81lg"]
 [ext_resource type="Texture2D" uid="uid://bhom7iyry57j7" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0026.png" id="28_tqknb"]
-[ext_resource type="Texture2D" uid="uid://b7s7l88arvpyf" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0028.png" id="28_xc1uv"]
-[ext_resource type="Texture2D" uid="uid://mxtw0n6k2d24" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0029.png" id="29_5b151"]
 [ext_resource type="Texture2D" uid="uid://fk3hv6cq4d6v" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0027.png" id="29_7xffn"]
-[ext_resource type="Texture2D" uid="uid://cwkbcsholtgno" path="res://Assets/Level/Adventurers/Arte/Animação/walkrunsla_0030.png" id="30_ll6qr"]
 [ext_resource type="Texture2D" uid="uid://dex1j8lidokgq" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0028.png" id="30_ly77w"]
 [ext_resource type="Texture2D" uid="uid://bswmu7g1atrqr" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0029.png" id="31_fgjkh"]
 [ext_resource type="Texture2D" uid="uid://clcxxf1ydftlk" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0030.png" id="32_jpbll"]
@@ -81,126 +52,37 @@
 [ext_resource type="Texture2D" uid="uid://b18mk82hyltse" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0032.png" id="34_wm5r8"]
 [ext_resource type="Texture2D" uid="uid://cv48mua4boq88" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0033.png" id="35_vrdwf"]
 [ext_resource type="Texture2D" uid="uid://c8388yx8fbuc5" path="res://Assets/Level/Adventurers/Arte/Animação/Sleeping_0034.png" id="36_iuc6t"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqf64"]
-atlas = ExtResource("2_mlo3u")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0u24h"]
-atlas = ExtResource("3_fpj71")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2buui"]
-atlas = ExtResource("4_5gndf")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t76ps"]
-atlas = ExtResource("5_u3jqw")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8eeki"]
-atlas = ExtResource("6_2s52p")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33mmc"]
-atlas = ExtResource("7_moaw2")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xfpa"]
-atlas = ExtResource("8_5w2d5")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ro4ql"]
-atlas = ExtResource("9_yrmbv")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qa8xf"]
-atlas = ExtResource("10_aum5v")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vwi0s"]
-atlas = ExtResource("11_1mgjd")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snaqt"]
-atlas = ExtResource("12_mwty6")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_84u3c"]
-atlas = ExtResource("13_b3g1m")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2klfp"]
-atlas = ExtResource("14_152yj")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eieo0"]
-atlas = ExtResource("15_3b0to")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_esaom"]
-atlas = ExtResource("16_fxale")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_62cem"]
-atlas = ExtResource("17_trhof")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_exggh"]
-atlas = ExtResource("18_m2b01")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16biy"]
-atlas = ExtResource("19_vrii4")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4hre"]
-atlas = ExtResource("20_h1cfg")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7b42"]
-atlas = ExtResource("21_goqfo")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vyy46"]
-atlas = ExtResource("22_4uxjp")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x0eh4"]
-atlas = ExtResource("23_o1omo")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b6u5y"]
-atlas = ExtResource("23_o1omo")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7f0md"]
-atlas = ExtResource("24_sg8ou")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xs16"]
-atlas = ExtResource("25_fupr2")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sspw4"]
-atlas = ExtResource("26_7v0g0")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjjgi"]
-atlas = ExtResource("27_o3ys8")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1hpao"]
-atlas = ExtResource("28_xc1uv")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dxd7e"]
-atlas = ExtResource("29_5b151")
-region = Rect2(0, 0, 720, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57mxy"]
-atlas = ExtResource("30_ll6qr")
-region = Rect2(0, 0, 720, 1080)
+[ext_resource type="Texture2D" uid="uid://c2wrsjiafrgmh" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0000.png" id="53_xg17p"]
+[ext_resource type="Texture2D" uid="uid://cpmbu6j1dpi1v" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0001.png" id="54_af4gm"]
+[ext_resource type="Texture2D" uid="uid://bayfhqdfukc7x" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0002.png" id="55_otj02"]
+[ext_resource type="Texture2D" uid="uid://caup134m3fuiy" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0003.png" id="56_yan24"]
+[ext_resource type="Texture2D" uid="uid://bjto1oc2p8fdw" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0004.png" id="57_fwn7v"]
+[ext_resource type="Texture2D" uid="uid://kbmgnk01oak3" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0005.png" id="58_yo053"]
+[ext_resource type="Texture2D" uid="uid://b00knhvcv3vc8" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0006.png" id="59_mylwx"]
+[ext_resource type="Texture2D" uid="uid://c2w7ahrtgqa8p" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0007.png" id="60_4tpvl"]
+[ext_resource type="Texture2D" uid="uid://c5eiiqsdh3ejv" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0008.png" id="61_wv450"]
+[ext_resource type="Texture2D" uid="uid://bqfss3t23a8tu" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0009.png" id="62_wb0yi"]
+[ext_resource type="Texture2D" uid="uid://coy3nh53wpc3k" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0010.png" id="63_bedji"]
+[ext_resource type="Texture2D" uid="uid://bqf6q2q5tng03" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0011.png" id="64_vmtou"]
+[ext_resource type="Texture2D" uid="uid://85n2esq2rjpx" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0012.png" id="65_ya842"]
+[ext_resource type="Texture2D" uid="uid://dpacb5o56c142" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0013.png" id="66_ng15s"]
+[ext_resource type="Texture2D" uid="uid://dg5rhh2jay0b4" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0014.png" id="67_ccxun"]
+[ext_resource type="Texture2D" uid="uid://c6pguvct6hkgh" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0015.png" id="68_jyodf"]
+[ext_resource type="Texture2D" uid="uid://cweb4nccpyilf" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0016.png" id="69_msypy"]
+[ext_resource type="Texture2D" uid="uid://dkh3k0f20s28y" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0017.png" id="70_a72ox"]
+[ext_resource type="Texture2D" uid="uid://7ntrgknpo2uy" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0018.png" id="71_s8r35"]
+[ext_resource type="Texture2D" uid="uid://jiflhb66s5wy" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0019.png" id="72_eyw86"]
+[ext_resource type="Texture2D" uid="uid://5314s05j57t5" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0020.png" id="73_dsuoj"]
+[ext_resource type="Texture2D" uid="uid://c5i2kiyd061sj" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0021.png" id="74_2bykl"]
+[ext_resource type="Texture2D" uid="uid://ba6wyt7np7iya" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0022.png" id="75_xcs6i"]
+[ext_resource type="Texture2D" uid="uid://crwihx8w7qju1" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0023.png" id="76_owq4o"]
+[ext_resource type="Texture2D" uid="uid://ctlplwubdg7vi" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0024.png" id="77_tohwg"]
+[ext_resource type="Texture2D" uid="uid://dowxx51116kto" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0025.png" id="78_hdthn"]
+[ext_resource type="Texture2D" uid="uid://by0t8tali015" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0026.png" id="79_1yv6l"]
+[ext_resource type="Texture2D" uid="uid://6mpq7mhcwxkl" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0027.png" id="80_2c253"]
+[ext_resource type="Texture2D" uid="uid://biytv76t3bxmm" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0028.png" id="81_dgufm"]
+[ext_resource type="Texture2D" uid="uid://cjj3etk3bm2lt" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0029.png" id="82_b0pcc"]
+[ext_resource type="Texture2D" uid="uid://bi78grovj8u0l" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0030.png" id="83_ncwg8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y8s6r"]
 animations = [{
@@ -369,94 +251,97 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqf64")
+"texture": ExtResource("53_xg17p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0u24h")
+"texture": ExtResource("54_af4gm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2buui")
+"texture": ExtResource("55_otj02")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t76ps")
+"texture": ExtResource("56_yan24")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8eeki")
+"texture": ExtResource("57_fwn7v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33mmc")
+"texture": ExtResource("58_yo053")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2xfpa")
+"texture": ExtResource("59_mylwx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ro4ql")
+"texture": ExtResource("60_4tpvl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qa8xf")
+"texture": ExtResource("61_wv450")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vwi0s")
+"texture": ExtResource("62_wb0yi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_snaqt")
+"texture": ExtResource("63_bedji")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_84u3c")
+"texture": ExtResource("64_vmtou")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2klfp")
+"texture": ExtResource("65_ya842")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eieo0")
+"texture": ExtResource("66_ng15s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_esaom")
+"texture": ExtResource("67_ccxun")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_62cem")
+"texture": ExtResource("68_jyodf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_exggh")
+"texture": ExtResource("69_msypy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_16biy")
+"texture": ExtResource("70_a72ox")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n4hre")
+"texture": ExtResource("71_s8r35")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c7b42")
+"texture": ExtResource("72_eyw86")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vyy46")
+"texture": ExtResource("73_dsuoj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x0eh4")
+"texture": ExtResource("74_2bykl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b6u5y")
+"texture": ExtResource("75_xcs6i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7f0md")
+"texture": ExtResource("76_owq4o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7xs16")
+"texture": ExtResource("77_tohwg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sspw4")
+"texture": ExtResource("78_hdthn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mjjgi")
+"texture": ExtResource("79_1yv6l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1hpao")
+"texture": ExtResource("80_2c253")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dxd7e")
+"texture": ExtResource("81_dgufm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_57mxy")
+"texture": ExtResource("82_b0pcc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_ncwg8")
 }],
 "loop": true,
 "name": &"walk",
@@ -472,10 +357,10 @@ collision_mask = 6
 script = ExtResource("1_wg4fw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-14, -24)
+position = Vector2(1.90735e-06, 7.62939e-06)
 scale = Vector2(0.0958333, 0.0958333)
 sprite_frames = SubResource("SpriteFrames_y8s6r")
-animation = &"death"
+animation = &"walk"
 autoplay = "walk"
 
 [node name="adventurer_collisor" type="CollisionShape2D" parent="."]

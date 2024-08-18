@@ -8,7 +8,7 @@ const INITIAL_SIZE = Vector2i(3, 3)
 func _ready():
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
 	_fill_paths()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# TODO puta merda
@@ -20,6 +20,12 @@ func _unhandled_input(event):
 		
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			_expand()
+
+
+## Gain 20 points every 10 seconds of being alive
+func _on_score_timer() -> void:
+	Globals.score += 20
+
 
 func _create_grid(rows: int, columns: int):
 	# Create a room to calculate the distance between each room
@@ -54,6 +60,5 @@ func _fill_paths():
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_paths')
 
 func _expand():
-	
 	get_tree().call_group_flags(0, 'Last_Rooms', '_add_adjacent_rooms')
 	_fill_paths()
