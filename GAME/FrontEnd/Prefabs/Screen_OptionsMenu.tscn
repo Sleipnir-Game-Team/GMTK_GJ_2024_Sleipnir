@@ -1,15 +1,24 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdlwld6m5xf23"]
 
-[ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_MainMenu.gd" id="1_u4vj7"]
+[ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_OptionsMenu.gd" id="1_y3x0v"]
 
-[node name="TelaMenuPrincipal" type="Control"]
+[node name="Screen_OptionsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u4vj7")
+script = ExtResource("1_y3x0v")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.955407, 0.460423, 0.506953, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -24,16 +33,16 @@ layout_mode = 2
 
 [node name="Button_Play" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "O"
+text = "Teste"
 
 [node name="Button_Options" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "O One Piece"
+text = "Teste 2"
 
-[node name="Button_Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button_Back" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "É REALLLLL!"
+text = "Voltar"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Play" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Options" to="." method="_on_button_options_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Back" to="." method="_on_button_back_pressed"]

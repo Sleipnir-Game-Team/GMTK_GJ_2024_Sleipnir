@@ -3,12 +3,13 @@ extends Node
 var oldScreen
 
 func displayScreen(screen):
-	return load(screen)
+	screen = load(screen)
+	return screen
 	
 
 func openScreen(screen, parent):
-	oldScreen = screen
 	screen = screen.instantiate()
+	oldScreen = screen
 	parent.add_child(screen)
 	
 

@@ -8,7 +8,7 @@ func _on_button_play_pressed():
 
 
 func _on_button_options_pressed():
-	UI_Controller.manageScreen("", get_tree().root.get_child(-1), "open")
+	UI_Controller.manageScreen("res://FrontEnd/Prefabs/Screen_OptionsMenu.tscn", get_tree().root, "open")
 
 
 func _on_button_quit_pressed():

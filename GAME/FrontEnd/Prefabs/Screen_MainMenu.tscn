@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_MainMenu.gd" id="1_6ltrc"]
 
-[node name="TelaMenuPrincipal" type="Control"]
+[node name="Screen_MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
