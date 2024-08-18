@@ -10,12 +10,17 @@ var timed_out := false
 
 var torches := {}
 
+@onready var end_timer = $Duration
 @onready var torch_timer = $LightTorch
 
 @onready var locations = [$TopLeft, $TopRight, $BottomRight, $BottomLeft]
 
 func _ready() -> void:
 	print('Event Ready: ' + name)
+	
+	var room = get_parent()
+	room.activate.connect(end_timer.start)
+	room.deactivate.connect(end_timer.stop)
 	
 	torches = {
 		locations[0].name: false,
@@ -31,6 +36,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
+
 
 func light_torch():
 	if lit_torches >= 4: return
@@ -64,15 +70,26 @@ func cleanup():
 		if child.is_in_group("Torch"):
 			child.queue_free()
 
-func _on_success(adventurers: Array[Adventurer]):
-	for adventurer in adventurers:
+
+func add_adventurer(adventurer: Adventurer):
+	adventurer.animation_handler.play('sleep')
+	super(adventurer)
+
+func _on_finish(affected: Array[Adventurer]):
+	for adventurer in affected:
+		adventurer.animation_handler.play('walk')
+
+func _on_success(affected: Array[Adventurer]):
+	for adventurer in affected:
 		adventurer.damage.emit(10)
+
 
 func _win_condition():
 	return snuffed_torches >= 5
 
 func _loss_condition():
 	return timed_out
+
 
 func _activate_events():
 	return [torch_timer.start]

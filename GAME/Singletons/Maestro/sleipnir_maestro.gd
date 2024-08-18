@@ -9,8 +9,8 @@
 ## onde um [AudioStreamInteractive] é responsável pela transição das músicas. [br]
 extends Node
 
-signal beat (position:int,time:float) ## manda a beat atual 
-signal measure (position:int,time:float) ## manda a measure atual
+signal beat(position:int, time:float) ## manda a beat atual 
+signal measure(position:int, time:float) ## manda a measure atual
 
 @export_category("Config Geral") # Configurações relacionadas a música
 @export var MainPlayer : AudioStreamPlayer        ## [AudioStreamPlayer] que cuida dos clips principais
@@ -55,22 +55,22 @@ func play() ->void :
 	MainPlayer.play() # da play
 
 ## chama um clip e da play nele    
-func trigger(name:String,sync_method:int=0) ->void :
+func trigger(clip_name: String, sync_method: int=0) ->void :
 	if (MainPlayer.is_playing() == false): # se não estiver tocando retorna
 		Logger.warn("can't play when song is not playing")
 		return
 	if current_song == "none":     # se não tem musica carregada retorna
 		if log_level <=3: Logger.warn("there's no song here!")
 		return
-	if _trigger_stems.has(name) == false: # se não tem o trigger chamado
-		if log_level <=3: Logger.warn("there's no trigger with the name \""+name+"\"")
+	if _trigger_stems.has(clip_name) == false: # se não tem o trigger chamado
+		if log_level <=3: Logger.warn("there's no trigger with the name \""+clip_name+"\"")
 		return
 
-	var TriggerStem = get_node("/root/SleipnirMaestro/Triggers/"+name)
+	var TriggerStem = get_node("/root/SleipnirMaestro/Triggers/" + clip_name)
 	_trigger_play(TriggerStem,sync_method) ## WARNING TESTAR BEM.
 	_currently_playing_trigger.append(TriggerStem)
 	await TriggerStem.finished
-	if log_level <=1: Logger.debug("finished playing: "+TriggerStem.name)
+	if log_level <=1: Logger.debug("finished playing: " + TriggerStem.name)
 	_currently_playing_trigger.erase(TriggerStem)
 
 ## para tudo
@@ -119,12 +119,12 @@ func resume() ->void :
 		
 
 ## muda de sessão
-func switch_section(name:String) ->void :
+func switch_section(new_section: String) ->void :
 	# log informando tipo de transição
 	if log_level <=1 : Logger.debug("transition type é: "+str(_transition_type)) 
 	
 	# se quiser mudar pra sessão atual, retorna
-	if current_section == name:
+	if current_section == new_section:
 		Logger.warn("can't switch to the same section")
 		return
 	# se não tiver musica, retorna
@@ -137,14 +137,14 @@ func switch_section(name:String) ->void :
 		return	
 	
 	# log que avisa pra onde vai 
-	if log_level <=2 : Logger.info("will switch to "+ name +" ["+str(_get_elapsed_time())+" s]") 
+	if log_level <=2 : Logger.info("will switch to "+ new_section +" ["+str(_get_elapsed_time())+" s]") 
 	# se deu tudo certo, checa o tipo de transição
 	match _transition_type: 
 		2: # se for por bar
-			_switch_by_bar(name) # usar o método custom de transição
+			_switch_by_bar(new_section) # usar o método custom de transição
 		_: # se for qualquer outra
-			MainPlayer.set("parameters/switch_to_clip",name) # usa o default
-			current_section = name
+			MainPlayer.set("parameters/switch_to_clip", new_section) # usa o default
+			current_section = new_section
 			if log_level <=1: Logger.debug(current_section+" ["+str(_get_elapsed_time())+" s]")	
 # ATTENTION DEFAULT FIRST SECTION ESTÁ ATIVO ^^
 
@@ -188,11 +188,6 @@ func change_song(song_name:String) ->void: # TODO FAZER COM QUE A MUSICA CONTINU
 	if log_level < 3:
 		Logger.info("[SleipnirMaestro] "+str(current_song)+" Ready! at "+str(BPM)+" BPM or "+ str(SPB) +" SPB")
 
-
-# funções privadas 
-func _process(delta: float) -> void:
-	pass
-
 func _ready() -> void:
 	if Clock.one_shot != false: # só pra garantir o clock n tocar só uma vez
 		Clock.one_shot = false
@@ -202,11 +197,11 @@ func _ready() -> void:
 		_trigger_remove()                
 
 # método custom de transição por barra
-func _switch_by_bar(name : String ,offset : int = 0) -> void:
+func _switch_by_bar(bar_name: String ,offset : int = 0) -> void:
 		# tempo para uma barra/measure
 		var bar_time: float = SPB*BeatsPerBar                
 		# previsão de quando é a próxima barra
-		var next_bar = (_last_bar_time+bar_time)+(offset*SPB) 
+		var next_bar = (_last_bar_time + bar_time)+(offset*SPB) 
 		# o tempo em que vai ser feita a transição
 		var switch_time : float = next_bar - snappedf(_get_elapsed_time(),SPB)
 		
@@ -219,10 +214,10 @@ func _switch_by_bar(name : String ,offset : int = 0) -> void:
 		if log_level <= 1: # Log avisando que vai transicionar
 			Logger.info("switching now ["+str(_get_elapsed_time())+" s]")
 		
-		MainPlayer.set("parameters/switch_to_clip",name) # Transiciona pra sessão
-		current_section = name # muda qual sessão estamos no codigo
+		MainPlayer.set("parameters/switch_to_clip", bar_name) # Transiciona pra sessão
+		current_section = bar_name # muda qual sessão estamos no codigo
 		
-		if log_level <=1: # Log após transicionar, pra dizer quando e pra onde
+		if log_level <= 1: # Log após transicionar, pra dizer quando e pra onde
 			Logger.debug(current_section+" ["+str(_get_elapsed_time())+" s]")	
 
 # o que acontece quando o conductor conta 1 Beat
@@ -305,7 +300,7 @@ func _get_bpm() -> void:
 	
 	BPM = int(reference_stream.get_bpm())                    # pega o BPM dela
 	BeatsPerBar = int(reference_stream.get_bar_beats())      # pega as BeatsPerBar dela
-	SPB = 60.0/(BPM*(BeatsPerBar/4))                         # calcula SPB
+	SPB = 60.0 / ( BPM * (BeatsPerBar/4) )                   # calcula SPB
 	Clock.wait_time = SPB                                    # Seta o conductor para o tempo certo
 
 # pega a AudioStreamMP3, OggVorbis ou WAV
@@ -404,19 +399,19 @@ func _trigger_play(TriggerStem,sync_method:int=0):
 			await get_tree().create_timer(abs(switch_time)).timeout # Espera o switch_time
 			
 			TriggerStem.play() # da play
-			if log_level <=2: Logger.info("playing: "+TriggerStem.name)
+			if log_level <=2: Logger.info("playing: " + TriggerStem.name)
 		_: ## fora da seleção
-			if log_level <= 3: Logger.warn("Invalid sync method for playing trigger",get_stack())
+			if log_level <= 3: Logger.warn("Invalid sync method for playing trigger", get_stack())
 
 # ATTENTION melhorar depois, pq haha o godot n tem NOME PRA RESOURCE
 func _get_sync_streams(stream:AudioStreamSynchronized) -> void:
 	var count = stream.stream_count
-	var audiostream : Variant
+	#var audiostream : Variant
 	#for i in range(0,count):
 		#audiostream = stream.get_sync_stream(i)
 		#var temp_dict : Dictionary = {audiostream.resource_name:i} # ATTENTION Melhorar depois
 		#_sync_streams.merge(temp_dict, false)
-	if log_level <= 1: Logger.debug("there are"+str(count)+" sync_streams and they are: "+str(_sync_streams))
+	if log_level <= 1: Logger.debug("there are" + str(count) + " sync_streams and they are: " +str(_sync_streams))
 
 # _load_mp3() não é usada mais
 ## cria o _silent_audiostream

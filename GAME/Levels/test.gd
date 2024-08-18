@@ -10,7 +10,8 @@ func _ready():
 	_fill_paths()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
+	# TODO puta merda
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_sprites')
 
 # TODO REMOVER ISSO É TESTE

@@ -21,72 +21,28 @@ signal heal(amount)
 
 @export var speed := 45
 
-@onready var right_detector = $right_path_detector
-@onready var down_detector = $down_path_detector
+@onready var animation_handler := $AnimatedSprite2D as AnimatedSprite2D
+
+@onready var right_detector := $right_path_detector as RayCast2D
+@onready var down_detector := $down_path_detector as RayCast2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	entered_room.connect(_handle_enter_event)
 	left_room.connect(_handle_leave_event)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target_room and position.distance_to(target_room.position) < 1:
 		stop_moving()
 		
 	move_and_slide()
-	 
-#region
-#func _on_area_entered(area):
-	#possible_paths.clear()
-	## If the adventurer has encountered a new room
-	#if area.name == "room":
-		#area.trigger();
-		
-		# If room has a trap, damage adventurer
-		#if area.has_trap == true:
-			#adventurer_life -= 1
-			#print("adventurer life points: ", adventurer_life)
-			#minimum_rest_chance += 10
-		# If it doesn't have a trap, test if the adventurer will rest
-		#else:
-			#var rest_chance := rng_rest.randi_range(minimum_rest_chance, 100)
-			#print("rest chance: ", rest_chance)
-			#if rest_chance == 100 or minimum_rest_chance >= 100:
-				#minimum_rest_chance = 1
-				#adventurer_life = total_life
-				#print("Descansados")
-			#else:
-				#minimum_rest_chance += 5
-	
-	#if area.name == "core_room":
-		#has_arrived_to_the_core = true
-		#next_path = null
-		#print("Game-Over")
-	#
-	#if adventurer_life > 0 and has_arrived_to_the_core == false:
-		#if area.paths_dict["right"] == true:
-			#possible_paths.append("right")
-		#if area.paths_dict["down"] == true:
-			#possible_paths.append("down")
-			#
-		#var path_choise := rng_paths.randi_range(1, possible_paths.size())
-		#next_path = possible_paths[path_choise - 1]
-	#elif adventurer_life <= 0:
-		#queue_free()
-#endregion
+
 
 func move_in_direction(direction: Vector2):
 	velocity = direction * speed
 
 func stop_moving():
 	velocity = Vector2(0,0)
-
-func _handle_damage(amount: int):
-	current_life -= amount
-	print('Adventurer health: %s/%s' % [current_life, total_life])
-	
-func _handle_healing(amount: int):
-	current_life = min(current_life + amount, total_life)
 
 func _find_possible_moves():
 	var possible_moves = []
@@ -107,7 +63,16 @@ func _find_possible_moves():
 		# TODO teoricamente (tudo dando certo) isso daqui significa que chegou na última sala
 		pass
 
-func _handle_enter_event(adventurer, room):
+
+func _on_damage(amount: Variant) -> void:
+	current_life -= amount
+	print('Adventurer health: %s/%s' % [current_life, total_life])
+
+func _on_heal(amount: Variant) -> void:
+	current_life = min(current_life + amount, total_life)
+
+
+func _handle_enter_event(_adventurer, room):
 	# If last_room is not defined, the Adventurer has just been created and is in spawn
 	if not last_room:
 		last_room = room
@@ -124,12 +89,12 @@ func _handle_enter_event(adventurer, room):
 		if event_chance <= minimum_event_chance:
 			# Add a temporary rest event to the room
 			var event = LightsOutScene.instantiate()
+			event.add_adventurer(self)
 			event.finish.connect(_find_possible_moves.unbind(1)) # Trigger movement once it's over
 			room.add_temporary_event(event)
-			room.activate.emit() # Trigger event activation!
 		else:
 			Logger.debug("Vai DESGRAÇA")
 			_find_possible_moves()
 
-func _handle_leave_event(adventurer, room):
+func _handle_leave_event(_adventurer, room):
 	last_room = room

@@ -46,14 +46,14 @@ func _ready() -> void:
 		sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala entrada 2.jpg")
 		
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Se não há um evento atual
 	if not _active_event:
 		# Se há eventos na fila
 		if len(_event_queue) > 0:
 			var new_event = _event_queue.pop_front()
 			print('Starting temporary event: %s' % new_event.name)
-			# TODO trocar por um método de clear active event, e retsirar o if no inicio do _start_long_lasting_event 
+			# TODO trocar por um método de clear active event, e retirar o if no inicio do _start_long_lasting_event 
 			new_event.finish.connect(_start_long_lasting_event.unbind(1))
 			_swap_active_event(new_event)
 			activate.emit()

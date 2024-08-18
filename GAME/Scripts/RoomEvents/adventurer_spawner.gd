@@ -29,6 +29,12 @@ func _loss_condition() -> bool:
 	# Never win or lose event, such that it runs forever
 	return false
 
+func _activate_events():
+	return []
+	
+func _deactivate_events():
+	return []
+
 func moved(adventurer, room):
 	if room != get_parent():
 		adventurer.entered_room.disconnect(moved)

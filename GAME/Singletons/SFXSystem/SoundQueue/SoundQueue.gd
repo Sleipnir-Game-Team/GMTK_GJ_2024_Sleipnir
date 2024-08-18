@@ -27,9 +27,9 @@ func _ready():				 # Logo quando entra
 	if child is AudioStreamPlayer:        # Se ela for AudioStreamPlayer
 		_audioStreamPlayers.append(child) # Bota na Lista
 		for i in range(0,Count-1):          # Duplica o AudioStreamPlayer de acordo com o Count
-			var duplicate = child.duplicate() as AudioStreamPlayer
-			add_child(duplicate)
-			_audioStreamPlayers.append(duplicate)
+			var clone = child.duplicate() as AudioStreamPlayer
+			add_child(clone)
+			_audioStreamPlayers.append(clone)
 
 func get_polyphony() -> int: ## método para pegar polifonia maxima da soundqueue
 	return Count
