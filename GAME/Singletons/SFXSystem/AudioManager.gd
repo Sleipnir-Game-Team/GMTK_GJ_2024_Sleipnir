@@ -25,6 +25,24 @@ func play_sfx(audio, _max_poly: int = 4):  ## Método pra tocar SFX, acontando c
 	else: # se n for nenhum dos acima vai dar erro
 		push_error(audio ," Not SoundQueue or AudioStreamPlayer")
 
+func stop_sfx(audio): ## Método pra parar o SFX
+	if audio is Array[Node]: # pra parar grupos
+		for member in audio:
+			match member.get_class():
+				"SoundQueue2D","SoundQueue":
+					member.stop_sound()
+				"AudioStreamPlayer","AudioStreamPlayer2D","AudioStreamPlayer3D":
+					member.stop()
+		return
+		
+	match audio.get_class():
+		"SoundQueue2D","SoundQueue":
+			audio.stop_sound()
+		"AudioStreamPlayer","AudioStreamPlayer2D","AudioStreamPlayer3D":
+			audio.stop()
+		_: # se n for nenhum dos acima vai dar erro
+			push_error(audio ," Not SoundQueue or AudioStreamPlayer")
+	
 func check_play(audio,_max_poly: int = 4):    ## O que realmente toca o sfx
 	if currently_playing_audiostreams.size() <= max_audiostreams:
 		# se o numero de sons tocando for menor ou igual ao numero de audiostreams maxima

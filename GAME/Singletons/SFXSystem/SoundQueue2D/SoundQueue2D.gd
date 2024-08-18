@@ -56,6 +56,12 @@ func play_sound() -> void:   ## Toca a SoundQueue
 	if _next == _audioStreamPlayers.size():  # Quando atinge o máximo na lista:
 		_next = 0                            # Reseta pra 0, criando um ciclo
 
+func stop_sound() ->void:
+	for stream in _audioStreamPlayers:
+		if stream.is_playing() == true:
+			stream.stop()
+			AudioManager.currently_playing_audiostreams.erase(stream)
+
 func _on_audio_finished(audio_playing): 
 	AudioManager.currently_playing_audiostreams.erase(audio_playing)
 	#print_rich("[b]Tocando:[/b]\n",AudioManager.currently_playing_audiostreams, "\n - - - - - - -") ## TODO LOGGING
