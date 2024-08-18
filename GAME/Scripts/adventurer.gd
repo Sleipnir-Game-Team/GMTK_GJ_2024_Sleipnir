@@ -4,7 +4,6 @@ class_name Adventurer
 
 const LightsOutScene = preload('res://Prefabs/RoomEvents/lights_out.tscn')
 
-var total_life := 10
 var current_life := 10
 
 var last_room: Node
@@ -19,6 +18,8 @@ signal left_room(adventurer, room)
 signal damage(amount)
 signal heal(amount)
 
+
+@export var total_life := 10
 @export var speed := 45
 
 @onready var animation_handler := $AnimatedSprite2D as AnimatedSprite2D
@@ -64,12 +65,20 @@ func _find_possible_moves():
 		pass
 
 
+func die():
+	stop_moving()
+	animation_handler.play('death')
+	animation_handler.animation_finished.connect(queue_free)
+
 func _on_damage(amount: Variant) -> void:
 	current_life -= amount
-	print('Adventurer health: %s/%s' % [current_life, total_life])
+	print('[DAMAGING] Adventurer health: %s/%s' % [current_life, total_life])
+	if current_life <= 0:
+		call_deferred('die')
 
 func _on_heal(amount: Variant) -> void:
 	current_life = min(current_life + amount, total_life)
+	print('[HEALING] Adventurer health: %s/%s' % [current_life, total_life])
 
 
 func _handle_enter_event(_adventurer, room):
