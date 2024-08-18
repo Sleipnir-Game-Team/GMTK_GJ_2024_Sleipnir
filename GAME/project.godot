@@ -24,6 +24,7 @@ Logger="*res://Scripts/Managers/Logger.gd"
 SleipnirMaestro="*res://Singletons/Maestro/SleipnirMaestro.tscn"
 AudioManager="*res://Singletons/SFXSystem/AudioManager.gd"
 SfxGlobals="*res://Singletons/SFXSystem/SFX Globals.tscn"
+SpriteManager="*res://Scripts/Managers/sprite_manager.gd"
 
 [input]
 

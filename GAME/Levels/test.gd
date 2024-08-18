@@ -10,7 +10,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for child in get_children():
+		child.call_deferred("update_sprites")
 
 # TODO REMOVER ISSO É TESTE
 func _unhandled_input(event):

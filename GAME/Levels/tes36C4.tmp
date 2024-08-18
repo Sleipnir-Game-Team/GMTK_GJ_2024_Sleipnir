@@ -9,12 +9,12 @@
 position = Vector2(296, 312)
 script = ExtResource("1_wh42s")
 
-[node name="SpawnRoom" parent="." node_paths=PackedStringArray("_long_lasting_event") instance=ExtResource("2_qomsm")]
+[node name="SpawnRoom" parent="." instance=ExtResource("2_qomsm")]
 position = Vector2(0, -224)
-_long_lasting_event = NodePath("adventurer_spawner")
 _is_entrance = true
 
 [node name="adventurer_spawner" parent="SpawnRoom" instance=ExtResource("3_ia4dh")]
+script = null
 
 [node name="paths" parent="SpawnRoom" instance=ExtResource("3_k1sel")]
 position = Vector2(0, 112)

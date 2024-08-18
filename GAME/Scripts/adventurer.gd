@@ -13,8 +13,8 @@ var last_room: Node
 var target_room: Node
 var time := 0.0 # Time used in movement interpolation
 
-signal entered_room
-signal left_room
+signal entered_room(adventurer, room)
+signal left_room(adventurer, room)
 
 @onready var right_detector = $right_path_detector
 @onready var down_detector = $down_path_detector
