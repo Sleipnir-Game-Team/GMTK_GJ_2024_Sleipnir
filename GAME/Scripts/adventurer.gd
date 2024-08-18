@@ -94,7 +94,7 @@ func _handle_enter_event(_adventurer, room):
 	# This is not the spawn room, and it has an event
 	elif room._active_event:
 		# Wait till the event is over and then find a new target!
-		room._active_event.finish.connect(_find_possible_moves.unbind(1))
+		room._active_event.finish.connect(_find_possible_moves.unbind(1), ConnectFlags.CONNECT_ONE_SHOT)
 	# This is an empty room
 	else:
 		var event_chance := rng_event.randi_range(0, 99)
@@ -103,7 +103,7 @@ func _handle_enter_event(_adventurer, room):
 			# Add a temporary rest event to the room
 			var event = LightsOutScene.instantiate()
 			event.add_adventurer(self)
-			event.finish.connect(_find_possible_moves.unbind(1)) # Trigger movement once it's over
+			event.finish.connect(_find_possible_moves.unbind(1), ConnectFlags.CONNECT_ONE_SHOT) # Trigger movement once it's over
 			room.add_temporary_event(event)
 		else:
 			Logger.debug("Vai DESGRAÇA")

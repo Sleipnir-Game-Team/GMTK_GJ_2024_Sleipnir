@@ -81,7 +81,7 @@ func _on_finish(affected: Array[Adventurer]):
 	for adventurer in affected:
 		adventurer.animation_handler.play('walk')
 
-## +5 Score for successfully beating the game
+## +5 Score for successfully beating the event
 ## Deal 10 damage to each affected Adventurer
 func _on_success(affected: Array[Adventurer]):
 	Globals.score += points_worth

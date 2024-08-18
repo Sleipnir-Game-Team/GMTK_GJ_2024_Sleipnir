@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpcf4pb3em480"]
+
+[ext_resource type="Script" path="res://Scripts/room.gd" id="1_yl312"]
+[ext_resource type="PackedScene" uid="uid://bo24srw46b6i1" path="res://Prefabs/RoomEvents/acid_pool.tscn" id="2_5dscc"]
+[ext_resource type="Texture2D" uid="uid://ctq77ensd6jhd" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_xop3b"]
+[ext_resource type="Texture2D" uid="uid://5hsk04xu6f7p" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Armadilha Ácido .jpg" id="3_d7s2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qe5ta"]
+size = Vector2(86, 90)
+
+[node name="AcidRoom" type="Area2D" node_paths=PackedStringArray("_long_lasting_event") groups=["Room"]]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_yl312")
+_long_lasting_event = NodePath("AcidPool")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(1.43051e-06, -4.41074e-06)
+scale = Vector2(0.0286667, 0.03)
+texture = ExtResource("2_xop3b")
+
+[node name="AcidPool" parent="." instance=ExtResource("2_5dscc")]
+
+[node name="pool_sprite" type="Sprite2D" parent="AcidPool"]
+position = Vector2(-0.101559, -0.0351601)
+scale = Vector2(0.0283517, 0.0297025)
+texture = ExtResource("3_d7s2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qe5ta")
+
+[node name="down_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, 45)
+target_position = Vector2(0, 138)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_detector" type="RayCast2D" parent="."]
+position = Vector2(43, 0)
+target_position = Vector2(138, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="up_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -45)
+target_position = Vector2(0, -138)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left_path_detector" type="RayCast2D" parent="."]
+position = Vector2(-43, 0)
+target_position = Vector2(-138, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_spawn" type="Marker2D" parent="."]
+position = Vector2(112, 0)
+
+[node name="down_path_spawn" type="Marker2D" parent="."]
+position = Vector2(0, 112)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_left"]

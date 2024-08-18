@@ -35,21 +35,22 @@ func _create_grid(rows: int, columns: int):
 	var room_position = Vector2(0,0)
 	for row in rows:
 		for column in columns:
-			var room = RoomScene.instantiate()
+			var room = RoomGenerator.get_random_room().instantiate()
+			
 			room.global_position = room_position
 			add_child(room)
 			
 			# Calculate the distance between each room
 			if not distance:
-				print(room.right_spawn)
 				distance = (room.right_spawn.position.x - room.position.x) * 2 
 			
 			if column == columns-1 or row == rows-1:
+				room.add_to_group('Last_Rooms')
+				
 				if column == columns-1 and row == rows-1:
 					var game_over = load("res://Prefabs/RoomEvents/game_over.tscn").instantiate()
 					room.add_child(game_over)
 					room._long_lasting_event = game_over
-				room.add_to_group('Last_Rooms')
 			
 			
 			room_position.x += distance # Step over a column

@@ -21,10 +21,11 @@ Globals="*res://Singletons/globals.gd"
 UI_Controller="*res://FrontEnd/Scripts/UI_Controller.gd"
 UI_Displayer="*res://FrontEnd/Scripts/UI_Displayer.gd"
 Logger="*res://Scripts/Managers/Logger.gd"
+SpriteManager="*res://Scripts/Managers/sprite_manager.gd"
 SleipnirMaestro="*res://Singletons/Maestro/SleipnirMaestro.tscn"
 AudioManager="*res://Singletons/SFXSystem/AudioManager.gd"
 SfxGlobals="*res://Singletons/SFXSystem/SFX Globals.tscn"
-SpriteManager="*res://Scripts/Managers/sprite_manager.gd"
+RoomGenerator="*res://Singletons/room_generator.gd"
 
 [input]
 
