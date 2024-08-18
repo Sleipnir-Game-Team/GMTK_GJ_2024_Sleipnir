@@ -12,6 +12,12 @@ func _ready():
 func _process(delta):
 	pass
 
+# TODO REMOVER ISSO É TESTE
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			_expand()
+
 func _create_grid(rows: int, columns: int):
 	# Create a room to calculate the distance between each room
 	var distance = null
@@ -28,10 +34,16 @@ func _create_grid(rows: int, columns: int):
 			if not distance:
 				distance = (room.right_spawn.position.x - room.position.x) * 2 
 			
+			if column == columns-1 or row == rows-1:
+				room.add_to_group('Last_Rooms')
+			
 			room_position.x += distance # Step over a column
 		room_position.y += distance # Step over a row
 		room_position.x = 0 # Reset back to first column
 
 func _fill_paths():
-	for child in get_children():
-		child.call_deferred("update_paths")
+	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_paths')
+
+func _expand():
+	get_tree().call_group_flags(0, 'Last_Rooms', '_add_adjacent_rooms')
+	_fill_paths()

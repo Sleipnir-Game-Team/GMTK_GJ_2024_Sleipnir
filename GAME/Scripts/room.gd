@@ -2,7 +2,8 @@ extends Area2D
 
 enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
 
-const path_instance := preload("res://Prefabs/paths.tscn")
+const Room := preload("res://Prefabs/room.tscn")
+const Path := preload("res://Prefabs/paths.tscn")
 const Adventurer := preload("res://Actors/adventurer.tscn")
 
 signal activate
@@ -83,7 +84,6 @@ func update_paths():
 func _start_long_lasting_event():
 	if _long_lasting_event != _active_event:
 		_swap_active_event(_long_lasting_event)
-	
 
 func _swap_active_event(event: Event):
 	if _active_event:
@@ -97,19 +97,48 @@ func _swap_active_event(event: Event):
 	if not is_ancestor_of(_active_event):
 		add_child(_active_event)
 
-
 func _detect_adjacent_rooms():
 	paths_dict["down"] = down_detector.is_colliding()
 	paths_dict["right"] = right_detector.is_colliding()
 
 func _spawn_paths():
 	if paths_dict["down"]:
-		var path = path_instance.instantiate()
+		var path = Path.instantiate()
 		path.position = down_spawn.position
 		path.rotate(PI/2)
 		add_child(path)
 		
 	if paths_dict["right"]:
-		var path = path_instance.instantiate()
+		var path = Path.instantiate()
 		path.position = right_spawn.position
 		add_child(path)
+
+func _add_adjacent_rooms():
+	var down = not paths_dict['down']
+	var right = not paths_dict['right']
+	
+	if down:
+		var sibling = Room.instantiate()
+		sibling.position = position
+		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
+		sibling.add_to_group('Last_Rooms')
+		remove_from_group('Last_Rooms')
+		add_sibling(sibling)
+		
+	if right:
+		var sibling = Room.instantiate()
+		sibling.position = position
+		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
+		sibling.add_to_group('Last_Rooms')
+		remove_from_group('Last_Rooms')
+		add_sibling(sibling)
+	
+	if down and right:
+		var sibling = Room.instantiate()
+		sibling.position = position
+		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
+		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
+		sibling.add_to_group('Last_Rooms')
+		remove_from_group('Last_Rooms')
+		add_sibling(sibling)
+		

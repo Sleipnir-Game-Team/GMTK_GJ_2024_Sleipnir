@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqimv51rx276l"]
+
+[ext_resource type="Script" path="res://Levels/test.gd" id="1_wh42s"]
+[ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="2_qomsm"]
+[ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="3_k1sel"]
+
+[node name="Test" type="Node2D"]
+position = Vector2(64, 54)
+script = ExtResource("1_wh42s")
+
+[node name="SpawnRoom" parent="." instance=ExtResource("2_qomsm")]
+visible = false
+position = Vector2(0, -224)
+
+[node name="paths" parent="SpawnRoom" instance=ExtResource("3_k1sel")]
+position = Vector2(0, 112)
+rotation = 1.57079

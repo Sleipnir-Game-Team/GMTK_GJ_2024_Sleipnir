@@ -17,7 +17,7 @@ position = Vector2(112, 0)
 position = Vector2(283, 61)
 _long_lasting_event = NodePath("LightsOut")
 
-[node name="LightsOut" parent="LightsOutRoom" instance=ExtResource("2_dnqsh")]
+[node name="LightsOut" parent="LightsOutRoom" groups=["Last_Rooms"] instance=ExtResource("2_dnqsh")]
 
 [node name="adventurer" parent="." instance=ExtResource("4_muv3w")]
 position = Vector2(60, 61)

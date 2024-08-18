@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
 size = Vector2(86, 90)
 
-[node name="room" type="Area2D" groups=["rooms"]]
+[node name="room" type="Area2D" groups=["Room"]]
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_iria3")
