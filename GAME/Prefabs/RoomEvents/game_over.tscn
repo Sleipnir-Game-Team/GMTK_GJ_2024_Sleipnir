@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://0rbq5vis6fk2"]
+
+[ext_resource type="Script" path="res://Scripts/RoomEvents/game_over.gd" id="1_reujb"]
+
+[node name="game_over" type="Node2D"]
+script = ExtResource("1_reujb")
+
+[node name="Duration" type="Timer" parent="."]

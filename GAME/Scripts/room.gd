@@ -16,6 +16,7 @@ var sprite_path
 var sprite_rotation
 var actual_state := 0
 var next_state
+var test := 0
 
 var _active_event: Event
 @export var _long_lasting_event: Event
@@ -43,6 +44,7 @@ func _ready() -> void:
 	
 	if _is_entrance:
 		sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala entrada 2.jpg")
+		
 
 func _process(delta: float) -> void:
 	# Se não há um evento atual
@@ -55,8 +57,7 @@ func _process(delta: float) -> void:
 			new_event.finish.connect(_start_long_lasting_event.unbind(1))
 			_swap_active_event(new_event)
 			activate.emit()
-			
-	
+
 	# Se tem eventos na fila:
 	if len(_event_queue) > 0:
 		# Se o evento atual é o evento duradouro
@@ -184,6 +185,10 @@ func _add_adjacent_rooms():
 		sibling.position = position
 		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
 		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
+		var game_over = load("res://Prefabs/RoomEvents/game_over.tscn").instantiate()
+		print("bongo")
+		sibling.add_child(game_over)
+		sibling._long_lasting_event = game_over
 		sibling.add_to_group('Last_Rooms')
 		remove_from_group('Last_Rooms')
 		add_sibling(sibling)

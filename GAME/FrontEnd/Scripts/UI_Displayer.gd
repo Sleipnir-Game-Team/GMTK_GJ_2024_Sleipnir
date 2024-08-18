@@ -1,6 +1,6 @@
 extends Node
 
-var oldScreen
+var screens = []
 
 func displayScreen(screen):
 	screen = load(screen)
@@ -9,13 +9,13 @@ func displayScreen(screen):
 
 func openScreen(screen, parent):
 	screen = screen.instantiate()
-	oldScreen = screen
+	screens.append(screen)
 	parent.add_child(screen)
 	
 
 func freeScreen():
-	if oldScreen != null:
-		oldScreen.call_deferred("free")
+	if screens.size() > 0:
+		screens.pop_back().call_deferred("free")
 	else:
 		Logger.fatal("Não há cena para liberar", get_stack())
 	
