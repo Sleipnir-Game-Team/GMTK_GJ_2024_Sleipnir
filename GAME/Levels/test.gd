@@ -15,6 +15,7 @@ func _process(delta):
 # TODO REMOVER ISSO É TESTE
 func _unhandled_input(event):
 	if event is InputEventKey:
+		
 		if event.pressed and event.keycode == KEY_ESCAPE:
 			_expand()
 
@@ -35,7 +36,12 @@ func _create_grid(rows: int, columns: int):
 				distance = (room.right_spawn.position.x - room.position.x) * 2 
 			
 			if column == columns-1 or row == rows-1:
+				if column == columns-1 and row == rows-1:
+					var game_over = load("res://Prefabs/RoomEvents/game_over.tscn").instantiate()
+					room.add_child(game_over)
+					room._long_lasting_event = game_over
 				room.add_to_group('Last_Rooms')
+			
 			
 			room_position.x += distance # Step over a column
 		room_position.y += distance # Step over a row
@@ -45,5 +51,6 @@ func _fill_paths():
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_paths')
 
 func _expand():
+	
 	get_tree().call_group_flags(0, 'Last_Rooms', '_add_adjacent_rooms')
 	_fill_paths()
