@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqimv51rx276l"]
+
+[ext_resource type="Script" path="res://Levels/test.gd" id="1_wh42s"]
+[ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="2_qomsm"]
+[ext_resource type="PackedScene" uid="uid://cnt8kosexo551" path="res://Prefabs/RoomEvents/adventurer_spawner.tscn" id="3_ia4dh"]
+[ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="3_k1sel"]
+
+[node name="Test" type="Node2D"]
+position = Vector2(296, 312)
+script = ExtResource("1_wh42s")
+
+[node name="SpawnRoom" parent="." node_paths=PackedStringArray("_long_lasting_event") instance=ExtResource("2_qomsm")]
+position = Vector2(0, -224)
+_long_lasting_event = NodePath("adventurer_spawner")
+_is_entrance = true
+
+[node name="adventurer_spawner" parent="SpawnRoom" instance=ExtResource("3_ia4dh")]
+
+[node name="paths" parent="SpawnRoom" instance=ExtResource("3_k1sel")]
+position = Vector2(0, 112)
+rotation = 1.57079

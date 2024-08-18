@@ -10,8 +10,7 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	for child in get_children():
-		child.call_deferred("update_sprites")
+	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_sprites')
 
 # TODO REMOVER ISSO É TESTE
 func _unhandled_input(event):

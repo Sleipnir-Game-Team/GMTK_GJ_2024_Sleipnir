@@ -43,19 +43,29 @@ func _ready() -> void:
 		sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala entrada 2.jpg")
 
 func _process(delta: float) -> void:
-	# Se não tem evento fodase
-	if not _active_event: return
+	# Se não há um evento atual
+	if not _active_event:
+		# Se há eventos na fila
+		if len(_event_queue) > 0:
+			var new_event = _event_queue.pop_front()
+			print('Starting temporary event: %s' % new_event.name)
+			# TODO trocar por um método de clear active event, e retsirar o if no inicio do _start_long_lasting_event 
+			new_event.finish.connect(_start_long_lasting_event)
+			_swap_active_event(new_event)
+			activate.emit()
+			
 	
-	# Se tem eventos na pilha:
+	# Se tem eventos na fila:
 	if len(_event_queue) > 0:
-		# Se esse evento é o evento duradouro
+		# Se o evento atual é o evento duradouro
 		if _active_event == _long_lasting_event:
 			# Troca pelo primeiro evento da pilha
 			var new_event = _event_queue.pop_front()
-			new_event.finished.connect(_start_long_lasting_event)
+			print('Starting temporary event: %s' % new_event.name)
+			new_event.finish.connect(_start_long_lasting_event)
 			_swap_active_event(new_event)
+			activate.emit()
 			
-		# Se não fodase
 	# Senão, tem evento duradouro?:
 	elif _long_lasting_event:
 		# Troca pelo duradouro
@@ -72,7 +82,6 @@ func _on_body_entered(body):
 		print('Room has no active event.')
 
 	if body:
-		body.last_room = self
 		body.entered_room.emit(body, self)
 
 func _on_body_left(body):
@@ -83,6 +92,7 @@ func set_long_lasting_event(event: Event):
 	_long_lasting_event = event
 
 func add_temporary_event(event: Event):
+	print('Pushing new temporary event to Queue: %s' % event.name)
 	_event_queue.push_back(event)
 
 ## Checks if there are adjacent rooms and spawns corresponding paths
@@ -91,6 +101,11 @@ func update_paths():
 	_spawn_paths()
 
 func _start_long_lasting_event():
+	if not _long_lasting_event:
+		remove_child(_active_event)
+		_active_event = null
+	
+	
 	if _long_lasting_event != _active_event:
 		_swap_active_event(_long_lasting_event)
 

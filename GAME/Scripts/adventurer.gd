@@ -1,52 +1,33 @@
 extends CharacterBody2D
 
+const LightsOutEvent = preload('res://Prefabs/RoomEvents/lights_out.tscn')
+
 var total_life := 10
 var current_life := 10
 
-var resting := false
-var moving := false
-var minimum_rest_chance := 1
-var rng_rest := RandomNumberGenerator.new()
-var rng_paths := RandomNumberGenerator.new()
-
 var last_room: Node
 var target_room: Node
-var time := 0.0 # Time used in movement interpolation
 
 signal entered_room(adventurer, room)
 signal left_room(adventurer, room)
+
+@export var speed := 45
 
 @onready var right_detector = $right_path_detector
 @onready var down_detector = $down_path_detector
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	entered_room.connect(_handle_enter_event)
+	left_room.connect(_handle_leave_event)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if moving: return
-	
-	var possible_moves = []
-	
-	if right_detector.is_colliding():
-		possible_moves.append(right_detector.get_collider())
-	
-	if down_detector.is_colliding():
-		possible_moves.append(down_detector.get_collider())
-	
-	if len(possible_moves) > 0:
-		target_room = possible_moves.pick_random()
-		moving = true
-
-	
 func _physics_process(delta):
-	if not moving: return
-	
-	velocity = target_room.position - position
+	if target_room and position.distance_to(target_room.position) < 1:
+		stop_moving()
+		
 	move_and_slide()
 	 
-
+#region
 #func _on_area_entered(area):
 	#possible_paths.clear()
 	## If the adventurer has encountered a new room
@@ -84,4 +65,45 @@ func _physics_process(delta):
 		#next_path = possible_paths[path_choise - 1]
 	#elif adventurer_life <= 0:
 		#queue_free()
-			
+#endregion
+
+func move_in_direction(direction: Vector2):
+	velocity = direction * speed
+
+func stop_moving():
+	velocity = Vector2(0,0)
+
+func _find_possible_moves():
+	var possible_moves = []
+	
+	if right_detector.is_colliding():
+		possible_moves.append(right_detector.get_collider())
+	
+	if down_detector.is_colliding():
+		possible_moves.append(down_detector.get_collider())
+	
+	target_room = possible_moves.pick_random()
+	var target_direction = (target_room.position - position).normalized()
+	
+	move_in_direction(target_direction)
+
+func _handle_enter_event(adventurer, room):
+	# If last_room is not defined, the Adventurer has just been created and is in spawn
+	if not last_room:
+		last_room = room
+		# Since this is spawn, we can immediatly look for a new target room to move towards
+		_find_possible_moves()
+	# This is not the spawn room, and it has an event
+	elif room._active_event:
+		# Wait till the event is over and then find a new target!
+		room._active_event.finish.connect(_find_possible_moves)
+	# This is an empty room
+	else:
+		# Add a temporary rest event to the room
+		var event = LightsOutEvent.instantiate()
+		event.finish.connect(_find_possible_moves) # Trigger movement once it's over
+		room.add_temporary_event(event)
+		room.activate.emit() # Trigger event activation!
+
+func _handle_leave_event(adventurer, room):
+	last_room = room
