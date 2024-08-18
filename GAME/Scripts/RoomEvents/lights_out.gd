@@ -1,26 +1,25 @@
-extends Trap
+extends Event
 
-var Torch := preload('res://Prefabs/Traps/torch.tscn')
+var Torch := preload('res://Prefabs/RoomEvents/torch.tscn')
 
 var snuffed_lights := 0
 var timed_out := false
 
-@onready var end_timer = $Duration
 @onready var torch_timer = $LightTorch
 
 @onready var locations = [$TopLeft, $TopRight, $BottomRight, $BottomLeft]
 
 func _ready() -> void:
+	print('Event Ready: ' + name)
 	end_timer.timeout.connect(func (): timed_out = true)
-	torch_timer.timeout.connect(spawn_torch)
-	
-	get_parent().activate.connect(end_timer.start)
-	get_parent().activate.connect(torch_timer.start)
-	get_parent().deactivate.connect(end_timer.stop)
-	get_parent().deactivate.connect(torch_timer.stop)
+	torch_timer.timeout.connect(light_torch)
+	super()
 
-func spawn_torch():
-	print('spawning torch')
+func _process(delta: float) -> void:
+	super(delta)
+
+func light_torch():
+	print('Spawning torch')
 	var torch = Torch.instantiate()
 	torch.position = locations.pick_random().position
 	torch.clicked.connect(snuff_torch.bind(torch))
@@ -32,7 +31,12 @@ func snuff_torch(torch: Node):
 
 func _win_condition():
 	return snuffed_lights >= 5
-	
+
 func _loss_condition():
 	return timed_out
-	
+
+func _activate_events():
+	return [torch_timer.start]
+
+func _deactivate_events():
+	return [torch_timer.stop]

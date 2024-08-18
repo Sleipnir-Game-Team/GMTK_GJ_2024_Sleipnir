@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccn12enlc6nqs"]
+
+[ext_resource type="Script" path="res://Scripts/event.gd" id="1_8qdvr"]
+
+[node name="Event" type="Node2D"]
+script = ExtResource("1_8qdvr")
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

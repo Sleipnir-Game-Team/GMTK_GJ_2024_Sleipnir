@@ -13,9 +13,9 @@ position = Vector2(59, 61)
 [node name="paths" parent="EntranceRoom" instance=ExtResource("2_83elu")]
 position = Vector2(112, 0)
 
-[node name="LightsOutRoom" parent="." node_paths=PackedStringArray("_long_lasting_event") instance=ExtResource("1_ijhih")]
+[node name="LightsOutRoom" parent="." node_paths=PackedStringArray("_trap") instance=ExtResource("1_ijhih")]
 position = Vector2(283, 61)
-_long_lasting_event = NodePath("LightsOut")
+_trap = NodePath("LightsOut")
 
 [node name="LightsOut" parent="LightsOutRoom" instance=ExtResource("2_dnqsh")]
 

@@ -8,8 +8,6 @@ func _ready():
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
 	_fill_paths()
 	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

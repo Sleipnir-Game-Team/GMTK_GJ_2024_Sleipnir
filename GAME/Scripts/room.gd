@@ -10,7 +10,9 @@ signal deactivate
 
 var paths_dict := {"right" = false, "down" = false}
 
-@export var _trap: Trap
+var _active_event: Event
+@export var _long_lasting_event: Event
+@export var _event_queue: Array[Event] = []
 
 @onready var collision_shape := $CollisionShape2D
 
@@ -21,36 +23,72 @@ var paths_dict := {"right" = false, "down" = false}
 @onready var right_spawn := $right_path_spawn as Marker2D
 
 func _ready() -> void:
-	print('Ready ' + name)
-	if _trap:
-		print('Deactivate trap')
-		deactivate.emit()
-		
+	print('Room Ready: ' + name)
+	
+	if len(_event_queue) > 0:
+		_swap_active_event(_event_queue.pop_front())
+	elif _long_lasting_event:
+		_swap_active_event(_long_lasting_event)
+	
 	print()
+
+func _process(delta: float) -> void:
+	# Se não tem evento fodase
+	if not _active_event: return
+	
+	# Se tem eventos na pilha:
+	if len(_event_queue) > 0:
+		# Se esse evento é o evento duradouro
+		if _active_event == _long_lasting_event:
+			# Troca pelo primeiro evento da pilha
+			_swap_active_event(_event_queue.pop_front())
+		# Se não fodase
+	# Senão, tem evento duradouro (que já não está ativo)?:
+	elif _long_lasting_event and _long_lasting_event != _active_event:
+		# Troca pelo duradouro
+		_swap_active_event(_long_lasting_event)
 
 
 func _on_body_entered(body):
-	print('ROOM ENTERED BY ADVENTURER')
-	if _trap:
+	print('Adventurer entered room %s' % name)
+	
+	if _active_event:
+		print('Active event: ', self._active_event)
 		activate.emit()
+	else:
+		print('Room has no active event.')
+
 	if body:
 		body.last_room = self
 		body.entered_room.emit()
-	
+
 func _on_body_left(body):
 	if body:
 		body.left_room.emit()
-	
-## Add trap to room
-func set_trap(trap: Trap):
-	_trap = trap
-	deactivate.emit() # start disabled
-	add_child(_trap)
+
+func set_long_lasting_event(event: Event):
+	_long_lasting_event = event
+
+func add_temporary_event(event: Event):
+	_event_queue.push_back(event)
 
 ## Checks if there are adjacent rooms and spawns corresponding paths
 func update_paths():
 	_detect_adjacent_rooms()
 	_spawn_paths()
+
+
+func _swap_active_event(event: Event):
+	if _active_event:
+		remove_child(_active_event)
+	
+	_active_event = event
+	_active_event.set_process(true)
+	_active_event.set_physics_process(true)
+	
+	if not is_ancestor_of(_active_event):
+		add_child(_active_event)
+
 
 func _detect_adjacent_rooms():
 	paths_dict["down"] = down_detector.is_colliding()
