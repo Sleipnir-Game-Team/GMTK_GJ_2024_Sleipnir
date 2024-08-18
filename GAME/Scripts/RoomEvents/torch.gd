@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Torch
+
 signal clicked
 
 func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int	):

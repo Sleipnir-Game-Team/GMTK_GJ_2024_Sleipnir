@@ -6,10 +6,11 @@
 script = ExtResource("1_3nxgi")
 
 [node name="Duration" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 6.0
 one_shot = true
 
 [node name="LightTorch" type="Timer" parent="."]
+wait_time = 0.75
 
 [node name="TopLeft" type="Marker2D" parent="."]
 position = Vector2(-20, -20)
@@ -22,3 +23,5 @@ position = Vector2(20, 20)
 
 [node name="BottomLeft" type="Marker2D" parent="."]
 position = Vector2(-20, 20)
+
+[connection signal="success" from="." to="." method="_on_success"]

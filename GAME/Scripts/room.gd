@@ -1,10 +1,12 @@
 extends Area2D
 
+class_name Room
+
 enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
 
-const Room := preload("res://Prefabs/room.tscn")
 const Path := preload("res://Prefabs/paths.tscn")
-const Adventurer := preload("res://Actors/adventurer.tscn")
+const RoomScene = preload('res://Prefabs/room.tscn')
+
 
 signal activate
 signal deactivate
@@ -50,7 +52,7 @@ func _process(delta: float) -> void:
 			var new_event = _event_queue.pop_front()
 			print('Starting temporary event: %s' % new_event.name)
 			# TODO trocar por um método de clear active event, e retsirar o if no inicio do _start_long_lasting_event 
-			new_event.finish.connect(_start_long_lasting_event)
+			new_event.finish.connect(_start_long_lasting_event.unbind(1))
 			_swap_active_event(new_event)
 			activate.emit()
 			
@@ -62,7 +64,7 @@ func _process(delta: float) -> void:
 			# Troca pelo primeiro evento da pilha
 			var new_event = _event_queue.pop_front()
 			print('Starting temporary event: %s' % new_event.name)
-			new_event.finish.connect(_start_long_lasting_event)
+			new_event.finish.connect(_start_long_lasting_event.unbind(1))
 			_swap_active_event(new_event)
 			activate.emit()
 			
@@ -76,16 +78,19 @@ func _on_body_entered(body):
 	print('Adventurer entered room %s' % name)
 	
 	if _active_event:
-		print('Active event: ', self._active_event)
-		activate.emit()
+		_active_event.add_adventurer(body)
+		
+		if not _active_event._enabled:
+			print('Activating event: ', _active_event)
+			activate.emit()
 	else:
 		print('Room has no active event.')
 
-	if body:
+	if body is Adventurer:
 		body.entered_room.emit(body, self)
 
 func _on_body_left(body):
-	if body:
+	if body is Adventurer:
 		body.left_room.emit(body, self)
 
 func set_long_lasting_event(event: Event):
@@ -116,7 +121,7 @@ func _swap_active_event(event: Event):
 	_active_event = event
 	_active_event.set_process(true)
 	_active_event.set_physics_process(true)
-	_active_event.finish.connect(deactivate.emit)
+	_active_event.finish.connect(deactivate.emit.unbind(1))
 	
 	if not is_ancestor_of(_active_event):
 		add_child(_active_event)
@@ -159,7 +164,7 @@ func _add_adjacent_rooms():
 	var right = not paths_dict['right']
 	
 	if down:
-		var sibling = Room.instantiate()
+		var sibling = RoomScene.instantiate()
 		sibling.position = position
 		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
 		sibling.add_to_group('Last_Rooms')
@@ -167,7 +172,7 @@ func _add_adjacent_rooms():
 		add_sibling(sibling)
 		
 	if right:
-		var sibling = Room.instantiate()
+		var sibling = RoomScene.instantiate()
 		sibling.position = position
 		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
 		sibling.add_to_group('Last_Rooms')
@@ -175,11 +180,10 @@ func _add_adjacent_rooms():
 		add_sibling(sibling)
 	
 	if down and right:
-		var sibling = Room.instantiate()
+		var sibling = RoomScene.instantiate()
 		sibling.position = position
 		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
 		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
 		sibling.add_to_group('Last_Rooms')
 		remove_from_group('Last_Rooms')
 		add_sibling(sibling)
-		

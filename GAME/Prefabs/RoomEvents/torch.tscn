@@ -1,17 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj61lpmqg074c"]
 
 [ext_resource type="Script" path="res://Scripts/RoomEvents/torch.gd" id="1_jvjt8"]
-[ext_resource type="Texture2D" uid="uid://xayau8kb40qe" path="res://Assets/Placeholder/heart_img.png" id="1_xvt0d"]
+[ext_resource type="Texture2D" uid="uid://dj6fd5ijcjhb4" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Tocha only.png" id="2_18fi6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_egx2j"]
-size = Vector2(26, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cocx8"]
+size = Vector2(17.9934, 17.3933)
 
 [node name="Torch" type="Area2D" groups=["Torch"]]
 script = ExtResource("1_jvjt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_xvt0d")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_18fi6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_egx2j")
+position = Vector2(0.368871, 0.506377)
+rotation = -0.505973
+scale = Vector2(1.1227, 2.18366)
+shape = SubResource("RectangleShape2D_cocx8")

@@ -1,6 +1,7 @@
 extends Node2D
 
-const Room := preload("res://Prefabs/room.tscn")
+const RoomScene = preload('res://Prefabs/room.tscn')
+
 const INITIAL_SIZE = Vector2i(3, 3)
 
 # Called when the node enters the scene tree for the first time.
@@ -26,12 +27,13 @@ func _create_grid(rows: int, columns: int):
 	var room_position = Vector2(0,0)
 	for row in rows:
 		for column in columns:
-			var room = Room.instantiate()
+			var room = RoomScene.instantiate()
 			room.global_position = room_position
 			add_child(room)
 			
 			# Calculate the distance between each room
 			if not distance:
+				print(room.right_spawn)
 				distance = (room.right_spawn.position.x - room.position.x) * 2 
 			
 			if column == columns-1 or row == rows-1:

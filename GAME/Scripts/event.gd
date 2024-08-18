@@ -2,9 +2,11 @@ extends Node2D
 
 class_name Event
 
-signal finish
-signal success
-signal failure
+signal finish(adventurers: Array[Adventurer])
+signal success(adventurers: Array[Adventurer])
+signal failure(adventurers: Array[Adventurer])
+
+var adventurers := []
 
 var _enabled := false
 
@@ -16,7 +18,6 @@ func _ready() -> void:
 	var deactivate_signal = room.deactivate
 	
 	activate_signal.connect(_set_enabled.bind(true))
-	deactivate_signal.connect(_set_enabled.bind(false))
 	
 	activate_signal.connect(end_timer.start)
 	deactivate_signal.connect(end_timer.stop)
@@ -34,13 +35,27 @@ func _process(delta):
 	if not _enabled: return
 	
 	if _win_condition():
-		finish.emit()
-		success.emit()
+		success.emit(adventurers)
+		finish.emit(adventurers)
+		clear_adventurers()
+		_set_enabled(false)
 	elif _loss_condition():
-		failure.emit()
-		finish.emit()
+		failure.emit(adventurers)
+		finish.emit(adventurers)
+		clear_adventurers()
+		_set_enabled(false)
+		
+
+
+func add_adventurer(adventurer: Adventurer):
+	adventurers.append(adventurer)
+
+func clear_adventurers():
+	adventurers = []
 
 func _set_enabled(enable):
+	if enable == _enabled:
+		print('Trying to %s already %s event' % ['enable' if enable else 'disable', 'enabled' if enable else 'disabled'])
 	print('Event %s: %s' % ['enabled' if enable else 'disabled', name])
 	_enabled = enable
 

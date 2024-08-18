@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-const LightsOutEvent = preload('res://Prefabs/RoomEvents/lights_out.tscn')
+class_name Adventurer
+
+const LightsOutScene = preload('res://Prefabs/RoomEvents/lights_out.tscn')
 
 var total_life := 10
 var current_life := 10
@@ -10,6 +12,9 @@ var target_room: Node
 
 signal entered_room(adventurer, room)
 signal left_room(adventurer, room)
+
+signal damage(amount)
+signal heal(amount)
 
 @export var speed := 45
 
@@ -73,6 +78,13 @@ func move_in_direction(direction: Vector2):
 func stop_moving():
 	velocity = Vector2(0,0)
 
+func _handle_damage(amount: int):
+	current_life -= amount
+	print('Adventurer health: %s/%s' % [current_life, total_life])
+	
+func _handle_healing(amount: int):
+	current_life = min(current_life + amount, total_life)
+
 func _find_possible_moves():
 	var possible_moves = []
 	
@@ -82,10 +94,14 @@ func _find_possible_moves():
 	if down_detector.is_colliding():
 		possible_moves.append(down_detector.get_collider())
 	
-	target_room = possible_moves.pick_random()
-	var target_direction = (target_room.position - position).normalized()
-	
-	move_in_direction(target_direction)
+	if len(possible_moves) > 0:
+		target_room = possible_moves.pick_random()
+		var target_direction = (target_room.position - position).normalized()
+		
+		move_in_direction(target_direction)
+	else:
+		# TODO teoricamente (tudo dando certo) isso daqui significa que chegou na última sala
+		pass
 
 func _handle_enter_event(adventurer, room):
 	# If last_room is not defined, the Adventurer has just been created and is in spawn
@@ -96,12 +112,12 @@ func _handle_enter_event(adventurer, room):
 	# This is not the spawn room, and it has an event
 	elif room._active_event:
 		# Wait till the event is over and then find a new target!
-		room._active_event.finish.connect(_find_possible_moves)
+		room._active_event.finish.connect(_find_possible_moves.unbind(1))
 	# This is an empty room
 	else:
 		# Add a temporary rest event to the room
-		var event = LightsOutEvent.instantiate()
-		event.finish.connect(_find_possible_moves) # Trigger movement once it's over
+		var event = LightsOutScene.instantiate()
+		event.finish.connect(_find_possible_moves.unbind(1)) # Trigger movement once it's over
 		room.add_temporary_event(event)
 		room.activate.emit() # Trigger event activation!
 

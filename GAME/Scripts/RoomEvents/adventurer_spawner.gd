@@ -1,35 +1,33 @@
 extends Event
 
-@export var adventurer_instance : PackedScene
+const AdventurerScene = preload('res://Actors/adventurer.tscn')
 
-var minimun_adventurer_spawn_rate := 100
-var adventurer_spawn_incrementention := 1.1
+var spawn_rate_minimum := 100
+var c := 1.1
 var rng_adventurer_spawn_rate := RandomNumberGenerator.new()
 var is_waiting := false
 
-#@onready var spawn_position := $spawn_position as Marker2D
-
-func _ready() -> void:
-	pass
-
 func spawn_adventurer():
 	var adventure_spawn_chance := rng_adventurer_spawn_rate.randi_range(0, 99)
-	if adventure_spawn_chance <= minimun_adventurer_spawn_rate:
-		minimun_adventurer_spawn_rate = 10
+	
+	if adventure_spawn_chance <= spawn_rate_minimum:
+		spawn_rate_minimum = 10
 		is_waiting = true
-		var adventurer = adventurer_instance.instantiate()
+		var adventurer = AdventurerScene.instantiate()
 		get_parent().get_parent().call_deferred("add_child", adventurer)
 		adventurer.position = get_parent().position
 		adventurer.entered_room.connect(moved)
 	else:
-		minimun_adventurer_spawn_rate *= adventurer_spawn_incrementention
-		print(minimun_adventurer_spawn_rate)
+		spawn_rate_minimum *= spawn_rate_minimum
+		print("New Spawn Rate: ", spawn_rate_minimum)
 
-func _win_condition():
-	pass
+func _win_condition() -> bool:
+	# Never win or lose event, such that it runs forever
+	return false
 	
-func _loss_condition():
-	pass
+func _loss_condition() -> bool:
+	# Never win or lose event, such that it runs forever
+	return false
 
 func moved(adventurer, room):
 	if room != get_parent():
