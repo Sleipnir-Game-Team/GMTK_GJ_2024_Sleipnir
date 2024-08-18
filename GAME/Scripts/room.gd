@@ -1,23 +1,29 @@
 extends Area2D
 
-enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
-
 const path_instance := preload("res://Prefabs/paths.tscn")
 const Adventurer := preload("res://Actors/adventurer.tscn")
 
 signal activate
 signal deactivate
 
-var paths_dict := {"right" = false, "down" = false}
+var paths_dict := {"right" = false, "down" = false, "up" = false, "left" = false}
+var sprite_path
+var sprite_rotation
+var actual_state := 0
+var next_state
 
 var _active_event: Event
 @export var _long_lasting_event: Event
 @export var _event_queue: Array[Event] = []
+@export var _is_entrance: bool
 
 @onready var collision_shape := $CollisionShape2D
+@onready var sprite := $sprite as Sprite2D
 
 @onready var down_detector := $down_path_detector as RayCast2D
 @onready var right_detector := $right_path_detector as RayCast2D
+@onready var up_detector := $up_path_detector as RayCast2D
+@onready var left_detector := $left_path_detector as RayCast2D
 
 @onready var down_spawn := $down_path_spawn as Marker2D
 @onready var right_spawn := $right_path_spawn as Marker2D
@@ -30,7 +36,8 @@ func _ready() -> void:
 	elif _long_lasting_event:
 		_swap_active_event(_long_lasting_event)
 	
-	print()
+	if _is_entrance:
+		sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala entrada 2.jpg")
 
 func _process(delta: float) -> void:
 	# Se não tem evento fodase
@@ -63,11 +70,11 @@ func _on_body_entered(body):
 
 	if body:
 		body.last_room = self
-		body.entered_room.emit()
+		body.entered_room.emit(body, self)
 
 func _on_body_left(body):
 	if body:
-		body.left_room.emit()
+		body.left_room.emit(body, self)
 
 func set_long_lasting_event(event: Event):
 	_long_lasting_event = event
@@ -101,6 +108,23 @@ func _swap_active_event(event: Event):
 func _detect_adjacent_rooms():
 	paths_dict["down"] = down_detector.is_colliding()
 	paths_dict["right"] = right_detector.is_colliding()
+
+func update_sprits():
+	paths_dict["down"] = down_detector.is_colliding()
+	paths_dict["right"] = right_detector.is_colliding()
+	paths_dict["up"] = up_detector.is_colliding()
+	paths_dict["left"] = left_detector.is_colliding()
+	SpriteManager.room_sprits_management(paths_dict)
+	sprite_path = SpriteManager.sprite
+	sprite_rotation = SpriteManager.rotation_value
+	next_state = SpriteManager.room_sprite_value
+	
+	if actual_state != next_state:
+		if !_is_entrance:
+			sprite.texture = sprite_path
+			sprite.set_rotation_degrees(sprite_rotation)
+	
+	SpriteManager.room_sprite_value = 0
 
 func _spawn_paths():
 	if paths_dict["down"]:

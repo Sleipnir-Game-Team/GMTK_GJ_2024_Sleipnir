@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvh7y26o1ejje"]
+[gd_scene load_steps=3 format=3 uid="uid://dvh7y26o1ejje"]
 
 [ext_resource type="Script" path="res://Actors/entrence_room.gd" id="1_8q0fc"]
-[ext_resource type="Texture2D" uid="uid://cr5tuynd26gwy" path="res://Assets/Dungeon_Ground_Placeholder.png" id="2_hua0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
 size = Vector2(86, 90)
@@ -14,7 +13,6 @@ script = ExtResource("1_8q0fc")
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(-5.96046e-07, -3.33786e-06)
 scale = Vector2(0.716667, 0.743802)
-texture = ExtResource("2_hua0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i1l6g")

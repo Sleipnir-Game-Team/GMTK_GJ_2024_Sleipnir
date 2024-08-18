@@ -10,7 +10,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for child in get_children():
+		child.call_deferred("update_sprits")
 
 func _create_grid(rows: int, columns: int):
 	# Create a room to calculate the distance between each room

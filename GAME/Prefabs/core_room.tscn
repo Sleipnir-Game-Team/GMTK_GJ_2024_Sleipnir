@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvxfd0qntt48v"]
 
 [ext_resource type="Script" path="res://Scripts/core_room.gd" id="1_cl8nb"]
-[ext_resource type="Texture2D" uid="uid://c8cu4pgw883h4" path="res://Assets/Placeholder/Dungeon_Ground_Placeholder.png" id="2_fom63"]
-[ext_resource type="Texture2D" uid="uid://dpa2pmeqjttdt" path="res://Assets/Placeholder/core_img.png" id="2_mpghd"]
+[ext_resource type="Texture2D" uid="uid://bc3048oat3r0n" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 3.jpg" id="2_31l27"]
+[ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="3_tbpoy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
 size = Vector2(86, 90)
@@ -13,14 +13,14 @@ collision_mask = 8
 script = ExtResource("1_cl8nb")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(-5.96046e-07, -3.33786e-06)
-scale = Vector2(0.716667, 0.743802)
-texture = ExtResource("2_fom63")
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(0.0286667, 0.03)
+texture = ExtResource("2_31l27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i1l6g")
 
 [node name="CoreImg" type="Sprite2D" parent="."]
-position = Vector2(1.60933e-06, 0)
-scale = Vector2(0.09375, 0.0833333)
-texture = ExtResource("2_mpghd")
+position = Vector2(4.76837e-07, 9.53674e-07)
+scale = Vector2(0.0333219, 0.0265866)
+texture = ExtResource("3_tbpoy")

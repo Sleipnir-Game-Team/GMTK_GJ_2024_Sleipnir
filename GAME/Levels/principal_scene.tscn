@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgq06enpqngs8"]
+[gd_scene load_steps=6 format=3 uid="uid://dgq06enpqngs8"]
 
 [ext_resource type="Script" path="res://Scripts/principal_scene.gd" id="1_50ym1"]
 [ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="1_81pw4"]
 [ext_resource type="PackedScene" uid="uid://dvh7y26o1ejje" path="res://Prefabs/entrance_room.tscn" id="3_5x4yw"]
 [ext_resource type="PackedScene" uid="uid://dvxfd0qntt48v" path="res://Prefabs/core_room.tscn" id="4_skqp0"]
 [ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="5_j4r7j"]
-[ext_resource type="PackedScene" uid="uid://ouvctt3pubcp" path="res://Actors/adventurer.tscn" id="6_sjv5k"]
 
 [node name="principal_scene" type="Node2D"]
 position = Vector2(-336, -160)
@@ -89,8 +88,4 @@ position = Vector2(224, 344)
 position = Vector2(336, 232)
 rotation = 1.5708
 
-[node name="adventurer" parent="." instance=ExtResource("6_sjv5k")]
-position = Vector2(-112, -104)
-
 [connection signal="timeout" from="action_timer" to="." method="_on_action_timer_timeout"]
-[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
