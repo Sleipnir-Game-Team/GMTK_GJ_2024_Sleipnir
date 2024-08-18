@@ -1,5 +1,7 @@
 extends Node
 
+var alarm_is_active := false
+
 static var _score := 0
 static var _high_score := 0
 

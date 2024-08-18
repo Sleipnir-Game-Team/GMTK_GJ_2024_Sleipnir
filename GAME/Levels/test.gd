@@ -51,6 +51,7 @@ func _create_grid(rows: int, columns: int):
 					var game_over = load("res://Prefabs/RoomEvents/game_over.tscn").instantiate()
 					room.add_child(game_over)
 					room._long_lasting_event = game_over
+					room.is_end = true
 			
 			
 			room_position.x += distance # Step over a column

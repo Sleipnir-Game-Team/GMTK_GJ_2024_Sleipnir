@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://ouvctt3pubcp"]
+[gd_scene load_steps=88 format=3 uid="uid://ouvctt3pubcp"]
 
 [ext_resource type="Script" path="res://Scripts/adventurer.gd" id="1_wg4fw"]
 [ext_resource type="Texture2D" uid="uid://bxjbeh07bmoyt" path="res://Assets/Level/Adventurers/Arte/Animação/death_0000.png" id="2_0klwe"]
@@ -83,6 +83,8 @@
 [ext_resource type="Texture2D" uid="uid://biytv76t3bxmm" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0028.png" id="81_dgufm"]
 [ext_resource type="Texture2D" uid="uid://cjj3etk3bm2lt" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0029.png" id="82_b0pcc"]
 [ext_resource type="Texture2D" uid="uid://bi78grovj8u0l" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0030.png" id="83_ncwg8"]
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="84_oop87"]
+[ext_resource type="AudioStream" uid="uid://0flep7ic2se" path="res://Assets/Level/Enviroment/Audio/alarme placeholder.mp3" id="85_c0bgk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y8s6r"]
 animations = [{
@@ -377,6 +379,13 @@ target_position = Vector2(224, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="sfx" type="Node" parent="."]
+script = ExtResource("84_oop87")
+
+[node name="alarm_audio" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("85_c0bgk")
+parameters/looping = true
 
 [connection signal="damage" from="." to="." method="_on_damage"]
 [connection signal="heal" from="." to="." method="_on_heal"]

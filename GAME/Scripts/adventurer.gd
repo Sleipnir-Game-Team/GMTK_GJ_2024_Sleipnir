@@ -28,6 +28,8 @@ signal heal(amount)
 @onready var right_detector := $right_path_detector as RayCast2D
 @onready var down_detector := $down_path_detector as RayCast2D
 
+@onready var sfx_proximity := $sfx as SoundQueue
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	entered_room.connect(_handle_enter_event)
@@ -51,9 +53,20 @@ func _find_possible_moves():
 	
 	if right_detector.is_colliding():
 		possible_moves.append(right_detector.get_collider())
-	
+		if right_detector.get_collider().is_end == true and !Globals.alarm_is_active:
+			Globals.alarm_is_active = true
+			AudioManager.play_sfx(sfx_proximity)
+		else:
+			AudioManager.stop_sfx(sfx_proximity)
+			
 	if down_detector.is_colliding():
 		possible_moves.append(down_detector.get_collider())
+		if down_detector.get_collider().is_end == true and !Globals.alarm_is_active:
+			Globals.alarm_is_active = true
+			AudioManager.play_sfx(sfx_proximity)
+		else:
+			AudioManager.stop_sfx(sfx_proximity)
+			
 	
 	if len(possible_moves) > 0:
 		Logger.debug("Se movendo para as" + str(possible_moves))
@@ -72,6 +85,7 @@ func die():
 	animation_handler.play('death')
 	animation_handler.animation_finished.connect(queue_free)
 	
+	Globals.alarm_is_active = false
 	Globals.score += points_worth
 
 func _on_damage(amount: Variant) -> void:
