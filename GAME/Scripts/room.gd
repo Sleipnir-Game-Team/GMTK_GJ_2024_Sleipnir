@@ -41,12 +41,15 @@ func _process(delta: float) -> void:
 		# Se esse evento é o evento duradouro
 		if _active_event == _long_lasting_event:
 			# Troca pelo primeiro evento da pilha
-			_swap_active_event(_event_queue.pop_front())
+			var new_event = _event_queue.pop_front()
+			new_event.finished.connect(_start_long_lasting_event)
+			_swap_active_event(new_event)
+			
 		# Se não fodase
-	# Senão, tem evento duradouro (que já não está ativo)?:
-	elif _long_lasting_event and _long_lasting_event != _active_event:
+	# Senão, tem evento duradouro?:
+	elif _long_lasting_event:
 		# Troca pelo duradouro
-		_swap_active_event(_long_lasting_event)
+		_start_long_lasting_event()
 
 
 func _on_body_entered(body):
@@ -77,6 +80,10 @@ func update_paths():
 	_detect_adjacent_rooms()
 	_spawn_paths()
 
+func _start_long_lasting_event():
+	if _long_lasting_event != _active_event:
+		_swap_active_event(_long_lasting_event)
+	
 
 func _swap_active_event(event: Event):
 	if _active_event:
@@ -85,6 +92,7 @@ func _swap_active_event(event: Event):
 	_active_event = event
 	_active_event.set_process(true)
 	_active_event.set_physics_process(true)
+	_active_event.finish.connect(deactivate.emit)
 	
 	if not is_ancestor_of(_active_event):
 		add_child(_active_event)

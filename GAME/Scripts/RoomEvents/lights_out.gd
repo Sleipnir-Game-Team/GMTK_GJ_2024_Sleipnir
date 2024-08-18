@@ -29,6 +29,11 @@ func snuff_torch(torch: Node):
 	snuffed_lights += 1
 	remove_child(torch)
 
+func cleanup():
+	for child in get_children():
+		if child.is_in_group("Torch"):
+			child.queue_free()
+
 func _win_condition():
 	return snuffed_lights >= 5
 
@@ -39,4 +44,4 @@ func _activate_events():
 	return [torch_timer.start]
 
 func _deactivate_events():
-	return [torch_timer.stop]
+	return [torch_timer.stop, cleanup]

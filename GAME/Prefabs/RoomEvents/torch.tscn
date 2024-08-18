@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egx2j"]
 size = Vector2(26, 24)
 
-[node name="Torch" type="Area2D"]
+[node name="Torch" type="Area2D" groups=["Torch"]]
 script = ExtResource("1_jvjt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
