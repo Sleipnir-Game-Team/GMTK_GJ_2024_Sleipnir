@@ -13,3 +13,4 @@ script = ExtResource("1_uhrxg")
 shape = SubResource("CircleShape2D_buhoy")
 
 [node name="camera" type="Camera2D" parent="camare_body"]
+zoom = Vector2(1.8, 1.8)

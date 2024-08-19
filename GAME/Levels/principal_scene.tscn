@@ -12,6 +12,7 @@ script = ExtResource("1_50ym1")
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(336, 160)
+scale = Vector2(-1.49435, -0.64)
 
 [node name="entrence_room" parent="." groups=["rooms"] instance=ExtResource("3_5x4yw")]
 position = Vector2(-112, -104)

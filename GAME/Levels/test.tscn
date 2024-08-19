@@ -27,5 +27,6 @@ autostart = true
 
 [node name="camera_scene" parent="." groups=["Camera"] instance=ExtResource("5_mmhgt")]
 position = Vector2(0, -224)
+scale = Vector2(0.969, 1)
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer"]
