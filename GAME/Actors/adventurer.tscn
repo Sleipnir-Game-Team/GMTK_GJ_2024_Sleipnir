@@ -400,7 +400,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x60uj")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -625,7 +625,7 @@ script = ExtResource("1_wg4fw")
 position = Vector2(1.90735e-06, 7.62939e-06)
 scale = Vector2(0.0958333, 0.0958333)
 sprite_frames = SubResource("SpriteFrames_y8s6r")
-animation = &"walk"
+animation = &"hurt"
 autoplay = "walk"
 
 [node name="adventurer_collisor" type="CollisionShape2D" parent="."]

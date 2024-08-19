@@ -2,7 +2,7 @@ extends Event
 
 class_name Spikes
 
-@export var damage := 4
+@export var damage := 5
 
 @onready var spikes_sprite := $sprite as Sprite2D
 

@@ -83,8 +83,14 @@ func die():
 	Globals.score += points_worth
 	Globals.souls += 1
 
+func return_to_walk():
+	animation_handler.play('walk')
+	animation_handler.animation_finished.disconnect(return_to_walk)
+
 func _on_damage(amount: Variant) -> void:
 	current_life -= amount
+	animation_handler.play('hurt')
+	animation_handler.animation_finished.connect(return_to_walk)
 	print('[DAMAGING] Adventurer health: %s/%s' % [current_life, total_life])
 	if current_life <= 0:
 		call_deferred('die')
