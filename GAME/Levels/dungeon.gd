@@ -6,6 +6,7 @@ const INITIAL_SIZE = Vector2i(3, 3)
 
 @export var inventory: Inventory
 
+
 func _init() -> void:
 	pass
 
@@ -14,9 +15,10 @@ func _ready():
 	RoomGenerator._fill_paths()
 
 
-## TODO REMOVER ESSA PORRA AQUI
+# TODO REMOVER ESSA PORRA AQUI
+# NA VERDADE TALVEZ NÃO SEJA REMOVIDO (???)
+# NA VERDADE VAI SER SIM!!!
 func _input(event):
-	print('[DUNGEON] INPUT HAPPENED')
 	if event is InputEventKey:
 		if event.pressed:
 			match event.keycode:
@@ -25,6 +27,9 @@ func _input(event):
 					inventory.add_item(load("res://Inventory/Items/print_potion_item.tres"))
 				KEY_1, KEY_2, KEY_3, KEY_4:
 					var my_item = inventory.get_item(0)
+					
+					if not my_item: return
+					
 					print('Inventory Item: %s' % my_item)
 					
 					var effect = my_item.useable
@@ -32,8 +37,8 @@ func _input(event):
 					
 					var instance = effect.instantiate() as Useable
 					print('Inventory Instance: %s' % instance)
-					
 					instance.use()
+					add_sibling(instance)
 
 
 ## Gain 20 points every 10 seconds of being alive

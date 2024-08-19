@@ -18,15 +18,18 @@ func _process(delta: float) -> void:
 	var mousePositionY = get_viewport().get_mouse_position().y/get_viewport().size.y
 	
 	var movement = Vector2.ZERO
+	
+	# Check if mouse is within 20% the left or right limits of the viewport
 	if mousePositionX < move_limit_x:
 		movement.x = (mousePositionX - move_limit_x) * 100
 	elif mousePositionX > 1 - move_limit_x:
-
 		movement.x = (mousePositionX -  (1 - move_limit_x)) *100
+	
+	# Check if mouse is within 20% the top or bottom limits of the viewport
 	if mousePositionY < move_limit_y:
 		movement.y = (mousePositionY - move_limit_y) * 100
 	elif mousePositionY > 1 - move_limit_y:
-		movement.y = (mousePositionY - (1 - move_limit_x)) *100
+		movement.y = (mousePositionY - (1 - move_limit_x)) * 100
 	
 	var predict = movement + position
 
@@ -44,6 +47,7 @@ func _process(delta: float) -> void:
 			predict.y = limit_right
 		else:
 			predict.y = position.y
+	
 	position = predict
 
 func expand(size):

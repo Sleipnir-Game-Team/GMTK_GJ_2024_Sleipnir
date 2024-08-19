@@ -4,9 +4,6 @@ extends Node2D
 
 signal used
 
-func _ready():
-	used.connect(_trigger)
-
 func use():
 	used.emit()
 
