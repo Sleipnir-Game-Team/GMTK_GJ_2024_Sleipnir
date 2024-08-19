@@ -13,6 +13,8 @@ var target_position: Vector2
 var rng_event := RandomNumberGenerator.new()
 var minimum_event_chance := 50
 
+var character_type_name = ["warrior", "archer"]
+
 signal entered_room(adventurer, room)
 signal left_room(adventurer, room)
 
@@ -34,6 +36,11 @@ signal heal(amount)
 func _ready():
 	entered_room.connect(_handle_enter_event)
 	left_room.connect(_handle_leave_event)
+	
+	character_type_name = character_type_name.pick_random()
+	animation_handler.play(character_type_name+' walk')
+	
+	
 
 func _physics_process(_delta):
 	if target_room and position.distance_to(target_position) < 1:
@@ -77,19 +84,19 @@ func _find_possible_moves():
 func die():
 	stop_moving()
 	
-	animation_handler.play('death')
+	animation_handler.play(character_type_name+' death')
 	animation_handler.animation_finished.connect(queue_free)
 	
 	Globals.score += points_worth
 	Globals.souls += 1
 
 func return_to_walk():
-	animation_handler.play('walk')
+	animation_handler.play(character_type_name+' walk')
 	animation_handler.animation_finished.disconnect(return_to_walk)
 
 func _on_damage(amount: Variant) -> void:
 	current_life -= amount
-	animation_handler.play('hurt')
+	animation_handler.play(character_type_name+' hurt')
 	animation_handler.animation_finished.connect(return_to_walk)
 	print('[DAMAGING] Adventurer health: %s/%s' % [current_life, total_life])
 	if current_life <= 0:
