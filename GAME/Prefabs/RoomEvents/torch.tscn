@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj61lpmqg074c"]
+[gd_scene load_steps=7 format=3 uid="uid://cj61lpmqg074c"]
 
 [ext_resource type="Script" path="res://Scripts/RoomEvents/torch.gd" id="1_jvjt8"]
 [ext_resource type="Texture2D" uid="uid://dj6fd5ijcjhb4" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Tocha only.png" id="2_18fi6"]
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="3_l0adt"]
+[ext_resource type="AudioStream" uid="uid://tuvg8iioe78y" path="res://Assets/Placeholder/Fogo_Acendendo1-unmixed.wav" id="4_g04jx"]
+[ext_resource type="AudioStream" uid="uid://dstpuylmkc272" path="res://Assets/Placeholder/Fogo_Apagando1-unmixed.wav" id="5_iglrv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cocx8"]
 size = Vector2(17.9934, 17.3933)
@@ -18,3 +21,17 @@ position = Vector2(0.368871, 0.506377)
 rotation = -0.505973
 scale = Vector2(1.1227, 2.18366)
 shape = SubResource("RectangleShape2D_cocx8")
+
+[node name="Acender" type="Node" parent="."]
+script = ExtResource("3_l0adt")
+
+[node name="AcenderTocha" type="AudioStreamPlayer" parent="Acender"]
+stream = ExtResource("4_g04jx")
+bus = &"Sound Effects"
+
+[node name="Apagar" type="Node" parent="."]
+script = ExtResource("3_l0adt")
+
+[node name="ApagarTocha" type="AudioStreamPlayer" parent="Apagar"]
+stream = ExtResource("5_iglrv")
+bus = &"Sound Effects"

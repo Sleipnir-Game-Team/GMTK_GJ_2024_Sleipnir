@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="4_ghvxf"]
 [ext_resource type="PackedScene" uid="uid://dlco6vy7t2sw4" path="res://Prefabs/RoomEvents/expand_button.tscn" id="5_hgtm5"]
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="6_he40c"]
-[ext_resource type="AudioStream" uid="uid://cir6l63lifh6b" path="res://Assets/Placeholder/alarme placeholder (1).mp3" id="7_7tdov"]
+[ext_resource type="AudioStream" uid="uid://bsmhii0qcxnn5" path="res://Assets/Placeholder/alarme placeholder (1).mp3" id="7_7tdov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plhch"]
 radius = 270.0

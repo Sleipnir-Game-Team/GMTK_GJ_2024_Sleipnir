@@ -74,12 +74,12 @@ func cleanup():
 
 
 func add_adventurer(adventurer: Adventurer):
-	adventurer.animation_handler.play('sleep')
+	adventurer.animation_handler.play(adventurer.character_type_name+' sleep')
 	super(adventurer)
 
 func _on_finish(affected: Array[Adventurer]):
 	for adventurer in affected:
-		adventurer.animation_handler.play('walk')
+		adventurer.animation_handler.play(adventurer.character_type_name+' walk')
 
 ## +5 Score for successfully beating the event
 ## Deal 10 damage to each affected Adventurer
@@ -95,8 +95,7 @@ func _win_condition():
 
 func _loss_condition():
 	return timed_out
-
-
+	
 func _activate_events():
 	return [torch_timer.start]
 
