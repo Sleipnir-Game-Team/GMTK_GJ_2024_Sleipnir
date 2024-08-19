@@ -40,7 +40,7 @@ var _last_bar_time : float             # quando a ultima bar tocou
 var _last_beat_time : float            # quando a ultima beat tocou
 var _silence_path : String = "res://Singletons/Maestro/silence-500ms.mp3"  # path do placeholder de silencio
 var _song_path : String = "res://Assets/Placeholder/MusicalLayers Level PlaceHolder/" # path das músicas
-var _sync_streams : Array[int]         #ATTENTION é pra ser dicionário de streams pro AudioStreamSync  
+var _sync_streams : Dictionary         #ATTENTION é pra ser dicionário de streams pro AudioStreamSync  
 
 # funções públicas VVVVVVVVV
 ## da o play
@@ -69,6 +69,7 @@ func trigger(clip_name: String, sync_method: int=0) ->void :
 	var TriggerStem = get_node("/root/SleipnirMaestro/Triggers/" + clip_name)
 	_trigger_play(TriggerStem,sync_method) ## WARNING TESTAR BEM.
 	_currently_playing_trigger.append(TriggerStem)
+	if log_level <=2: Logger.info("Triggered: "+ TriggerStem.name)
 	await TriggerStem.finished
 	if log_level <=1: Logger.debug("finished playing: " + TriggerStem.name)
 	_currently_playing_trigger.erase(TriggerStem)
@@ -116,8 +117,7 @@ func resume() ->void :
 		for TriggerStem in _currently_playing_trigger:
 			
 			TriggerStem.set_stream_paused(false)
-		
-
+ 
 ## muda de sessão
 func switch_section(new_section: String) ->void :
 	# log informando tipo de transição
@@ -148,17 +148,20 @@ func switch_section(new_section: String) ->void :
 			if log_level <=1: Logger.debug(current_section+" ["+str(_get_elapsed_time())+" s]")	
 # ATTENTION DEFAULT FIRST SECTION ESTÁ ATIVO ^^
 
-func toggle_layer(SyncStream:int) ->void:
+## Ativa Layer
+func toggle_layer_on(SyncStream:int) ->void:
+	if _sync_streams[SyncStream] == true:
+		if log_level <=1: Logger.debug("Layer Already Active!")
+		return
+	
 	var MainStream : Variant = MainPlayer.get_stream()
 	if MainStream is not AudioStreamSynchronized:
 		if log_level <= 3 : Logger.warn("can't toggle unless is AudioStreamSynchronized")
 		return
-	#var SyncStream : int = _sync_streams[name]
 	var old : float = MainStream.get_sync_stream_volume(SyncStream)
 	var new : float
-	if old != -60:
-		new = -60
-	elif old != 0.0:
+	
+	if old != 0.0:
 		new = 0.0
 	if log_level<=1: Logger.debug("Stream of Number: "+str(SyncStream)+" from "+str(old)+" to "+str(new))
 	if log_level<=1: Logger.debug("BeatsPerBar: "+str(BeatsPerBar)+", SPB: "+str(SPB)+", BPM: "+str(BPM))
@@ -166,12 +169,33 @@ func toggle_layer(SyncStream:int) ->void:
 		MainStream.set_sync_stream_volume(SyncStream,tweener)
 	
 	var fader = create_tween()
-	#if fader.is_running() == true:
-	#	fader.parallel().tween_method(gain_control,old,new,(SPB*BeatsPerBar))
 	fader.tween_method(gain_control,old,new,(SPB*BeatsPerBar))
-	if log_level <=2 : Logger.info("Toggled "+str(MainStream.get_sync_stream(SyncStream)))
+	if log_level <=2 : Logger.info("Toggled On "+str(MainStream.get_sync_stream(SyncStream)))
 
+## Desativa Layer
+func toggle_layer_off(SyncStream:int):
+	if _sync_streams[SyncStream] == false:
+		if log_level <=1: Logger.debug("Layer Already Deactivated!")
+		return
+	var MainStream : Variant = MainPlayer.get_stream()
+	if MainStream is not AudioStreamSynchronized:
+		if log_level <= 3 : Logger.warn("can't toggle unless is AudioStreamSynchronized")
+		return
+	var old : float = MainStream.get_sync_stream_volume(SyncStream)
+	var new : float
 	
+	if old != -60.0:
+		new = -60.0
+		
+	if log_level<=1: Logger.debug("Stream of Number: "+str(SyncStream)+" from "+str(old)+" to "+str(new))
+	if log_level<=1: Logger.debug("BeatsPerBar: "+str(BeatsPerBar)+", SPB: "+str(SPB)+", BPM: "+str(BPM))
+	var gain_control = func(tweener:float):
+		MainStream.set_sync_stream_volume(SyncStream,tweener)
+	
+	var fader = create_tween()
+	fader.tween_method(gain_control,old,new,(SPB*BeatsPerBar))
+	if log_level <=2 : Logger.info("Toggled Off "+str(MainStream.get_sync_stream(SyncStream)))
+
 ## muda de música
 func change_song(song_name:String) ->void: # TODO FAZER COM QUE A MUSICA CONTINUE TOCANDO QUANDO MUDA
 	if Clock.is_stopped() == false: # se o clock não está parado, para
@@ -230,7 +254,7 @@ func _on_conductor_timeout() -> void:
 		_last_bar_time = _get_elapsed_time()
 		elapsed_beats = 1                         # Reseta o timer de beats
 	if log_level < 2: # Log informando tempo musical
-		Logger.debug(str(elapsed_measures)+"Bar "
+		Logger.debug("[Conductor] "+str(elapsed_measures)+"Bar "
 		+str(elapsed_beats)+"Beat "
 		+"["+str(_get_elapsed_time())+" s]")
 	emit_signal("beat", elapsed_beats,_get_elapsed_time())            # Emite o sinal de finalizar uma Beat	
@@ -276,7 +300,6 @@ func _data_handling(song_data:Resource) -> void:
 # usado no _data_handling()
 func _get_bpm(song_data:Resource) -> void: 
 	var first_stream : Variant # Seta o conductor para o tempo certo
-	
 	if MainPlayer.stream is AudioStreamInteractive:
 		first_stream = MainPlayer.stream.get_clip_stream(0) # pega o primeiro clip do main
 	elif MainPlayer.stream is AudioStreamSynchronized:
@@ -406,12 +429,18 @@ func _trigger_play(TriggerStem, sync_method:int=0):
 # ATTENTION melhorar depois, pq haha o godot n tem NOME PRA RESOURCE
 func _get_sync_streams(stream:AudioStreamSynchronized) -> void:
 	var count = stream.stream_count
-	#var audiostream : Variant
-	#for i in range(0,count):
-		#audiostream = stream.get_sync_stream(i)
-		#var temp_dict : Dictionary = {audiostream.resource_name:i} # ATTENTION Melhorar depois
-		#_sync_streams.merge(temp_dict, false)
-	if log_level <= 1: Logger.debug("there are" + str(count) + " sync_streams and they are: " +str(_sync_streams))
+	var audiostream : Variant
+	var volume : float
+	for i in range(0,count):
+		audiostream = stream.get_sync_stream(i)
+		volume = stream.get_sync_stream_volume(i)
+		var temp_dict : Dictionary
+		if volume == -60:
+			temp_dict = {i:false} 
+		else:
+			temp_dict = {i:true} 
+		_sync_streams.merge(temp_dict, false)
+	if log_level <= 1: Logger.info("there are" + str(count) + " sync_streams and they are: " +str(_sync_streams))
 
 # _load_mp3() não é usada mais
 ## cria o _silent_audiostream

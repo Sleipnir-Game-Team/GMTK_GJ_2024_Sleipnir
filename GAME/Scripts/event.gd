@@ -54,6 +54,7 @@ func set_enabled(enable):
 
 
 func _on_interactive_event_activated():
+	#:sorriso:
 	pass
 
 
