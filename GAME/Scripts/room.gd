@@ -94,6 +94,7 @@ func _on_body_left(body):
 		body.left_room.emit(body, self)
 
 func clear_active_event():
+	remove_child(_active_event)
 	_active_event = null
 
 func set_long_lasting_event(event: Event):

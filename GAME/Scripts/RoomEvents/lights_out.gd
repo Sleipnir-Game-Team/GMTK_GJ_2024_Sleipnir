@@ -95,8 +95,7 @@ func _win_condition():
 
 func _loss_condition():
 	return timed_out
-
-
+	
 func _activate_events():
 	return [torch_timer.start]
 
