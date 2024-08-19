@@ -1,13 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3lc07c222867"]
+[gd_scene load_steps=19 format=3 uid="uid://c3lc07c222867"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_MainMenu.gd" id="1_6ltrc"]
-[ext_resource type="Texture2D" uid="uid://dlywdhb88xu08" path="res://Assets/Menu/UI/V1/AGABackground@6x.png" id="2_3otac"]
-[ext_resource type="Texture2D" uid="uid://b1qs78yf4ixag" path="res://Assets/Menu/UI/V1/AGASettings Normal@6x.png" id="3_4esde"]
-[ext_resource type="Texture2D" uid="uid://b4e22dr0swufr" path="res://Assets/Menu/UI/V1/AGASettings Hover@6x.png" id="4_xxmhl"]
-[ext_resource type="Texture2D" uid="uid://cib1nck5j83h5" path="res://Assets/Menu/UI/V1/AGAPlay Normal@6x.png" id="5_1hp7g"]
-[ext_resource type="Texture2D" uid="uid://q52m4uitejd7" path="res://Assets/Menu/UI/V1/AGAPlay Hover@6x.png" id="6_c7ql2"]
-[ext_resource type="Texture2D" uid="uid://dokmyfl0l3lhe" path="res://Assets/Menu/UI/V1/AGAExit Normal@6x.png" id="7_1vutb"]
-[ext_resource type="Texture2D" uid="uid://bxd4buxhteupr" path="res://Assets/Menu/UI/V1/AGAExit Hover@6x.png" id="8_wvomw"]
+[ext_resource type="Texture2D" uid="uid://d3spyeey0lukx" path="res://Assets/Menu/UI/V2/Background.png" id="2_lhgq6"]
+[ext_resource type="Texture2D" uid="uid://djmn7ihhlh425" path="res://Assets/Menu/UI/V2/Tapete.png" id="3_yt7ui"]
+[ext_resource type="Texture2D" uid="uid://tj3fv8somlur" path="res://Assets/Menu/UI/V2/buttons/Options Normal.png" id="4_d2uiq"]
+[ext_resource type="Texture2D" uid="uid://c682ui2h2p85" path="res://Assets/Menu/UI/V2/buttons/Options Clicked.png" id="5_s1o7r"]
+[ext_resource type="Texture2D" uid="uid://cudqcxhxpuv47" path="res://Assets/Menu/UI/V2/buttons/Options Hover.png" id="6_oxnef"]
+[ext_resource type="Texture2D" uid="uid://0cpud4f0qrf4" path="res://Assets/Menu/UI/V2/buttons/Play Normal.png" id="7_bbtjv"]
+[ext_resource type="Texture2D" uid="uid://drbi17ku20lan" path="res://Assets/Menu/UI/V2/buttons/Play Clicked.png" id="8_ipj1m"]
+[ext_resource type="Texture2D" uid="uid://dg86fxseyeb0" path="res://Assets/Menu/UI/V2/buttons/Play Hover.png" id="9_n4ct4"]
+[ext_resource type="Texture2D" uid="uid://bw7bv88v2gb34" path="res://Assets/Menu/UI/V2/buttons/Exit Normal.png" id="10_xlvql"]
+[ext_resource type="Texture2D" uid="uid://dkjgo45s6s763" path="res://Assets/Menu/UI/V2/buttons/Exit Clicked.png" id="11_0qlry"]
+[ext_resource type="Texture2D" uid="uid://cuf5r24ocratb" path="res://Assets/Menu/UI/V2/buttons/Exit Hover.png" id="12_mdh1h"]
+[ext_resource type="Texture2D" uid="uid://dr2gp0h8pyjp6" path="res://Assets/Menu/UI/V2/ambient/Front Torches Light Pass.png" id="13_0xvmm"]
+[ext_resource type="Texture2D" uid="uid://b1cs1d846bhwc" path="res://Assets/Menu/UI/V2/ambient/Front Torches Diffuse Pass.png" id="14_r3nb6"]
+[ext_resource type="Texture2D" uid="uid://kuqlwkow3j2y" path="res://Assets/Menu/UI/V2/ambient/Left Torch Diffuse Pass.png" id="15_oetf6"]
+[ext_resource type="Texture2D" uid="uid://bbtsiloswlhlc" path="res://Assets/Menu/UI/V2/ambient/Left Torch Light Pass.png" id="16_7pdud"]
+[ext_resource type="Texture2D" uid="uid://c1jp0084xct5" path="res://Assets/Menu/UI/V2/ambient/Right Torch Diffuse Pass.png" id="17_ax8vm"]
+[ext_resource type="Texture2D" uid="uid://cy3hwhtt3vud7" path="res://Assets/Menu/UI/V2/ambient/Right Torch Light Pass.png" id="18_5gcgt"]
 
 [node name="Screen_MainMenu" type="Control"]
 layout_mode = 3
@@ -18,123 +28,163 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ltrc")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BackGround_BG" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3otac")
+texture = ExtResource("2_lhgq6")
 expand_mode = 2
 
-[node name="Control8" type="HBoxContainer" parent="."]
+[node name="BackGround_Carpet" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = 610.0
+offset_right = 112.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yt7ui")
+expand_mode = 2
+
+[node name="BackGround_FrontTorches" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BackGround_FrontTorches"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_0xvmm")
+expand_mode = 3
 
-[node name="Control" type="Control" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="VBoxContainer" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="Control8/Control2"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control2" type="Control" parent="Control8/Control2"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button_Options" type="TextureButton" parent="Control8/Control2/Control2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackGround_FrontTorches"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.17
-anchor_top = -0.117
-anchor_right = 0.701
-anchor_bottom = 0.336
-offset_left = 80.35
-offset_top = -177.326
-offset_right = 100.345
-offset_bottom = 93.808
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("14_r3nb6")
+expand_mode = 2
+
+[node name="BackGround_LeftTorch" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch"]
+layout_mode = 0
+offset_right = 1924.0
+offset_bottom = 1083.0
+mouse_filter = 2
+texture = ExtResource("15_oetf6")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch"]
+layout_mode = 0
+offset_right = 1924.0
+offset_bottom = 1083.0
+mouse_filter = 2
+texture = ExtResource("16_7pdud")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BackGround_LeftTorch2" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch2"]
+layout_mode = 0
+offset_right = 1924.0
+offset_bottom = 1083.0
+mouse_filter = 2
+texture = ExtResource("17_ax8vm")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch2"]
+layout_mode = 0
+offset_right = 1924.0
+offset_bottom = 1083.0
+mouse_filter = 2
+texture = ExtResource("18_5gcgt")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Button_Options" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 234.0
+offset_top = 19.0
+offset_right = -1351.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("3_4esde")
-texture_hover = ExtResource("4_xxmhl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Control3" type="Control" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control4" type="VBoxContainer" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="Control8/Control4"]
-layout_mode = 2
-
-[node name="Button_Play" type="TextureButton" parent="Control8/Control4"]
-custom_minimum_size = Vector2(200, 420)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-texture_normal = ExtResource("5_1hp7g")
-texture_hover = ExtResource("6_c7ql2")
+texture_normal = ExtResource("4_d2uiq")
+texture_pressed = ExtResource("5_s1o7r")
+texture_hover = ExtResource("6_oxnef")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="Control8/Control4"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control5" type="Control" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control6" type="VBoxContainer" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Control2" type="Control" parent="Control8/Control6"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control3" type="Control" parent="Control8/Control6"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Button_Quit" type="TextureButton" parent="Control8/Control6/Control3"]
-custom_minimum_size = Vector2(200, 500)
-layout_mode = 1
+[node name="Button_Play" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 800.0
+offset_top = -1.0
+offset_right = -801.0
+offset_bottom = -382.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 8
-size_flags_vertical = 3
-texture_normal = ExtResource("7_1vutb")
-texture_hover = ExtResource("8_wvomw")
+texture_normal = ExtResource("7_bbtjv")
+texture_pressed = ExtResource("8_ipj1m")
+texture_hover = ExtResource("9_n4ct4")
 ignore_texture_size = true
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="Control" type="Control" parent="Control8/Control6"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.79
+[node name="Button_Quit" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1356.0
+offset_top = 17.0
+offset_right = -232.0
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("10_xlvql")
+texture_pressed = ExtResource("11_0qlry")
+texture_hover = ExtResource("12_mdh1h")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Control7" type="Control" parent="Control8"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[connection signal="pressed" from="Control8/Control2/Control2/Button_Options" to="." method="_on_button_options_pressed"]
-[connection signal="pressed" from="Control8/Control4/Button_Play" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="Control8/Control6/Control3/Button_Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button_Options" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button_Play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button_Quit" to="." method="_on_button_quit_pressed"]

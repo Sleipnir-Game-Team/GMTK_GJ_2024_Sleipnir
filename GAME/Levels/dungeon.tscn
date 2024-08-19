@@ -1,25 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://de6odhctl10yt"]
+[gd_scene load_steps=6 format=3 uid="uid://bqimv51rx276l"]
 
-[ext_resource type="Script" path="res://Levels/dungeon.gd" id="1_q0e7u"]
-[ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="2_hbd8n"]
-[ext_resource type="Resource" uid="uid://x1db7ig0d0un" path="res://Inventory/player_inventory.tres" id="2_i0qpb"]
-[ext_resource type="PackedScene" uid="uid://cnt8kosexo551" path="res://Prefabs/RoomEvents/adventurer_spawner.tscn" id="3_olp5j"]
-[ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="4_fefaj"]
-[ext_resource type="PackedScene" uid="uid://jo2to8mswk7e" path="res://Inventory/inventory_ui.tscn" id="6_ltrui"]
+[ext_resource type="Script" path="res://Levels/dungeon.gd" id="1_wh42s"]
+[ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="2_qomsm"]
+[ext_resource type="PackedScene" uid="uid://cnt8kosexo551" path="res://Prefabs/RoomEvents/adventurer_spawner.tscn" id="3_ia4dh"]
+[ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="3_k1sel"]
+[ext_resource type="PackedScene" uid="uid://c44i6dk05il76" path="res://Prefabs/camera_scene.tscn" id="5_mmhgt"]
 
 [node name="Dungeon" type="Node2D"]
-position = Vector2(276, 304)
-script = ExtResource("1_q0e7u")
-inventory = ExtResource("2_i0qpb")
+position = Vector2(296, 312)
+script = ExtResource("1_wh42s")
 
-[node name="SpawnRoom" parent="." node_paths=PackedStringArray("_long_lasting_event") instance=ExtResource("2_hbd8n")]
+[node name="SpawnRoom" parent="." node_paths=PackedStringArray("_long_lasting_event") instance=ExtResource("2_qomsm")]
 position = Vector2(0, -224)
 _long_lasting_event = NodePath("adventurer_spawner")
 _is_entrance = true
 
-[node name="adventurer_spawner" parent="SpawnRoom" instance=ExtResource("3_olp5j")]
+[node name="adventurer_spawner" parent="SpawnRoom" instance=ExtResource("3_ia4dh")]
 
-[node name="paths" parent="SpawnRoom" instance=ExtResource("4_fefaj")]
+[node name="paths" parent="SpawnRoom" instance=ExtResource("3_k1sel")]
 position = Vector2(0, 112)
 rotation = 1.57079
 
@@ -27,15 +25,8 @@ rotation = 1.57079
 wait_time = 10.0
 autostart = true
 
-[node name="InventoryUi" parent="." instance=ExtResource("6_ltrui")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 122.0
-offset_top = -82.0
-offset_right = 122.0
-offset_bottom = -82.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="camera_scene" parent="." groups=["Camera"] instance=ExtResource("5_mmhgt")]
+position = Vector2(0, -224)
+scale = Vector2(0.969, 1)
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer"]

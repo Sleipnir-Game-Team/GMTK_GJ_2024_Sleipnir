@@ -7,9 +7,10 @@ const INITIAL_SIZE = Vector2i(3, 3)
 @export var inventory: Inventory
 
 func _init() -> void:
-	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
+	pass
 
 func _ready():
+	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
 	RoomGenerator._fill_paths()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
