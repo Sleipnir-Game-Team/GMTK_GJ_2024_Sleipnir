@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	if mousePositionX < move_limit_x:
 		movement.x = (mousePositionX - move_limit_x) * 100
 	elif mousePositionX > 1 - move_limit_x:
-		print(mousePositionX)
+
 		movement.x = (mousePositionX -  (1 - move_limit_x)) *100
 	if mousePositionY < move_limit_y:
 		movement.y = (mousePositionY - move_limit_y) * 100
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		movement.y = (mousePositionY - (1 - move_limit_x)) *100
 	
 	var predict = movement + position
-	print(predict)
+
 	if predict.x < limit_left or predict.x > limit_right:
 		if position.x < limit_left:
 			predict.x = limit_left

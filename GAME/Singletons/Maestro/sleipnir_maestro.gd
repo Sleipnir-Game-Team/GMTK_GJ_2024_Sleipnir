@@ -38,8 +38,8 @@ var _currently_playing_trigger : Array # triggers tocando
 var _transition_type : int             # qual transição vai rolar
 var _last_bar_time : float             # quando a ultima bar tocou
 var _last_beat_time : float            # quando a ultima beat tocou
-var _silence_path : String = "res://Systems/MusicSystem/silence-500ms.mp3"  # path do placeholder de silencio
-var _song_path : String = "res://Systems/MusicSystem/Songs/" # path das músicas
+var _silence_path : String = "res://Singletons/Maestro/silence-500ms.mp3"  # path do placeholder de silencio
+var _song_path : String = "res://Assets/Placeholder/MusicalLayers Level PlaceHolder/" # path das músicas
 var _sync_streams : Array[int]         #ATTENTION é pra ser dicionário de streams pro AudioStreamSync  
 
 # funções públicas VVVVVVVVV
@@ -156,12 +156,12 @@ func toggle_layer(SyncStream:int) ->void:
 	#var SyncStream : int = _sync_streams[name]
 	var old : float = MainStream.get_sync_stream_volume(SyncStream)
 	var new : float
-	if old != -32:
-		new = -32
+	if old != -60:
+		new = -60
 	elif old != 0.0:
 		new = 0.0
-	print("Stream of Number: ",SyncStream," from ",old," to ",new)
-
+	if log_level<=1: Logger.debug("Stream of Number: "+str(SyncStream)+" from "+str(old)+" to "+str(new))
+	if log_level<=1: Logger.debug("BeatsPerBar: "+str(BeatsPerBar)+", SPB: "+str(SPB)+", BPM: "+str(BPM))
 	var gain_control = func(tweener:float):
 		MainStream.set_sync_stream_volume(SyncStream,tweener)
 	
@@ -262,7 +262,7 @@ func _data_handling(song_data:Resource) -> void:
 			Logger.error("Invalid AudioStream", get_stack())
 			MainPlayer.set_stream(_load_mp3())
 	
-	_get_bpm()                               # seta o BPM pro clock		
+	_get_bpm(song_data)                               # seta o BPM pro clock		
 	
 	if song_data.has_trigger_clips == true:      # se tem trigger
 		var trigger_clips : Array = song_data.get_trigger_clips() # seta a stream pro trigger
@@ -274,8 +274,8 @@ func _data_handling(song_data:Resource) -> void:
 
 # pega o BPM para usar no clock
 # usado no _data_handling()
-func _get_bpm() -> void: 
-	var first_stream : Variant
+func _get_bpm(song_data:Resource) -> void: 
+	var first_stream : Variant # Seta o conductor para o tempo certo
 	
 	if MainPlayer.stream is AudioStreamInteractive:
 		first_stream = MainPlayer.stream.get_clip_stream(0) # pega o primeiro clip do main
@@ -298,7 +298,7 @@ func _get_bpm() -> void:
 		_ when first_stream.is_meta_stream() == true:
 			reference_stream = _get_child_stream(first_stream)
 	
-	BPM = int(reference_stream.get_bpm())                    # pega o BPM dela
+	BPM = song_data.BPM                   # pega o BPM dela
 	BeatsPerBar = int(reference_stream.get_bar_beats())      # pega as BeatsPerBar dela
 	SPB = 60.0 / ( BPM * (BeatsPerBar/4) )                   # calcula SPB
 	Clock.wait_time = SPB                                    # Seta o conductor para o tempo certo
