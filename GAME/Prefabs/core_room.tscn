@@ -1,26 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvxfd0qntt48v"]
+[gd_scene load_steps=7 format=3 uid="uid://dc31cfh4usat7"]
 
-[ext_resource type="Script" path="res://Scripts/core_room.gd" id="1_cl8nb"]
-[ext_resource type="Texture2D" uid="uid://bc3048oat3r0n" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 3.jpg" id="2_31l27"]
-[ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="3_tbpoy"]
+[ext_resource type="Script" path="res://Scripts/room.gd" id="1_pvm37"]
+[ext_resource type="Texture2D" uid="uid://ctq77ensd6jhd" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_emofw"]
+[ext_resource type="PackedScene" uid="uid://wmslfnf35q4t" path="res://Prefabs/RoomEvents/dungeon_core.tscn" id="3_iclcr"]
+[ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="4_ghvxf"]
+[ext_resource type="PackedScene" uid="uid://dlco6vy7t2sw4" path="res://Prefabs/RoomEvents/expand_button.tscn" id="5_hgtm5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16aaf"]
 size = Vector2(86, 90)
 
-[node name="core_room" type="Area2D"]
+[node name="CoreRoom" type="Area2D" node_paths=PackedStringArray("_long_lasting_event") groups=["Room"]]
 collision_layer = 2
 collision_mask = 8
-script = ExtResource("1_cl8nb")
+script = ExtResource("1_pvm37")
+_long_lasting_event = NodePath("DungeonCore")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(3.8147e-06, 3.8147e-06)
+position = Vector2(1.43051e-06, -4.41074e-06)
 scale = Vector2(0.0286667, 0.03)
-texture = ExtResource("2_31l27")
+texture = ExtResource("2_emofw")
+
+[node name="DungeonCore" parent="." instance=ExtResource("3_iclcr")]
+
+[node name="core_sprite" type="Sprite2D" parent="DungeonCore"]
+position = Vector2(-0.101917, -0.0754954)
+scale = Vector2(0.031978, 0.0305793)
+texture = ExtResource("4_ghvxf")
+
+[node name="ExpandButton" parent="DungeonCore" instance=ExtResource("5_hgtm5")]
+position = Vector2(56, 56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_i1l6g")
+shape = SubResource("RectangleShape2D_16aaf")
 
-[node name="CoreImg" type="Sprite2D" parent="."]
-position = Vector2(4.76837e-07, 9.53674e-07)
-scale = Vector2(0.0333219, 0.0265866)
-texture = ExtResource("3_tbpoy")
+[node name="down_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, 45)
+target_position = Vector2(0, 138)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_detector" type="RayCast2D" parent="."]
+position = Vector2(43, 0)
+target_position = Vector2(138, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="up_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -45)
+target_position = Vector2(0, -138)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left_path_detector" type="RayCast2D" parent="."]
+position = Vector2(-43, 0)
+target_position = Vector2(-138, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_spawn" type="Marker2D" parent="."]
+position = Vector2(112, 0)
+
+[node name="down_path_spawn" type="Marker2D" parent="."]
+position = Vector2(0, 112)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_left"]
+[connection signal="clicked" from="DungeonCore/ExpandButton" to="DungeonCore" method="_on_expand_clicked"]

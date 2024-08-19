@@ -7,16 +7,15 @@ enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
 const Path := preload("res://Prefabs/paths.tscn")
 const RoomScene = preload('res://Prefabs/room.tscn')
 
-
-signal activate
-signal deactivate
-
 var paths_dict := {"right" = false, "down" = false, "up" = false, "left" = false}
 var sprite_path
 var sprite_rotation
 var actual_state := 0
 var next_state
 var test := 0
+
+signal activate
+signal deactivate
 
 var _active_event: Event
 @export var _long_lasting_event: Event

@@ -7,7 +7,7 @@ const INITIAL_SIZE = Vector2i(3, 3)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
-	_fill_paths()
+	RoomGenerator._fill_paths()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -19,7 +19,7 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		
 		if event.pressed and event.keycode == KEY_ESCAPE:
-			_expand()
+			RoomGenerator.expand()
 
 
 ## Gain 20 points every 10 seconds of being alive
@@ -35,7 +35,12 @@ func _create_grid(rows: int, columns: int):
 	var room_position = Vector2(0,0)
 	for row in rows:
 		for column in columns:
-			var room = RoomGenerator.get_random_room().instantiate()
+			var room: Room
+			
+			if column == columns - 1 and row == rows - 1:
+				room = RoomGenerator.get_core_room().instantiate()
+			else:
+				room = RoomGenerator.get_random_room().instantiate()
 			
 			room.global_position = room_position
 			add_child(room)
@@ -46,20 +51,7 @@ func _create_grid(rows: int, columns: int):
 			
 			if column == columns-1 or row == rows-1:
 				room.add_to_group('Last_Rooms')
-				
-				if column == columns-1 and row == rows-1:
-					var game_over = load("res://Prefabs/RoomEvents/game_over.tscn").instantiate()
-					room.add_child(game_over)
-					room._long_lasting_event = game_over
-			
 			
 			room_position.x += distance # Step over a column
 		room_position.y += distance # Step over a row
 		room_position.x = 0 # Reset back to first column
-
-func _fill_paths():
-	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_paths')
-
-func _expand():
-	get_tree().call_group_flags(0, 'Last_Rooms', '_add_adjacent_rooms')
-	_fill_paths()
