@@ -1185,5 +1185,10 @@ collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="stun_time" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="damage" from="." to="." method="_on_damage"]
 [connection signal="heal" from="." to="." method="_on_heal"]
+[connection signal="timeout" from="stun_time" to="." method="_on_stun_time_timeout"]

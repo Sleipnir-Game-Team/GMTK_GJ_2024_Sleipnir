@@ -13,6 +13,10 @@ var target_position: Vector2
 var rng_event := RandomNumberGenerator.new()
 var minimum_event_chance := 50
 
+var is_sleeping := false
+
+var actual_direction
+
 var character_type_name = ["warrior", "archer"]
 
 signal entered_room(adventurer, room)
@@ -30,6 +34,8 @@ signal heal(amount)
 
 @onready var right_detector := $right_path_detector as RayCast2D
 @onready var down_detector := $down_path_detector as RayCast2D
+
+@onready var stun_time := $stun_time as Timer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -54,6 +60,15 @@ func move_in_direction(direction: Vector2):
 
 func stop_moving():
 	velocity = Vector2(0,0)
+	
+func stun():
+	if is_sleeping:
+		target_room._active_event._force_win()
+	else:
+		stop_moving()
+		animation_handler.play(character_type_name+" sleep")
+		stun_time.start()
+	
 
 func _find_possible_moves():
 	var possible_moves = []
@@ -75,6 +90,7 @@ func _find_possible_moves():
 		Logger.debug("Se movendo para a %s (%s)" % [target_room.name, target_position])
 		var target_direction = (target_position - position).normalized()
 		
+		actual_direction = target_direction
 		move_in_direction(target_direction)
 	else:
 		# TODO teoricamente (tudo dando certo) isso daqui significa que chegou na última sala
@@ -132,3 +148,8 @@ func _handle_enter_event(_adventurer, room):
 
 func _handle_leave_event(_adventurer, room):
 	last_room = room
+
+
+func _on_stun_time_timeout() -> void:
+	animation_handler.play(character_type_name+" walk")
+	move_in_direction(actual_direction)
