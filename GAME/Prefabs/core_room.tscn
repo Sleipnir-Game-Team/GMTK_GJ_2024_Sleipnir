@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc31cfh4usat7"]
+[gd_scene load_steps=11 format=3 uid="uid://dc31cfh4usat7"]
 
 [ext_resource type="Script" path="res://Scripts/room.gd" id="1_pvm37"]
 [ext_resource type="Texture2D" uid="uid://ctq77ensd6jhd" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_emofw"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="4_ghvxf"]
 [ext_resource type="PackedScene" uid="uid://dlco6vy7t2sw4" path="res://Prefabs/RoomEvents/expand_button.tscn" id="5_hgtm5"]
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="6_he40c"]
-[ext_resource type="AudioStream" uid="uid://cir6l63lifh6b" path="res://Assets/Placeholder/alarme placeholder.mp3" id="7_7tdov"]
+[ext_resource type="AudioStream" uid="uid://cir6l63lifh6b" path="res://Assets/Placeholder/alarme placeholder (1).mp3" id="7_7tdov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plhch"]
+radius = 270.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3oq2"]
 radius = 180.0
@@ -36,12 +39,19 @@ texture = ExtResource("4_ghvxf")
 [node name="ExpandButton" parent="DungeonCore" instance=ExtResource("5_hgtm5")]
 position = Vector2(56, 56)
 
+[node name="risk_range" type="Area2D" parent="DungeonCore"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonCore/risk_range"]
+shape = SubResource("CircleShape2D_plhch")
+debug_color = Color(0.886149, 0.299964, 0.369973, 0.42)
+
 [node name="alarm_range" type="Area2D" parent="DungeonCore"]
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonCore/alarm_range"]
 shape = SubResource("CircleShape2D_d3oq2")
+debug_color = Color(0.534877, 0.536802, 0.528045, 0.42)
 
 [node name="sfx" type="Node" parent="DungeonCore"]
 script = ExtResource("6_he40c")

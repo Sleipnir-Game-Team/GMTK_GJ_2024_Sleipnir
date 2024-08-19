@@ -10,7 +10,10 @@ func _ready() -> void:
 	super()
 
 func _input(event: InputEvent) -> void:
+	print('[POTION] INPUT HAPPENED')
 	if not using: return
+	
+	print('[POTION] CERTAINLY USING')
 	
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -28,4 +31,5 @@ func _affect(affected: Array[CollisionObject2D]):
 	pass
 
 func _trigger() -> void:
+	print('[POTION] TRIGGER')
 	using = true

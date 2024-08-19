@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cqfghb26paenq"]
+
+[ext_resource type="Script" path="res://Inventory/item.gd" id="1_vsj1l"]
+[ext_resource type="Texture2D" uid="uid://cappgx0lrw6an" path="res://Assets/Level/Items/Arte/Poção de stun.png" id="2_dfrxh"]
+[ext_resource type="PackedScene" uid="uid://cxw04qcmdhuhh" path="res://Inventory/Potions/print_potion.tscn" id="3_dverj"]
+
+[resource]
+script = ExtResource("1_vsj1l")
+name = "Print Potion"
+texture = ExtResource("2_dfrxh")
+useable = ExtResource("3_dverj")

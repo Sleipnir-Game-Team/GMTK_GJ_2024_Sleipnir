@@ -15,20 +15,25 @@ func _ready():
 
 
 ## TODO REMOVER ESSA PORRA AQUI
-func _unhandled_input(event):
+func _input(event):
+	print('[DUNGEON] INPUT HAPPENED')
 	if event is InputEventKey:
 		if event.pressed:
 			match event.keycode:
 				KEY_B:
-					inventory.add_item(load("res://Inventory/Items/heart.tres"))
-				KEY_1:
-					print('Inventory Item: %s' % inventory.get_item(0))
-				KEY_2:
-					print('Inventory Item: %s' % inventory.get_item(1))
-				KEY_3:
-					print('Inventory Item: %s' % inventory.get_item(2))
-				KEY_4:
-					print('Inventory Item: %s' % inventory.get_item(3))
+					print('Inventory Add')
+					inventory.add_item(load("res://Inventory/Items/print_potion_item.tres"))
+				KEY_1, KEY_2, KEY_3, KEY_4:
+					var my_item = inventory.get_item(0)
+					print('Inventory Item: %s' % my_item)
+					
+					var effect = my_item.useable
+					print('Inventory Effect: %s' % effect)
+					
+					var instance = effect.instantiate() as Useable
+					print('Inventory Instance: %s' % instance)
+					
+					instance.use()
 
 
 ## Gain 20 points every 10 seconds of being alive

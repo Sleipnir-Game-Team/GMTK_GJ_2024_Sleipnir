@@ -1,22 +1,28 @@
 extends Event
 
+@onready var risk_range := $risk_range as Area2D
 @onready var alarm_range := $alarm_range as Area2D
 @onready var sfx_proximity := $sfx as SoundQueue
 
+func _enter_tree() -> void:
+	if not SleipnirMaestro.current_song == 'MusicaDungeon':
+		SleipnirMaestro.change_song("MusicaDungeon")
+		SleipnirMaestro.play()
+
 func _ready() -> void:
-	SleipnirMaestro.change_song("MusicaDungeon")
-	SleipnirMaestro.play()
 	super()
+
 
 func _activate_events():
 	return [UI_Controller.gameOver]
 
+
 func _on_expand_clicked():
 	RoomGenerator.expand()
 
+
 func _on_alarm_range_body_entered(body: Node2D) -> void:
 	if not Globals.alarm_is_active:
-		print('inside')
 		Globals.alarm_is_active = true
 		SleipnirMaestro.trigger("alarme placeholder")
 		SleipnirMaestro.toggle_layer(2)
