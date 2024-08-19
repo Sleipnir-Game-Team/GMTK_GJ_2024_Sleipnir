@@ -103,3 +103,6 @@ func _activate_events():
 
 func _deactivate_events():
 	return [torch_timer.stop, cleanup]
+	
+func get_dangerous():
+	pass
