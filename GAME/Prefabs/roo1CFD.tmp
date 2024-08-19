@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://cehnl6n2ko8x6"]
+
+[ext_resource type="Script" path="res://Scripts/room.gd" id="1_iria3"]
+[ext_resource type="Texture2D" uid="uid://ctq77ensd6jhd" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_4i1pl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1l6g"]
+size = Vector2(86, 90)
+
+[node name="room" type="Area2D" groups=["Room"]]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_iria3")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(1.43051e-06, -4.41074e-06)
+scale = Vector2(0.0286667, 0.03)
+texture = ExtResource("2_4i1pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i1l6g")
+
+[node name="down_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, 45)
+target_position = Vector2(0, 138)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_detector" type="RayCast2D" parent="."]
+position = Vector2(43, 0)
+target_position = Vector2(138, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="up_path_detector" type="RayCast2D" parent="."]
+position = Vector2(0, -45)
+target_position = Vector2(0, -138)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="left_path_detector" type="RayCast2D" parent="."]
+position = Vector2(-43, 0)
+target_position = Vector2(-138, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="right_path_spawn" type="Marker2D" parent="."]
+position = Vector2(112, 0)
+
+[node name="down_path_spawn" type="Marker2D" parent="."]
+position = Vector2(0, 112)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_left"]

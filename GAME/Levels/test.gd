@@ -39,6 +39,7 @@ func _create_grid(rows: int, columns: int):
 			
 			if column == columns - 1 and row == rows - 1:
 				room = RoomGenerator.get_core_room().instantiate()
+				room.is_end = true
 			else:
 				room = RoomGenerator.get_random_room().instantiate()
 			
