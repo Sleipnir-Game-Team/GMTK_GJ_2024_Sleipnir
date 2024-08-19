@@ -25,7 +25,7 @@ func add_adventurer(adventurer: Adventurer):
 			finish.emit.call_deferred([])
 	else:
 		finish.emit.call_deferred([])
-
+	
 	finish.emit([])
 
 func get_dangerous():
