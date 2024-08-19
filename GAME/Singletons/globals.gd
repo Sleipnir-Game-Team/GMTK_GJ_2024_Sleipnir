@@ -2,19 +2,16 @@ extends Node
 
 var alarm_is_active := false
 
-static var _score := 0
-static var _high_score := 0
-
-static var high_score : int:
-	get:
-		return _high_score
+static var souls := 0:
 	set(value):
-		_high_score = value
-		print('New High Score: %s' % _high_score)
+		souls = max(value, 0) 
 
-static var score: int:
-	get:
-		return _score
+static var high_score := 0 :
 	set(value):
-		_score = max(value, 0)
-		high_score = max(_score, high_score)
+		high_score = value
+		print('New High Score: %s' % high_score)
+
+static var score := 0:
+	set(value):
+		score = max(value, 0)
+		high_score = max(score, high_score)

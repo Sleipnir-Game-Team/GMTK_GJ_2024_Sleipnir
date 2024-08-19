@@ -80,8 +80,8 @@ func die():
 	animation_handler.play('death')
 	animation_handler.animation_finished.connect(queue_free)
 	
-	Globals.alarm_is_active = false
 	Globals.score += points_worth
+	Globals.souls += 1
 
 func _on_damage(amount: Variant) -> void:
 	current_life -= amount

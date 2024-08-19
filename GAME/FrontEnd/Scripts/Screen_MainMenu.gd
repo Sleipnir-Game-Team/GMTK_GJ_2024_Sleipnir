@@ -4,7 +4,7 @@ func _ready():
 	UI_Displayer.screens.append(self)
 
 func _on_button_play_pressed():
-	UI_Controller.manageScreen("res://Levels/test.tscn", get_tree().root, "change")
+	UI_Controller.manageScreen("res://Levels/Dungeon.tscn", get_tree().root, "change")
 
 
 func _on_button_options_pressed():

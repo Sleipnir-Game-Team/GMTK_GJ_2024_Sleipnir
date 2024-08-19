@@ -4,9 +4,12 @@ const RoomScene = preload('res://Prefabs/room.tscn')
 
 const INITIAL_SIZE = Vector2i(3, 3)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+@export var inventory: Inventory
+
+func _init() -> void:
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
+
+func _ready():
 	RoomGenerator._fill_paths()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,13 +17,12 @@ func _process(_delta):
 	# TODO puta merda
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_sprites')
 
-# TODO REMOVER ISSO É TESTE
+
+## TODO REMOVER ESSA PORRA AQUI
 func _unhandled_input(event):
 	if event is InputEventKey:
-		
-		if event.pressed and event.keycode == KEY_ESCAPE:
-			RoomGenerator.expand()
-
+		if event.pressed and event.keycode == KEY_B:
+			inventory.add_item(load("res://Inventory/Items/heart.tres"))
 
 ## Gain 20 points every 10 seconds of being alive
 func _on_score_timer() -> void:
