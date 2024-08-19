@@ -7,7 +7,7 @@ radius = 251.072
 
 [sub_resource type="Gradient" id="Gradient_pkueg"]
 interpolation_mode = 1
-colors = PackedColorArray(0.32549, 0.560784, 0.341176, 0.694118, 0, 0, 0, 0)
+colors = PackedColorArray(0.839216, 0.27451, 0.180392, 0.623529, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x1di1"]
 gradient = SubResource("Gradient_pkueg")

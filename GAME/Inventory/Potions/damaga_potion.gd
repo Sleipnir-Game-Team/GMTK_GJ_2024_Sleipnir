@@ -1,4 +1,4 @@
-extends Potion
+extends BaseAOE
 
 func _affect(affected: Array[CollisionObject2D]):
 	Logger.debug("Dano Aumentado")
