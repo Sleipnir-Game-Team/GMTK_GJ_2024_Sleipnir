@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 				affected.append_array(area.get_overlapping_areas())
 			if area.has_overlapping_bodies():
 				affected.append_array(area.get_overlapping_bodies())
+			_affect(affected)
 			
 	elif event is InputEventMouseMotion:
 		area.position = event.position
