@@ -1,8 +1,17 @@
 extends Node
 
+signal buy_Item
+
 func _process(_delta):
-	if Input.is_action_just_pressed("Game_Over"):
-		gameOver()
+	#if Input.is_action_just_pressed("Increase_Souls"):
+		#Globals.souls += 1
+		#print(Globals.souls)
+	#if Input.is_action_just_pressed("Decrease_Souls"):
+		#Globals.souls -= 1
+		#print(Globals.souls)
+	if Input.is_action_just_pressed("Open_Store"):
+		manageScreen("res://FrontEnd/Prefabs/Screen_Store.tscn", get_tree().root, "open")
+	
 
 func manageScreen(screen_path, parent, action):
 	var newScreen
@@ -12,12 +21,20 @@ func manageScreen(screen_path, parent, action):
 		"open":
 			UI_Displayer.openScreen(newScreen, parent)
 		"change":
-			UI_Displayer.freeScreen()
+			while UI_Displayer.screens != []:
+				UI_Displayer.freeScreen()
 			UI_Displayer.openScreen(newScreen, parent)
 		"free":
 			UI_Displayer.freeScreen()
 	
 
 func gameOver():
-	#pause()
 	manageScreen("res://FrontEnd/Prefabs/Screen_GameOverMenu.tscn", get_tree().root, "change")
+	
+
+func buyItem(itemType):
+	buy_Item.emit(itemType)
+	
+
+func syncSouls(label):
+	UI_Displayer.syncSouls(label)

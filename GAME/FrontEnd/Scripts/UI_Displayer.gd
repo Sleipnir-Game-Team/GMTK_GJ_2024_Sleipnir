@@ -18,4 +18,8 @@ func freeScreen():
 		screens.pop_back().call_deferred("free")
 	else:
 		Logger.fatal("Não há cena para liberar", get_stack())
-	
+	print("\n", screens, "\n")
+
+func syncSouls(label):
+	label.text = str(Globals.souls)
+	Globals.souls_changed.connect(func (souls):label.text=str(souls))

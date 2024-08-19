@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_button_retry_pressed():
-	UI_Controller.manageScreen("res://Levels/test.tscn", get_tree().root, "change")
+	UI_Controller.manageScreen("res://Levels/dungeon.tscn", get_tree().root, "change")
 
 
 func _on_button_main_menu_pressed():
