@@ -13,7 +13,6 @@ var sprite_rotation
 var actual_state := 0
 var next_state
 var test := 0
-var is_end := false
 
 signal activate
 signal deactivate
@@ -22,6 +21,7 @@ var _active_event: Event
 @export var _long_lasting_event: Event
 @export var _event_queue: Array[Event] = []
 @export var _is_entrance: bool
+@export var is_end := false
 
 @onready var collision_shape := $CollisionShape2D
 @onready var sprite := $sprite as Sprite2D
@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		if len(_event_queue) > 0:
 			var new_event = _event_queue.pop_front()
 			print('Starting temporary event: %s' % new_event.name)
-			new_event.finish.connect(clear_active_event)
+			new_event.finish.connect(clear_active_event.unbind(1))
 			_swap_active_event(new_event)
 			activate.emit()
 
@@ -92,7 +92,7 @@ func _on_body_entered(body):
 func _on_body_left(body):
 	if body is Adventurer:
 		body.left_room.emit(body, self)
-		
+
 func clear_active_event():
 	_active_event = null
 
@@ -162,7 +162,7 @@ func _add_adjacent_rooms():
 	var right = not paths_dict['right']
 	
 	if down:
-		var sibling = RoomScene.instantiate()
+		var sibling = RoomGenerator.get_random_room().instantiate()
 		sibling.position = position
 		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
 		sibling.add_to_group('Last_Rooms')
@@ -170,7 +170,7 @@ func _add_adjacent_rooms():
 		add_sibling(sibling)
 		
 	if right:
-		var sibling = RoomScene.instantiate()
+		var sibling = RoomGenerator.get_random_room().instantiate()
 		sibling.position = position
 		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
 		sibling.add_to_group('Last_Rooms')
@@ -178,20 +178,17 @@ func _add_adjacent_rooms():
 		add_sibling(sibling)
 	
 	if down and right:
-		var sibling = RoomScene.instantiate()
+		var new_core = RoomGenerator.get_core_room().instantiate()
+		new_core.position = position
+		new_core.position.y += (down_spawn.global_position.y - global_position.y) * 2
+		new_core.position.x += (right_spawn.global_position.x - global_position.x) * 2
+		new_core.add_to_group('Last_Rooms')
+		
+		var sibling = RoomGenerator.get_random_room().instantiate()
 		sibling.position = position
-		sibling.position.y += (down_spawn.global_position.y - global_position.y) * 2
-		sibling.position.x += (right_spawn.global_position.x - global_position.x) * 2
-		var game_over = load("res://Prefabs/RoomEvents/game_over.tscn").instantiate()
-		sibling.add_child(game_over)
-		sibling._long_lasting_event = game_over
-		sibling.add_to_group('Last_Rooms')	
-		sibling.is_end = true
-		_long_lasting_event.free()
-		_long_lasting_event = null
-		Logger.debug(str(_long_lasting_event))
-		clear_active_event()
-		Logger.debug(str(_active_event))
-		is_end = false
+		
+		
 		remove_from_group('Last_Rooms')
 		add_sibling(sibling)
+		add_sibling(new_core)
+		queue_free()

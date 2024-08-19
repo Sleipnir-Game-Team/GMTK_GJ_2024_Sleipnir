@@ -8,6 +8,7 @@ var current_life := 10
 
 var last_room: Node
 var target_room: Node
+var target_position: Vector2
 
 var rng_event := RandomNumberGenerator.new()
 var minimum_event_chance := 50
@@ -28,7 +29,6 @@ signal heal(amount)
 @onready var right_detector := $right_path_detector as RayCast2D
 @onready var down_detector := $down_path_detector as RayCast2D
 
-@onready var sfx_proximity := $sfx as SoundQueue
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,9 +36,9 @@ func _ready():
 	left_room.connect(_handle_leave_event)
 
 func _physics_process(_delta):
-	if target_room and position.distance_to(target_room.position) < 1:
+	if target_room and position.distance_to(target_position) < 1:
 		stop_moving()
-		
+	
 	move_and_slide()
 
 
@@ -53,25 +53,20 @@ func _find_possible_moves():
 	
 	if right_detector.is_colliding():
 		possible_moves.append(right_detector.get_collider())
-		if right_detector.get_collider().is_end == true and !Globals.alarm_is_active:
-			Globals.alarm_is_active = true
-			AudioManager.play_sfx(sfx_proximity)
-		else:
-			AudioManager.stop_sfx(sfx_proximity)
 			
 	if down_detector.is_colliding():
 		possible_moves.append(down_detector.get_collider())
-		if down_detector.get_collider().is_end == true and !Globals.alarm_is_active:
-			Globals.alarm_is_active = true
-			AudioManager.play_sfx(sfx_proximity)
-		else:
-			AudioManager.stop_sfx(sfx_proximity)
-			
+		#if down_detector.get_collider().is_end == true and !Globals.alarm_is_active:
+			#Globals.alarm_is_active = true
+			#AudioManager.play_sfx(sfx_proximity)
+		#else:
+			#AudioManager.stop_sfx(sfx_proximity)
 	
 	if len(possible_moves) > 0:
-		Logger.debug("Se movendo para as" + str(possible_moves))
 		target_room = possible_moves.pick_random()
-		var target_direction = (target_room.position - position).normalized()
+		target_position = target_room.position
+		Logger.debug("Se movendo para a %s (%s)" % [target_room.name, target_position])
+		var target_direction = (target_position - position).normalized()
 		
 		move_in_direction(target_direction)
 	else:

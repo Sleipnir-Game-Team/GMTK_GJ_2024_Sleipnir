@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc31cfh4usat7"]
+[gd_scene load_steps=10 format=3 uid="uid://dc31cfh4usat7"]
 
 [ext_resource type="Script" path="res://Scripts/room.gd" id="1_pvm37"]
-[ext_resource type="Texture2D" uid="uid://ctq77ensd6jhd" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_emofw"]
+[ext_resource type="Texture2D" uid="uid://jvf0qujj06o5" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_emofw"]
 [ext_resource type="PackedScene" uid="uid://wmslfnf35q4t" path="res://Prefabs/RoomEvents/dungeon_core.tscn" id="3_iclcr"]
 [ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="4_ghvxf"]
 [ext_resource type="PackedScene" uid="uid://dlco6vy7t2sw4" path="res://Prefabs/RoomEvents/expand_button.tscn" id="5_hgtm5"]
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="6_he40c"]
+[ext_resource type="AudioStream" uid="uid://bsmhii0qcxnn5" path="res://Assets/Placeholder/alarme placeholder.mp3" id="7_7tdov"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3oq2"]
+radius = 180.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16aaf"]
 size = Vector2(86, 90)
@@ -14,6 +19,7 @@ collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_pvm37")
 _long_lasting_event = NodePath("DungeonCore")
+is_end = true
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1.43051e-06, -4.41074e-06)
@@ -29,6 +35,20 @@ texture = ExtResource("4_ghvxf")
 
 [node name="ExpandButton" parent="DungeonCore" instance=ExtResource("5_hgtm5")]
 position = Vector2(56, 56)
+
+[node name="alarm_range" type="Area2D" parent="DungeonCore"]
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonCore/alarm_range"]
+shape = SubResource("CircleShape2D_d3oq2")
+
+[node name="sfx" type="Node" parent="DungeonCore"]
+script = ExtResource("6_he40c")
+print_log = true
+
+[node name="alarm_audio" type="AudioStreamPlayer" parent="DungeonCore/sfx"]
+stream = ExtResource("7_7tdov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_16aaf")
@@ -68,3 +88,5 @@ position = Vector2(0, 112)
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_left"]
 [connection signal="clicked" from="DungeonCore/ExpandButton" to="DungeonCore" method="_on_expand_clicked"]
+[connection signal="body_entered" from="DungeonCore/alarm_range" to="DungeonCore" method="_on_alarm_range_body_entered"]
+[connection signal="body_exited" from="DungeonCore/alarm_range" to="DungeonCore" method="_on_alarm_range_body_exited"]
