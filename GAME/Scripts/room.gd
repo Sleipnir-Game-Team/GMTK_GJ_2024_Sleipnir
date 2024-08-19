@@ -140,7 +140,7 @@ func update_sprites():
 	
 	if actual_state != next_state:
 		if !_is_entrance:
-			sprite.texture = sprite_path
+			sprite.texture = load(sprite_path)
 			sprite.set_rotation_degrees(sprite_rotation)
 	
 	SpriteManager.room_sprite_value = 0
