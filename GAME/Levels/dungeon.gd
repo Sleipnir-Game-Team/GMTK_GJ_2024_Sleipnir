@@ -13,17 +13,23 @@ func _ready():
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
 	RoomGenerator._fill_paths()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	# TODO puta merda
-	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_sprites')
-
 
 ## TODO REMOVER ESSA PORRA AQUI
 func _unhandled_input(event):
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_B:
-			inventory.add_item(load("res://Inventory/Items/heart.tres"))
+		if event.pressed:
+			match event.keycode:
+				KEY_B:
+					inventory.add_item(load("res://Inventory/Items/heart.tres"))
+				KEY_1:
+					print('Inventory Item: %s' % inventory.get_item(0))
+				KEY_2:
+					print('Inventory Item: %s' % inventory.get_item(1))
+				KEY_3:
+					print('Inventory Item: %s' % inventory.get_item(2))
+				KEY_4:
+					print('Inventory Item: %s' % inventory.get_item(3))
+
 
 ## Gain 20 points every 10 seconds of being alive
 func _on_score_timer() -> void:

@@ -370,7 +370,7 @@ func _trigger_populate(triggers:Array):
 			Logger.debug("Loaded Triggers = "+str(_trigger_stems))
 
 # método pra tocar trigger syncado
-func _trigger_play(TriggerStem,sync_method:int=0): 
+func _trigger_play(TriggerStem, sync_method:int=0): 
 	match sync_method:
 		0: ## por beat
 			# previsão de quando é a próxima barra
