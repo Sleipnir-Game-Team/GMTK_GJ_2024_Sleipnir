@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxw04qcmdhuhh"]
 
-[ext_resource type="Script" path="res://Inventory/Potions/print_potion.gd" id="1_4c33u"]
+[ext_resource type="Script" path="res://Scripts/Effects/Potions/print_potion.gd" id="1_4c33u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fv2xh"]
 radius = 250.0
@@ -33,5 +33,3 @@ shape = SubResource("CircleShape2D_fv2xh")
 visible = false
 texture = SubResource("GradientTexture2D_8kjgy")
 region_rect = Rect2(1, 1, 1, 1)
-
-[connection signal="used" from="." to="." method="_trigger"]

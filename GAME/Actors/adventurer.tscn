@@ -1,4 +1,4 @@
-[gd_scene load_steps=281 format=3 uid="uid://ouvctt3pubcp"]
+[gd_scene load_steps=282 format=3 uid="uid://ouvctt3pubcp"]
 
 [ext_resource type="Script" path="res://Scripts/adventurer.gd" id="1_wg4fw"]
 [ext_resource type="Texture2D" uid="uid://blxmk845svn0h" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/death_0000.png" id="2_ojgfg"]
@@ -45,26 +45,26 @@
 [ext_resource type="Texture2D" uid="uid://dpm5sg12pb6ww" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0018.png" id="43_qc4ni"]
 [ext_resource type="Texture2D" uid="uid://be8ypam48hull" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0019.png" id="44_37siy"]
 [ext_resource type="Texture2D" uid="uid://brd8ppvle1ytg" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0020.png" id="45_m4bku"]
-[ext_resource type="Texture2D" uid="uid://cl3o5eno8e4gy" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0021.png" id="46_pw0ol"]
-[ext_resource type="Texture2D" uid="uid://d1y0ykam4xjjp" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0022.png" id="47_0qdi7"]
-[ext_resource type="Texture2D" uid="uid://clr5wg5w1pgw2" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0023.png" id="48_dauqt"]
-[ext_resource type="Texture2D" uid="uid://8qfqr4u0qmjx" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0024.png" id="49_y8oje"]
-[ext_resource type="Texture2D" uid="uid://d3co1n805xdy4" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0025.png" id="50_co714"]
-[ext_resource type="Texture2D" uid="uid://dicbs60kb3nk" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0026.png" id="51_yw80q"]
-[ext_resource type="Texture2D" uid="uid://c0kcf1bekppyx" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0027.png" id="52_2jm58"]
-[ext_resource type="Texture2D" uid="uid://b048hu2syv0r8" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0028.png" id="53_2wmuw"]
+[ext_resource type="Texture2D" uid="uid://c11d2k2oi6vy8" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0021.png" id="46_pw0ol"]
+[ext_resource type="Texture2D" uid="uid://ueeiv2vmx1cb" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0022.png" id="47_0qdi7"]
+[ext_resource type="Texture2D" uid="uid://tbjheqyjnip6" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0023.png" id="48_dauqt"]
+[ext_resource type="Texture2D" uid="uid://3ck00df8fh5p" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0024.png" id="49_y8oje"]
+[ext_resource type="Texture2D" uid="uid://erg5m56crdeq" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0025.png" id="50_co714"]
+[ext_resource type="Texture2D" uid="uid://mt4dxnnyauae" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0026.png" id="51_yw80q"]
+[ext_resource type="Texture2D" uid="uid://bqjr8uii0v0nv" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0027.png" id="52_2jm58"]
+[ext_resource type="Texture2D" uid="uid://h4gmkpsj2qs6" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0028.png" id="53_2wmuw"]
 [ext_resource type="Texture2D" uid="uid://c2wrsjiafrgmh" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0000.png" id="53_xg17p"]
-[ext_resource type="Texture2D" uid="uid://dnkbi7idcix5r" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0029.png" id="54_60oly"]
+[ext_resource type="Texture2D" uid="uid://3bowihdovfko" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0029.png" id="54_60oly"]
 [ext_resource type="Texture2D" uid="uid://cpmbu6j1dpi1v" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0001.png" id="54_af4gm"]
-[ext_resource type="Texture2D" uid="uid://j5e3x6htnx06" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0030.png" id="55_0jah3"]
+[ext_resource type="Texture2D" uid="uid://c5bx1y5d1ahu7" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0030.png" id="55_0jah3"]
 [ext_resource type="Texture2D" uid="uid://bayfhqdfukc7x" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0002.png" id="55_otj02"]
-[ext_resource type="Texture2D" uid="uid://dkkocyyu5hku3" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0031.png" id="56_6yqn2"]
+[ext_resource type="Texture2D" uid="uid://dq852p7b5ps2c" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0031.png" id="56_6yqn2"]
 [ext_resource type="Texture2D" uid="uid://caup134m3fuiy" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0003.png" id="56_yan24"]
-[ext_resource type="Texture2D" uid="uid://bgcnyb4skj6ho" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0032.png" id="57_4xs18"]
+[ext_resource type="Texture2D" uid="uid://bydu4ol1lc0rf" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0032.png" id="57_4xs18"]
 [ext_resource type="Texture2D" uid="uid://bjto1oc2p8fdw" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0004.png" id="57_fwn7v"]
-[ext_resource type="Texture2D" uid="uid://vwq7jdwhgads" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0033.png" id="58_lm4f1"]
+[ext_resource type="Texture2D" uid="uid://b8pj4u8pl8hhg" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0033.png" id="58_lm4f1"]
 [ext_resource type="Texture2D" uid="uid://kbmgnk01oak3" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0005.png" id="58_yo053"]
-[ext_resource type="Texture2D" uid="uid://biremv2f0ohvl" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0034.png" id="59_fxaqo"]
+[ext_resource type="Texture2D" uid="uid://b2pbdqnw6mfkq" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/Sleeping_0034.png" id="59_fxaqo"]
 [ext_resource type="Texture2D" uid="uid://b00knhvcv3vc8" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0006.png" id="59_mylwx"]
 [ext_resource type="Texture2D" uid="uid://c2w7ahrtgqa8p" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0007.png" id="60_4tpvl"]
 [ext_resource type="Texture2D" uid="uid://c5eiiqsdh3ejv" path="res://Assets/Level/Adventurers/Arte/Animação/Arqueiro V2/walkrunsla_0008.png" id="61_wv450"]
@@ -1159,6 +1159,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uu8fy"]
 radius = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdiaj"]
+size = Vector2(29, 58)
+
 [node name="adventurer" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 6
@@ -1184,6 +1187,15 @@ target_position = Vector2(224, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-8.5, 17)
+shape = SubResource("RectangleShape2D_pdiaj")
 
 [connection signal="damage" from="." to="." method="_on_damage"]
 [connection signal="heal" from="." to="." method="_on_heal"]

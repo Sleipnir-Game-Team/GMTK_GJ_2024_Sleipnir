@@ -1,18 +1,12 @@
-class_name Potion
+class_name BaseAOE
 
 extends Useable
 
-var using := false:
-	get:
-		return using
-	set(value):
-		sprite.visible = value
-		using = value
 
 @export var sprite: Sprite2D
 @export var area: Area2D
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if not using: return
 	
 	if event.is_action_pressed('apply_potion'):
@@ -34,11 +28,10 @@ func _input(event: InputEvent) -> void:
 		area.global_position = get_global_mouse_position()
 
 
+func set_using(using: bool) -> void:
+	sprite.visible = using
+	super(using)
+
+
 func _affect(affected: Array[CollisionObject2D]):
 	pass
-
-func _trigger() -> void:
-	using = true
-
-func _cancel() -> void:
-	using = false
