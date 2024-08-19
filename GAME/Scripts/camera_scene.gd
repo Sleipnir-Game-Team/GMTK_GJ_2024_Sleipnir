@@ -10,6 +10,9 @@ var limit_down = 700
 var move_limit_x = 0.2
 var move_limit_y = 0.2
 
+func set_dragging(value):
+	dragging = value
+
 func _ready() -> void:
 	set_process_input(true)
 	
