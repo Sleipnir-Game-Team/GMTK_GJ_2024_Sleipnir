@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqimv51rx276l"]
+[gd_scene load_steps=6 format=3 uid="uid://bqimv51rx276l"]
 
 [ext_resource type="Script" path="res://Levels/test.gd" id="1_wh42s"]
 [ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="2_qomsm"]
 [ext_resource type="PackedScene" uid="uid://cnt8kosexo551" path="res://Prefabs/RoomEvents/adventurer_spawner.tscn" id="3_ia4dh"]
 [ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="3_k1sel"]
+[ext_resource type="PackedScene" uid="uid://c44i6dk05il76" path="res://Prefabs/camera_scene.tscn" id="5_mmhgt"]
 
 [node name="Test" type="Node2D"]
 position = Vector2(296, 312)
@@ -23,5 +24,8 @@ rotation = 1.57079
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="camera_scene" parent="." groups=["Camera"] instance=ExtResource("5_mmhgt")]
+position = Vector2(0, -224)
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer"]

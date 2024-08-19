@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c44i6dk05il76"]
+
+[ext_resource type="Script" path="res://Scripts/camera_scene.gd" id="1_uhrxg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buhoy"]
+
+[node name="camera_scene" type="Node2D"]
+
+[node name="camare_body" type="CharacterBody2D" parent="."]
+script = ExtResource("1_uhrxg")
+
+[node name="camera_collision" type="CollisionShape2D" parent="camare_body"]
+shape = SubResource("CircleShape2D_buhoy")
+
+[node name="camera" type="Camera2D" parent="camare_body"]

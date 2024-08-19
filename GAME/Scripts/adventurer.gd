@@ -80,7 +80,6 @@ func die():
 	animation_handler.play('death')
 	animation_handler.animation_finished.connect(queue_free)
 	
-	Globals.alarm_is_active = false
 	Globals.score += points_worth
 
 func _on_damage(amount: Variant) -> void:
@@ -115,7 +114,6 @@ func _handle_enter_event(_adventurer, room):
 			event.finish.connect(_find_possible_moves.unbind(1), ConnectFlags.CONNECT_ONE_SHOT) # Trigger movement once it's over
 			room.add_temporary_event(event)
 		else:
-			Logger.debug("Vai DESGRAÇA")
 			_find_possible_moves()
 
 func _handle_leave_event(_adventurer, room):

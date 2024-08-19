@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/principal_scene.gd" id="1_50ym1"]
 [ext_resource type="PackedScene" uid="uid://cehnl6n2ko8x6" path="res://Prefabs/room.tscn" id="1_81pw4"]
 [ext_resource type="PackedScene" uid="uid://dvh7y26o1ejje" path="res://Prefabs/entrance_room.tscn" id="3_5x4yw"]
-[ext_resource type="PackedScene" uid="uid://dvxfd0qntt48v" path="res://Prefabs/core_room.tscn" id="4_skqp0"]
+[ext_resource type="PackedScene" uid="uid://dc31cfh4usat7" path="res://Prefabs/core_room.tscn" id="4_skqp0"]
 [ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="5_j4r7j"]
 
 [node name="principal_scene" type="Node2D"]
