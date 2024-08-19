@@ -43,3 +43,6 @@ func moved(adventurer, room):
 func _on_spawn_timer_timeout() -> void:
 	if !is_waiting:
 		spawn_adventurer()
+		
+func get_dangerous():
+	pass

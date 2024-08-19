@@ -31,3 +31,6 @@ func _on_alarm_range_body_entered(body: Node2D) -> void:
 func _on_alarm_range_body_exited(body: Node2D) -> void:
 	if Globals.alarm_is_active and not alarm_range.has_overlapping_bodies():
 		Globals.alarm_is_active = false
+		
+func get_dangerous():
+	pass

@@ -4,3 +4,8 @@
 
 [node name="AcidPool" type="Node2D"]
 script = ExtResource("1_hx4l7")
+
+[node name="danger_time" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="danger_time" to="." method="_on_danger_time_timeout"]

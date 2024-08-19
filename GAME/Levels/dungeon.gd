@@ -22,12 +22,14 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			match event.keycode:
-				KEY_C:
-					print('Inventory ADDING ITEM')
+				KEY_Z:
 					inventory.add_item(load("res://Inventory/Items/print_potion_item.tres"))
-				KEY_B:
-					print('Inventory ADDING ITEM')
+				KEY_X:
 					inventory.add_item(load("res://Inventory/Items/print_power_item.tres"))
+				KEY_C:
+					inventory.add_item(load("res://Inventory/Items/stun_potion.tres"))
+				KEY_V:
+					inventory.add_item(load("res://Inventory/Items/damage_potion.tres"))
 				KEY_1, KEY_2, KEY_3, KEY_4:
 					var my_item = inventory.get_item(0)
 					

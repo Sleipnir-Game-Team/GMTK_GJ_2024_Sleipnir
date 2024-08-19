@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://etj83ulsj53x"]
+
+[ext_resource type="Script" path="res://Inventory/Potions/damaga_potion.gd" id="1_hixgk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_od8ib"]
+radius = 251.072
+
+[sub_resource type="Gradient" id="Gradient_pkueg"]
+interpolation_mode = 1
+colors = PackedColorArray(0.32549, 0.560784, 0.341176, 0.694118, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1di1"]
+gradient = SubResource("Gradient_pkueg")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="damage_potion" type="Node2D" node_paths=PackedStringArray("sprite", "area")]
+script = ExtResource("1_hixgk")
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_od8ib")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_x1di1")
+region_rect = Rect2(1, 1, 1, 1)
+
+[connection signal="used" from="." to="." method="_trigger"]
