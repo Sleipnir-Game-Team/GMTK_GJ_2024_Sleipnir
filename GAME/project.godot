@@ -59,3 +59,4 @@ toggle_inventory={
 2d_physics/layer_2="room"
 2d_physics/layer_3="path"
 2d_physics/layer_4="adventurer"
+2d_physics/layer_5="potions"
