@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://behxc8ejlkdq3"]
+[gd_scene load_steps=8 format=3 uid="uid://behxc8ejlkdq3"]
 
-[ext_resource type="Texture2D" uid="uid://d3spyeey0lukx" path="res://Assets/Menu/UI/V2/Background.png" id="1_fdjtj"]
 [ext_resource type="Script" path="res://FrontEnd/Prefabs/Screen_Store.gd" id="1_y1gu8"]
 [ext_resource type="Texture2D" uid="uid://dhv1p76asjure" path="res://Assets/Level/Items/Arte/Poção de periculosidade.png" id="2_1vnjw"]
+[ext_resource type="Texture2D" uid="uid://c2m0kja23uhd1" path="res://Assets/Menu/UI/V3/shop/Shop Background.png" id="2_g0j3l"]
 [ext_resource type="Texture2D" uid="uid://dpa2pmeqjttdt" path="res://Assets/Placeholder/core_img.png" id="3_ub12o"]
 [ext_resource type="Texture2D" uid="uid://cappgx0lrw6an" path="res://Assets/Level/Items/Arte/Poção de stun.png" id="4_0v2vw"]
+[ext_resource type="Texture2D" uid="uid://drea2y2lo3xyo" path="res://Assets/Level/Items/Arte/Poder Troca de sala.png" id="6_i51xy"]
+[ext_resource type="Texture2D" uid="uid://bafv226nyo6qx" path="res://Assets/Level/Items/Arte/Almas-Moeda.png" id="7_g7fvh"]
 
 [node name="ScreenStore" type="Control"]
 layout_mode = 3
@@ -17,10 +19,10 @@ script = ExtResource("1_y1gu8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="BackGround_BG" type="TextureRect" parent="CanvasLayer"]
 offset_right = 1929.0
 offset_bottom = 1075.0
-texture = ExtResource("1_fdjtj")
+texture = ExtResource("2_g0j3l")
 expand_mode = 2
 
 [node name="Button_BuyItem1" type="TextureButton" parent="CanvasLayer"]
@@ -29,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -388.0
-offset_top = -283.0
-offset_right = -186.0
-offset_bottom = -90.0
+offset_left = -284.0
+offset_top = -396.0
+offset_right = -130.0
+offset_bottom = -262.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("2_1vnjw")
@@ -46,30 +48,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -293.0
-offset_right = 93.0
-offset_bottom = -100.0
+offset_left = -67.0
+offset_top = -403.0
+offset_right = 90.0
+offset_bottom = -264.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_1vnjw")
-texture_hover = ExtResource("3_ub12o")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Button_BuyItem3" type="TextureButton" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 193.0
-offset_top = -279.0
-offset_right = 395.0
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("2_1vnjw")
+texture_normal = ExtResource("4_0v2vw")
 texture_hover = ExtResource("3_ub12o")
 ignore_texture_size = true
 stretch_mode = 5
@@ -80,13 +65,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -363.0
-offset_top = 98.0
-offset_right = -161.0
-offset_bottom = 291.0
+offset_left = -315.0
+offset_top = -2.0
+offset_right = -119.0
+offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_0v2vw")
+texture_normal = ExtResource("6_i51xy")
 texture_hover = ExtResource("3_ub12o")
 ignore_texture_size = true
 stretch_mode = 5
@@ -97,13 +82,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 102.0
-offset_right = 112.0
-offset_bottom = 295.0
+offset_left = -89.0
+offset_top = -14.0
+offset_right = 122.0
+offset_bottom = 157.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_0v2vw")
+texture_normal = ExtResource("6_i51xy")
 texture_hover = ExtResource("3_ub12o")
 ignore_texture_size = true
 stretch_mode = 5
@@ -114,20 +99,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 199.0
-offset_top = 107.0
-offset_right = 401.0
-offset_bottom = 300.0
+offset_left = 150.0
+offset_top = -4.0
+offset_right = 322.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_0v2vw")
+texture_normal = ExtResource("6_i51xy")
 texture_hover = ExtResource("3_ub12o")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Player_Points" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 564.0
+offset_top = 912.0
+offset_right = 833.0
+offset_bottom = 1031.0
+
+[node name="Currency_Sprite" type="TextureRect" parent="CanvasLayer/Player_Points"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("7_g7fvh")
+expand_mode = 2
+
+[node name="Player_Points" type="Label" parent="CanvasLayer/Player_Points"]
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [connection signal="pressed" from="CanvasLayer/Button_BuyItem1" to="." method="_on_button_buy_item_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button_BuyItem2" to="." method="_on_button_buy_item_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Button_BuyItem3" to="." method="_on_button_buy_item_3_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button_BuyItem4" to="." method="_on_button_buy_item_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button_BuyItem5" to="." method="_on_button_buy_item_5_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button_BuyItem6" to="." method="_on_button_buy_item_6_pressed"]

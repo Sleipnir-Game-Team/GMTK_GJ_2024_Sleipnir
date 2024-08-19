@@ -1,23 +1,253 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3lc07c222867"]
+[gd_scene load_steps=94 format=3 uid="uid://c3lc07c222867"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_MainMenu.gd" id="1_6ltrc"]
-[ext_resource type="Texture2D" uid="uid://d3spyeey0lukx" path="res://Assets/Menu/UI/V2/Background.png" id="2_lhgq6"]
-[ext_resource type="Texture2D" uid="uid://djmn7ihhlh425" path="res://Assets/Menu/UI/V2/Tapete.png" id="3_yt7ui"]
-[ext_resource type="Texture2D" uid="uid://tj3fv8somlur" path="res://Assets/Menu/UI/V2/buttons/Options Normal.png" id="4_d2uiq"]
-[ext_resource type="Texture2D" uid="uid://c682ui2h2p85" path="res://Assets/Menu/UI/V2/buttons/Options Clicked.png" id="5_s1o7r"]
-[ext_resource type="Texture2D" uid="uid://cudqcxhxpuv47" path="res://Assets/Menu/UI/V2/buttons/Options Hover.png" id="6_oxnef"]
-[ext_resource type="Texture2D" uid="uid://0cpud4f0qrf4" path="res://Assets/Menu/UI/V2/buttons/Play Normal.png" id="7_bbtjv"]
-[ext_resource type="Texture2D" uid="uid://drbi17ku20lan" path="res://Assets/Menu/UI/V2/buttons/Play Clicked.png" id="8_ipj1m"]
-[ext_resource type="Texture2D" uid="uid://dg86fxseyeb0" path="res://Assets/Menu/UI/V2/buttons/Play Hover.png" id="9_n4ct4"]
-[ext_resource type="Texture2D" uid="uid://bw7bv88v2gb34" path="res://Assets/Menu/UI/V2/buttons/Exit Normal.png" id="10_xlvql"]
-[ext_resource type="Texture2D" uid="uid://dkjgo45s6s763" path="res://Assets/Menu/UI/V2/buttons/Exit Clicked.png" id="11_0qlry"]
-[ext_resource type="Texture2D" uid="uid://cuf5r24ocratb" path="res://Assets/Menu/UI/V2/buttons/Exit Hover.png" id="12_mdh1h"]
-[ext_resource type="Texture2D" uid="uid://dr2gp0h8pyjp6" path="res://Assets/Menu/UI/V2/ambient/Front Torches Light Pass.png" id="13_0xvmm"]
-[ext_resource type="Texture2D" uid="uid://b1cs1d846bhwc" path="res://Assets/Menu/UI/V2/ambient/Front Torches Diffuse Pass.png" id="14_r3nb6"]
-[ext_resource type="Texture2D" uid="uid://kuqlwkow3j2y" path="res://Assets/Menu/UI/V2/ambient/Left Torch Diffuse Pass.png" id="15_oetf6"]
-[ext_resource type="Texture2D" uid="uid://bbtsiloswlhlc" path="res://Assets/Menu/UI/V2/ambient/Left Torch Light Pass.png" id="16_7pdud"]
-[ext_resource type="Texture2D" uid="uid://c1jp0084xct5" path="res://Assets/Menu/UI/V2/ambient/Right Torch Diffuse Pass.png" id="17_ax8vm"]
-[ext_resource type="Texture2D" uid="uid://cy3hwhtt3vud7" path="res://Assets/Menu/UI/V2/ambient/Right Torch Light Pass.png" id="18_5gcgt"]
+[ext_resource type="Texture2D" uid="uid://d0vaav8x6imsa" path="res://Assets/Menu/UI/V3/Background.png" id="2_ydpfa"]
+[ext_resource type="Texture2D" uid="uid://hs0gtvkjr10f" path="res://Assets/Menu/UI/V3/Tapete.png" id="3_tniqe"]
+[ext_resource type="Texture2D" uid="uid://iw3f3k0v40d0" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00000.png" id="4_4ssu0"]
+[ext_resource type="Texture2D" uid="uid://m7hqg2i8stba" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00000.png" id="5_vdvey"]
+[ext_resource type="Texture2D" uid="uid://c2jfaohhpir3t" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00000.png" id="6_j2c3b"]
+[ext_resource type="Texture2D" uid="uid://bcikxjrhxua2l" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00000.png" id="7_phxpl"]
+[ext_resource type="Texture2D" uid="uid://cqsp3cqhr6hyc" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00000.png" id="8_rgq8p"]
+[ext_resource type="Texture2D" uid="uid://bv06v7o542co3" path="res://Assets/Menu/UI/V3/buttons/Options Normal.png" id="9_l374j"]
+[ext_resource type="Texture2D" uid="uid://77ondjhayd6k" path="res://Assets/Menu/UI/V3/buttons/Options Clicked.png" id="10_t1ued"]
+[ext_resource type="Texture2D" uid="uid://c57mjd4jf8ntm" path="res://Assets/Menu/UI/V3/buttons/Options Hover.png" id="11_ws2dh"]
+[ext_resource type="Texture2D" uid="uid://cbkufr2wsks1l" path="res://Assets/Menu/UI/V3/buttons/Play Normal.png" id="12_r3773"]
+[ext_resource type="Texture2D" uid="uid://cc5s3c4py3q4p" path="res://Assets/Menu/UI/V3/buttons/Play Clicked.png" id="13_d18yg"]
+[ext_resource type="Texture2D" uid="uid://dff8sm85f0kjk" path="res://Assets/Menu/UI/V3/buttons/Play Hover.png" id="14_a1yq7"]
+[ext_resource type="Texture2D" uid="uid://csgq3ncd3nlgu" path="res://Assets/Menu/UI/V3/buttons/Exit Normal.png" id="15_7fmcu"]
+[ext_resource type="Texture2D" uid="uid://chiwhv0qk4ha0" path="res://Assets/Menu/UI/V3/buttons/Exit Clicked.png" id="16_pv4an"]
+[ext_resource type="Texture2D" uid="uid://bnm0cc85frjjy" path="res://Assets/Menu/UI/V3/buttons/Exit Hover.png" id="17_wm601"]
+[ext_resource type="Texture2D" uid="uid://1mdntphvh18k" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00000.png" id="18_hbg80"]
+[ext_resource type="Texture2D" uid="uid://canwma0lao1a3" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00001.png" id="19_wk715"]
+[ext_resource type="Texture2D" uid="uid://bjs34mim8ge1f" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00002.png" id="20_4vn1l"]
+[ext_resource type="Texture2D" uid="uid://dcmv6yalnf6v0" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00003.png" id="21_wvbat"]
+[ext_resource type="Texture2D" uid="uid://sjh3ntuo14qm" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00004.png" id="22_jdn2l"]
+[ext_resource type="Texture2D" uid="uid://dx2o68ch27axw" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00005.png" id="23_kcn8o"]
+[ext_resource type="Texture2D" uid="uid://okqs4qg50nun" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00006.png" id="24_p5vrc"]
+[ext_resource type="Texture2D" uid="uid://bktnrl06rbdi8" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00007.png" id="25_isuof"]
+[ext_resource type="Texture2D" uid="uid://bpp0yx00vke7r" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00008.png" id="26_ntiep"]
+[ext_resource type="Texture2D" uid="uid://dnvu5fs301yii" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00009.png" id="27_8nm81"]
+[ext_resource type="Texture2D" uid="uid://guvqudcxyaf2" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00010.png" id="28_7mc8p"]
+[ext_resource type="Texture2D" uid="uid://bjm7c56pj0lgw" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00011.png" id="29_k7gvk"]
+[ext_resource type="Texture2D" uid="uid://q0w55jr5n3uc" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Diffusion Pass/Torches Front Diffuse Pass_00012.png" id="30_e5o8v"]
+[ext_resource type="Texture2D" uid="uid://cw2j7qu5t4b5c" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00001.png" id="31_delnt"]
+[ext_resource type="Texture2D" uid="uid://dkiwi70njbryy" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00002.png" id="32_pf18u"]
+[ext_resource type="Texture2D" uid="uid://ce0ftg8lhnjv" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00003.png" id="33_58ef6"]
+[ext_resource type="Texture2D" uid="uid://cyposnr14lixu" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00004.png" id="34_arkof"]
+[ext_resource type="Texture2D" uid="uid://gv0833xu4lqs" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00005.png" id="35_ab2rw"]
+[ext_resource type="Texture2D" uid="uid://dmhre0i7c7vbn" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00006.png" id="36_1s56t"]
+[ext_resource type="Texture2D" uid="uid://dubxc64x8eym0" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00007.png" id="37_f42mm"]
+[ext_resource type="Texture2D" uid="uid://dyk0y2k4o68nl" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00008.png" id="38_8m22i"]
+[ext_resource type="Texture2D" uid="uid://bo11ojmyklwth" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00009.png" id="39_fa6lu"]
+[ext_resource type="Texture2D" uid="uid://f1csdeqqccfu" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00010.png" id="40_2htgo"]
+[ext_resource type="Texture2D" uid="uid://c7c0luec84pef" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00011.png" id="41_c765i"]
+[ext_resource type="Texture2D" uid="uid://dv3kcg83neetw" path="res://Assets/Menu/UI/V3/ambient/sequences/Torches Front Light Pass/Torches Front Light Pass_00012.png" id="42_wpi6a"]
+[ext_resource type="Texture2D" uid="uid://dg6f6gyl0fm2b" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00001.png" id="43_7vyy7"]
+[ext_resource type="Texture2D" uid="uid://da3sou0o3l304" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00002.png" id="44_ldlbq"]
+[ext_resource type="Texture2D" uid="uid://f5101v3hbsjg" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00003.png" id="45_4p8gv"]
+[ext_resource type="Texture2D" uid="uid://bgc1cdavvpcql" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00004.png" id="46_4rf6a"]
+[ext_resource type="Texture2D" uid="uid://6s05t1x0kgoq" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00005.png" id="47_eh7y3"]
+[ext_resource type="Texture2D" uid="uid://dp8se0a724db7" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00006.png" id="48_4dbqx"]
+[ext_resource type="Texture2D" uid="uid://c3adeo0xp2pnv" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00007.png" id="49_w8ogl"]
+[ext_resource type="Texture2D" uid="uid://b5qs5sqddp1a1" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00008.png" id="50_4nlhl"]
+[ext_resource type="Texture2D" uid="uid://bncyijvjphv8f" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00009.png" id="51_vtkyf"]
+[ext_resource type="Texture2D" uid="uid://dj2ercel32nq4" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00010.png" id="52_l0tsx"]
+[ext_resource type="Texture2D" uid="uid://b8m6ldeovcqqc" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00011.png" id="53_bdbqq"]
+[ext_resource type="Texture2D" uid="uid://c26j5eajjfbpb" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Diffusion Pass/Torches Left Side Diffuse Pass_00012.png" id="54_jxoya"]
+[ext_resource type="Texture2D" uid="uid://cy7sdqsdv3j4q" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00001.png" id="55_oj3f8"]
+[ext_resource type="Texture2D" uid="uid://bwj8droqnialx" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00002.png" id="56_iwapt"]
+[ext_resource type="Texture2D" uid="uid://7b1mkde8xn6m" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00003.png" id="57_gxrw8"]
+[ext_resource type="Texture2D" uid="uid://dflyueqhwpbea" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00004.png" id="58_yv7a4"]
+[ext_resource type="Texture2D" uid="uid://cg0fyivnk0koj" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00005.png" id="59_xynkn"]
+[ext_resource type="Texture2D" uid="uid://c3sh3trfnyev8" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00006.png" id="60_yar16"]
+[ext_resource type="Texture2D" uid="uid://3mkv8csqbi65" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00007.png" id="61_w6ue6"]
+[ext_resource type="Texture2D" uid="uid://cjtw7pak5bnep" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00008.png" id="62_gpwni"]
+[ext_resource type="Texture2D" uid="uid://dmqg2h7dfx67e" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00009.png" id="63_f4d88"]
+[ext_resource type="Texture2D" uid="uid://gqf534txtovn" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00010.png" id="64_kxhus"]
+[ext_resource type="Texture2D" uid="uid://cyr372upat8q8" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00011.png" id="65_mwksy"]
+[ext_resource type="Texture2D" uid="uid://bxl2uyoljq2iq" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Left Light Pass/Torches Left Side Light Pass_00012.png" id="66_15at3"]
+[ext_resource type="Texture2D" uid="uid://2w32ea1fed" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00001.png" id="67_xemhm"]
+[ext_resource type="Texture2D" uid="uid://bi81okqswhhdq" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00002.png" id="68_gc0so"]
+[ext_resource type="Texture2D" uid="uid://ye0m43f7ywoi" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00003.png" id="69_xc5wg"]
+[ext_resource type="Texture2D" uid="uid://dv6hee18jsfhr" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00004.png" id="70_5r3i8"]
+[ext_resource type="Texture2D" uid="uid://dyfeguna8ewl4" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00005.png" id="71_hn5qj"]
+[ext_resource type="Texture2D" uid="uid://cpiv7ikp1s26g" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00006.png" id="72_u1cx1"]
+[ext_resource type="Texture2D" uid="uid://c5jo1yni6q10s" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00007.png" id="73_0obls"]
+[ext_resource type="Texture2D" uid="uid://b0u5kgb3uelet" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00008.png" id="74_vcx5o"]
+[ext_resource type="Texture2D" uid="uid://dgojggm23abvq" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00009.png" id="75_hbuhj"]
+[ext_resource type="Texture2D" uid="uid://bp4r68otjktaw" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00010.png" id="76_naacw"]
+[ext_resource type="Texture2D" uid="uid://denpalexr48jr" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00011.png" id="77_iurid"]
+[ext_resource type="Texture2D" uid="uid://dnqaad5gk6ee6" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Diffusion Pass/Torches Right Side Diffuse Pass_00012.png" id="78_xwrey"]
+[ext_resource type="Texture2D" uid="uid://ifim8llbxrlh" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00001.png" id="79_g2bfa"]
+[ext_resource type="Texture2D" uid="uid://barowlv1h3i25" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00002.png" id="80_wcw25"]
+[ext_resource type="Texture2D" uid="uid://bw3oh7gxwpgux" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00003.png" id="81_ioa5p"]
+[ext_resource type="Texture2D" uid="uid://6e8q1t3waaux" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00004.png" id="82_01kk6"]
+[ext_resource type="Texture2D" uid="uid://15jl4j6aygvh" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00005.png" id="83_6aa27"]
+[ext_resource type="Texture2D" uid="uid://caafiy0gi3se1" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00006.png" id="84_6j5kb"]
+[ext_resource type="Texture2D" uid="uid://bjiwmq0hbf745" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00007.png" id="85_rtmfb"]
+[ext_resource type="Texture2D" uid="uid://md2ncefka76p" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00008.png" id="86_yhy4l"]
+[ext_resource type="Texture2D" uid="uid://30a8aodgktkx" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00009.png" id="87_ij5jk"]
+[ext_resource type="Texture2D" uid="uid://wrbpeubks1x3" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00010.png" id="88_qgxde"]
+[ext_resource type="Texture2D" uid="uid://f0wdpprd0jjx" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00011.png" id="89_o0i7b"]
+[ext_resource type="Texture2D" uid="uid://bsu5tdtqo3m7e" path="res://Assets/Menu/UI/V3/ambient/sequences/Torch Side Right Light Pass/Torches Right Side Light Pass_00012.png" id="90_7vtp8"]
+
+[sub_resource type="Animation" id="Animation_1ji05"]
+resource_name = "Flickering"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackGround_FrontTorches/FrontTorches_Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("18_hbg80"), ExtResource("19_wk715"), ExtResource("20_4vn1l"), ExtResource("21_wvbat"), ExtResource("22_jdn2l"), ExtResource("23_kcn8o"), ExtResource("24_p5vrc"), ExtResource("25_isuof"), ExtResource("26_ntiep"), ExtResource("27_8nm81"), ExtResource("28_7mc8p"), ExtResource("29_k7gvk"), ExtResource("30_e5o8v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackGround_FrontTorches/FrontTorches_Ilumination:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_4ssu0"), ExtResource("31_delnt"), ExtResource("32_pf18u"), ExtResource("33_58ef6"), ExtResource("34_arkof"), ExtResource("35_ab2rw"), ExtResource("36_1s56t"), ExtResource("37_f42mm"), ExtResource("38_8m22i"), ExtResource("39_fa6lu"), ExtResource("40_2htgo"), ExtResource("41_c765i"), ExtResource("42_wpi6a")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackGround_LeftTorch/LeftTorch_Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_vdvey"), ExtResource("43_7vyy7"), ExtResource("44_ldlbq"), ExtResource("45_4p8gv"), ExtResource("46_4rf6a"), ExtResource("47_eh7y3"), ExtResource("48_4dbqx"), ExtResource("49_w8ogl"), ExtResource("50_4nlhl"), ExtResource("51_vtkyf"), ExtResource("52_l0tsx"), ExtResource("53_bdbqq"), ExtResource("54_jxoya")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackGround_LeftTorch/LeftTorch_Ilumination:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_j2c3b"), ExtResource("55_oj3f8"), ExtResource("56_iwapt"), ExtResource("57_gxrw8"), ExtResource("58_yv7a4"), ExtResource("59_xynkn"), ExtResource("60_yar16"), ExtResource("61_w6ue6"), ExtResource("62_gpwni"), ExtResource("63_f4d88"), ExtResource("64_kxhus"), ExtResource("65_mwksy"), ExtResource("66_15at3")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BackGround_LeftTorch2/RightTorch_Sprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_rgq8p"), ExtResource("67_xemhm"), ExtResource("68_gc0so"), ExtResource("69_xc5wg"), ExtResource("70_5r3i8"), ExtResource("71_hn5qj"), ExtResource("72_u1cx1"), ExtResource("73_0obls"), ExtResource("74_vcx5o"), ExtResource("75_hbuhj"), ExtResource("76_naacw"), ExtResource("77_iurid"), ExtResource("78_xwrey")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackGround_LeftTorch2/RightTorch_Ilumination:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_phxpl"), ExtResource("79_g2bfa"), ExtResource("80_wcw25"), ExtResource("81_ioa5p"), ExtResource("82_01kk6"), ExtResource("83_6aa27"), ExtResource("84_6j5kb"), ExtResource("85_rtmfb"), ExtResource("86_yhy4l"), ExtResource("87_ij5jk"), ExtResource("88_qgxde"), ExtResource("89_o0i7b"), ExtResource("90_7vtp8")]
+}
+
+[sub_resource type="Animation" id="Animation_8q6fr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackGround_FrontTorches/FrontTorches_Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_vdvey")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackGround_FrontTorches/FrontTorches_Ilumination:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4ssu0")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackGround_LeftTorch/LeftTorch_Sprite:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_vdvey")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackGround_LeftTorch/LeftTorch_Ilumination:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_j2c3b")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BackGround_LeftTorch2/RightTorch_Sprite:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_rgq8p")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackGround_LeftTorch2/RightTorch_Ilumination:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_phxpl")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_llrlq"]
+_data = {
+"Flickering": SubResource("Animation_1ji05"),
+"RESET": SubResource("Animation_8q6fr")
+}
 
 [node name="Screen_MainMenu" type="Control"]
 layout_mode = 3
@@ -36,7 +266,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_lhgq6")
+texture = ExtResource("2_ydpfa")
 expand_mode = 2
 
 [node name="BackGround_Carpet" type="TextureRect" parent="CanvasLayer"]
@@ -49,7 +279,7 @@ offset_right = 112.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_yt7ui")
+texture = ExtResource("3_tniqe")
 expand_mode = 2
 
 [node name="BackGround_FrontTorches" type="Control" parent="CanvasLayer"]
@@ -61,7 +291,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BackGround_FrontTorches"]
+[node name="FrontTorches_Ilumination" type="TextureRect" parent="CanvasLayer/BackGround_FrontTorches" groups=["Ilumination"]]
+modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,10 +300,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("13_0xvmm")
+texture = ExtResource("4_4ssu0")
 expand_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackGround_FrontTorches"]
+[node name="FrontTorches_Sprite" type="TextureRect" parent="CanvasLayer/BackGround_FrontTorches"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,7 +311,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("14_r3nb6")
+texture = ExtResource("5_vdvey")
 expand_mode = 2
 
 [node name="BackGround_LeftTorch" type="Control" parent="CanvasLayer"]
@@ -92,22 +323,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch"]
+[node name="LeftTorch_Ilumination" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch" groups=["Ilumination"]]
+modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 0
 offset_right = 1924.0
 offset_bottom = 1083.0
 mouse_filter = 2
-texture = ExtResource("15_oetf6")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch"]
-layout_mode = 0
-offset_right = 1924.0
-offset_bottom = 1083.0
-mouse_filter = 2
-texture = ExtResource("16_7pdud")
+texture = ExtResource("6_j2c3b")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="LeftTorch_Sprite" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_vdvey")
+expand_mode = 2
 
 [node name="BackGround_LeftTorch2" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -118,22 +353,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch2"]
+[node name="RightTorch_Ilumination" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch2" groups=["Ilumination"]]
+modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 0
 offset_right = 1924.0
 offset_bottom = 1083.0
 mouse_filter = 2
-texture = ExtResource("17_ax8vm")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch2"]
-layout_mode = 0
-offset_right = 1924.0
-offset_bottom = 1083.0
-mouse_filter = 2
-texture = ExtResource("18_5gcgt")
+texture = ExtResource("7_phxpl")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="RightTorch_Sprite" type="TextureRect" parent="CanvasLayer/BackGround_LeftTorch2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_rgq8p")
+expand_mode = 2
 
 [node name="Button_Options" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 15
@@ -147,9 +386,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("4_d2uiq")
-texture_pressed = ExtResource("5_s1o7r")
-texture_hover = ExtResource("6_oxnef")
+texture_normal = ExtResource("9_l374j")
+texture_pressed = ExtResource("10_t1ued")
+texture_hover = ExtResource("11_ws2dh")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -163,9 +402,9 @@ offset_right = -801.0
 offset_bottom = -382.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("7_bbtjv")
-texture_pressed = ExtResource("8_ipj1m")
-texture_hover = ExtResource("9_n4ct4")
+texture_normal = ExtResource("12_r3773")
+texture_pressed = ExtResource("13_d18yg")
+texture_hover = ExtResource("14_a1yq7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -179,12 +418,23 @@ offset_right = -232.0
 offset_bottom = -123.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("10_xlvql")
-texture_pressed = ExtResource("11_0qlry")
-texture_hover = ExtResource("12_mdh1h")
+texture_normal = ExtResource("15_7fmcu")
+texture_pressed = ExtResource("16_pv4an")
+texture_hover = ExtResource("17_wm601")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_llrlq")
+}
+
+[connection signal="mouse_entered" from="CanvasLayer/Button_Options" to="." method="_on_button_options_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Button_Options" to="." method="_on_button_options_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Button_Options" to="." method="_on_button_options_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Button_Play" to="." method="_on_button_play_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Button_Play" to="." method="_on_button_play_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Button_Play" to="." method="_on_button_play_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Button_Quit" to="." method="_on_button_quit_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Button_Quit" to="." method="_on_button_quit_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Button_Quit" to="." method="_on_button_quit_pressed"]
