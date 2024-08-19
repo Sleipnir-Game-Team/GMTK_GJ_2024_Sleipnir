@@ -5,12 +5,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fv2xh"]
 radius = 250.0
 
-[sub_resource type="Gradient" id="Gradient_pkueg"]
+[sub_resource type="Gradient" id="Gradient_d6545"]
 interpolation_mode = 1
 colors = PackedColorArray(0.32549, 0.560784, 0.341176, 0.694118, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8kjgy"]
-gradient = SubResource("Gradient_pkueg")
+gradient = SubResource("Gradient_d6545")
 width = 500
 height = 500
 fill = 1

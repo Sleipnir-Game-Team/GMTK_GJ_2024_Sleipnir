@@ -24,7 +24,7 @@ func _input(event):
 			match event.keycode:
 				KEY_B:
 					print('Inventory Add')
-					inventory.add_item(load("res://Inventory/Items/print_potion_item.tres"))
+					inventory.add_item(load("res://Inventory/Items/stun_potion.tres"))
 				KEY_1, KEY_2, KEY_3, KEY_4:
 					var my_item = inventory.get_item(0)
 					

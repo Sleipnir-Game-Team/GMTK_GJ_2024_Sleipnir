@@ -74,11 +74,13 @@ func cleanup():
 
 
 func add_adventurer(adventurer: Adventurer):
+	adventurer.is_sleeping = true
 	adventurer.animation_handler.play(adventurer.character_type_name+' sleep')
 	super(adventurer)
 
 func _on_finish(affected: Array[Adventurer]):
 	for adventurer in affected:
+		adventurer.is_sleeping = false
 		adventurer.animation_handler.play(adventurer.character_type_name+' walk')
 
 ## +5 Score for successfully beating the event

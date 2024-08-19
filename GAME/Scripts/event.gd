@@ -45,7 +45,18 @@ func _process(_delta):
 		clear_adventurers()
 		set_enabled(false)
 
+func _force_win():
+	success.emit(adventurers)
+	finish.emit(adventurers)
+	clear_adventurers()
+	set_enabled(false)
 
+func _force_loss():
+	failure.emit(adventurers)
+	finish.emit(adventurers)
+	clear_adventurers()
+	set_enabled(false)
+		
 func set_enabled(enable):
 	if enable == _enabled:
 		print('Trying to %s already %s event' % ['enable' if enable else 'disable', 'enabled' if enable else 'disabled'])
