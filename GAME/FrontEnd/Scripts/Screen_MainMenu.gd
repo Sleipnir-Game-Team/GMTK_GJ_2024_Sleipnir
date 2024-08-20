@@ -4,8 +4,8 @@ func _ready():
 	UI_Displayer.screens.append(self)
 	get_viewport().size = DisplayServer.screen_get_size()
 	$CanvasLayer/AnimationPlayer.play("Flickering")
-	SleipnirMaestro.change_song("menu")
-	SleipnirMaestro.play()
+	#SleipnirMaestro.change_song("menu")
+	#SleipnirMaestro.play()
 
 func _on_button_play_pressed():
 	UI_Controller.manageScreen("res://FrontEnd/Prefabs/Screen_Cutscene.tscn", get_tree().root, "change")
