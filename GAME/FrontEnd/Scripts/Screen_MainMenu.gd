@@ -3,7 +3,6 @@ extends Control
 func _ready():
 	UI_Displayer.screens.append(self)
 	get_viewport().size = DisplayServer.screen_get_size()
-	#get_viewport().
 	$CanvasLayer/AnimationPlayer.play("Flickering")
 	SleipnirMaestro.change_song("menu")
 	SleipnirMaestro.play()

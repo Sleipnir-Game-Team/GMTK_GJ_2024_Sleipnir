@@ -1,10 +1,110 @@
-[gd_scene load_steps=2 format=3 uid="uid://lg6kuv3fkktu"]
+[gd_scene load_steps=22 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SFXGlobals.gd" id="1_p5jl5"]
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="2_snj2o"]
+[ext_resource type="AudioStream" uid="uid://dl8sjkef33y0q" path="res://Assets/Menu/Audio/Loja 1-LojaCompra.mp3" id="3_1lyqo"]
+[ext_resource type="AudioStream" uid="uid://k6rx5q2hgv4v" path="res://Assets/Menu/Audio/Loja 2-LojaReject.mp3" id="4_j8dhk"]
+[ext_resource type="AudioStream" uid="uid://b4x1l1hty5a4w" path="res://Assets/Menu/Audio/Porta 1-PortaHover1.mp3" id="5_0xoqx"]
+[ext_resource type="AudioStream" uid="uid://sq4hm3j14pxf" path="res://Assets/Menu/Audio/Porta 2-PortaHover2.mp3" id="6_nnhyb"]
+[ext_resource type="AudioStream" uid="uid://c2mwu5px82gh6" path="res://Assets/Menu/Audio/Porta 3-PortaHover3.mp3" id="7_nwttq"]
+[ext_resource type="AudioStream" uid="uid://beqjfmy71nnbh" path="res://Assets/Menu/Audio/UI 1-ButtonHover1.mp3" id="8_rdfsr"]
+[ext_resource type="AudioStream" uid="uid://dn870i5o6j0qr" path="res://Assets/Menu/Audio/UI 2-ButtonHover2.mp3" id="9_susvw"]
+[ext_resource type="AudioStream" uid="uid://cjffn1qbprj74" path="res://Assets/Menu/Audio/UI 4-Return1.mp3" id="10_37vxd"]
+[ext_resource type="AudioStream" uid="uid://b1jhn0mr5qut6" path="res://Assets/Menu/Audio/UI 5-Return2.mp3" id="11_17ee3"]
+[ext_resource type="AudioStream" uid="uid://b3krpnva0gs2j" path="res://Assets/Menu/Audio/UI 6-Return3.mp3" id="12_soy2a"]
+[ext_resource type="AudioStream" uid="uid://f2wiukpyog7" path="res://Assets/Menu/Audio/UI 7-ButtonClick1.mp3" id="13_v3u17"]
+[ext_resource type="AudioStream" uid="uid://dklfrygqvxebj" path="res://Assets/Menu/Audio/UI 8-ButtonClick2.mp3" id="14_2fast"]
+[ext_resource type="AudioStream" uid="uid://dld322l3jaa3y" path="res://Assets/Level/Adventurers/Audio/passos 1 Adventurer_Step1.mp3" id="15_emhjr"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i0vtr"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("3_1lyqo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_la6sb"]
+streams_count = 1
+stream_0/stream = ExtResource("4_j8dhk")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvv6h"]
+random_pitch = 1.5
+streams_count = 3
+stream_0/stream = ExtResource("5_0xoqx")
+stream_1/stream = ExtResource("6_nnhyb")
+stream_2/stream = ExtResource("7_nwttq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s5br3"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("8_rdfsr")
+stream_1/stream = ExtResource("9_susvw")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_epbxd"]
+random_pitch = 1.5
+streams_count = 3
+stream_0/stream = ExtResource("10_37vxd")
+stream_1/stream = ExtResource("11_17ee3")
+stream_2/stream = ExtResource("12_soy2a")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ps6dr"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("13_v3u17")
+stream_1/stream = ExtResource("14_2fast")
 
 [node name="SfxGlobals" type="Node"]
 script = ExtResource("1_p5jl5")
 
-[node name="PlaceHolder" type="Node" parent="."]
-
 [node name="UI" type="Node" parent="."]
+
+[node name="LojaCompra" type="Node" parent="UI"]
+script = ExtResource("2_snj2o")
+Count = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/LojaCompra"]
+stream = SubResource("AudioStreamRandomizer_i0vtr")
+bus = &"Sound Effects"
+
+[node name="LojaReject" type="Node" parent="UI"]
+script = ExtResource("2_snj2o")
+Count = 5
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="UI/LojaReject"]
+stream = SubResource("AudioStreamRandomizer_la6sb")
+bus = &"Sound Effects"
+
+[node name="PortaHover" type="Node" parent="UI"]
+script = ExtResource("2_snj2o")
+Count = 5
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="UI/PortaHover"]
+stream = SubResource("AudioStreamRandomizer_fvv6h")
+bus = &"Sound Effects"
+
+[node name="ButtonHover" type="Node" parent="UI"]
+script = ExtResource("2_snj2o")
+Count = 5
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="UI/ButtonHover"]
+stream = SubResource("AudioStreamRandomizer_s5br3")
+bus = &"Sound Effects"
+
+[node name="Return" type="Node" parent="UI"]
+script = ExtResource("2_snj2o")
+Count = 5
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="UI/Return"]
+stream = SubResource("AudioStreamRandomizer_epbxd")
+bus = &"Sound Effects"
+
+[node name="ButtonClick" type="Node" parent="UI"]
+script = ExtResource("2_snj2o")
+Count = 5
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="UI/ButtonClick"]
+stream = SubResource("AudioStreamRandomizer_ps6dr")
+bus = &"Sound Effects"
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Ambiencia" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("15_emhjr")
