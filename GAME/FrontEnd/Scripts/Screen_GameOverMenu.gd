@@ -1,5 +1,9 @@
 extends Control
 
+func _ready():
+	SleipnirMaestro.stop()
+	#SleipnirMaestro.change_song("Gameover")
+	#SleipnirMaestro.play()
 
 func _on_button_retry_pressed():
 	UI_Controller.manageScreen("res://Levels/dungeon.tscn", get_tree().root, "change")

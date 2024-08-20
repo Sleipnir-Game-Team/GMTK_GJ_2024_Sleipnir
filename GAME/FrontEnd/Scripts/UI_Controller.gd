@@ -5,6 +5,10 @@ signal show_HUD
 signal occult_HUD
 signal update_HotBar(items: Array[Item])
 
+signal cutsceneNext
+signal updateCutsceneImg
+signal updateCutsceneTxt
+
 func _process(_delta):
 	#if Input.is_action_just_pressed("Increase_Souls"):
 		#Globals.souls += 1
@@ -55,3 +59,22 @@ func occultHUD():
 
 func updateHotbar(items: Array[Item]):
 	update_HotBar.emit(items)
+	
+
+func startCutscene():
+	cutsceneNext.emit()
+	
+
+func processAction(action):
+	match action.type:
+		"img":
+			updateCutsceneImg.emit(action.url)
+			cutsceneNext.emit()
+		"txt":
+			print(action.text)
+			updateCutsceneTxt.emit(action.text)
+			cutsceneNext.emit()
+		"wait":
+			pass
+		"end":
+			manageScreen("res://Levels/Dungeon.tscn", get_tree().root, "change")
