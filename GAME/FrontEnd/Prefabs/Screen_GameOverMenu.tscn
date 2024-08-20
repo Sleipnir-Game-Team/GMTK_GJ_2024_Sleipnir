@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ia1rgt3183n6"]
+[gd_scene load_steps=10 format=3 uid="uid://ia1rgt3183n6"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_GameOverMenu.gd" id="1_uxph4"]
+[ext_resource type="Texture2D" uid="uid://bsaco116u5vpw" path="res://Assets/Menu/UI/V6/Game Over Background.png" id="2_5k3fn"]
+[ext_resource type="Texture2D" uid="uid://brc781mdoi420" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Normal@8x.png" id="3_png34"]
+[ext_resource type="Texture2D" uid="uid://k2jcsx0ai7bm" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Clicked@8x.png" id="4_8aoes"]
+[ext_resource type="Texture2D" uid="uid://bba2yfd2elifk" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Hover@8x.png" id="5_dkgxx"]
+[ext_resource type="Texture2D" uid="uid://c5r4hk4ynvrid" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Normal@8x.png" id="6_wf18d"]
+[ext_resource type="Texture2D" uid="uid://bo5flapsilgnt" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Clicked@8x.png" id="7_3oj3l"]
+[ext_resource type="Texture2D" uid="uid://b58exk7coh6nu" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Hover@8x.png" id="8_x33om"]
+[ext_resource type="Texture2D" uid="uid://b2gec1al3ka56" path="res://Assets/Menu/UI/V5/Game Over.jpg" id="9_0f4eu"]
 
 [node name="ScreenGameOverMenu" type="Control"]
 layout_mode = 3
@@ -11,29 +19,48 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uxph4")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="BackGround_BG" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_5k3fn")
+expand_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="Button_Retry" type="TextureButton" parent="."]
 layout_mode = 2
+offset_left = 445.0
+offset_top = 464.0
+offset_right = 983.0
+offset_bottom = 1013.0
+texture_normal = ExtResource("3_png34")
+texture_pressed = ExtResource("4_8aoes")
+texture_hover = ExtResource("5_dkgxx")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Button_Retry" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Button_MainMenu" type="TextureButton" parent="."]
 layout_mode = 2
-text = "Tentar Novamente"
+offset_left = 917.0
+offset_top = 509.0
+offset_right = 1443.0
+offset_bottom = 976.0
+texture_normal = ExtResource("6_wf18d")
+texture_pressed = ExtResource("7_3oj3l")
+texture_hover = ExtResource("8_x33om")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Button_MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Menu Principal"
+[node name="BackGround_GameOverImg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 110.0
+offset_right = 1277.0
+offset_bottom = 701.0
+texture = ExtResource("9_0f4eu")
+expand_mode = 2
 
-[node name="Button_Quit" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Sair"
-
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Retry" to="." method="_on_button_retry_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_MainMenu" to="." method="_on_button_main_menu_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Button_Retry" to="." method="_on_button_retry_pressed"]
+[connection signal="pressed" from="Button_MainMenu" to="." method="_on_button_main_menu_pressed"]
