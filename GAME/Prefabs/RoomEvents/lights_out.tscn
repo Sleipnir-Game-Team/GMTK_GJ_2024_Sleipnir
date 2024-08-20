@@ -24,5 +24,6 @@ position = Vector2(20, 20)
 [node name="BottomLeft" type="Marker2D" parent="."]
 position = Vector2(-20, 20)
 
+[connection signal="failure" from="." to="." method="_on_failure"]
 [connection signal="finish" from="." to="." method="_on_finish"]
 [connection signal="success" from="." to="." method="_on_success"]

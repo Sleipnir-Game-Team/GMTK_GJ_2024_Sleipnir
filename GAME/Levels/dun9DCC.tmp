@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqimv51rx276l"]
+[gd_scene load_steps=7 format=3 uid="uid://bqimv51rx276l"]
 
 [ext_resource type="Script" path="res://Levels/dungeon.gd" id="1_wh42s"]
 [ext_resource type="Resource" uid="uid://x1db7ig0d0un" path="res://Inventory/player_inventory.tres" id="2_03dth"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cnt8kosexo551" path="res://Prefabs/RoomEvents/adventurer_spawner.tscn" id="3_ia4dh"]
 [ext_resource type="PackedScene" uid="uid://ivcnfjoalrdn" path="res://Prefabs/paths.tscn" id="3_k1sel"]
 [ext_resource type="PackedScene" uid="uid://c44i6dk05il76" path="res://Prefabs/camera_scene.tscn" id="5_mmhgt"]
-[ext_resource type="Texture2D" uid="uid://bbejn4j200dcf" path="res://Assets/Level/Enviroment/Arte/Enviroment V2/Dungeon Background F.jpg" id="7_ssub2"]
 
 [node name="Dungeon" type="Node2D"]
 position = Vector2(296, 312)
@@ -31,15 +30,5 @@ autostart = true
 [node name="camera_scene" parent="." groups=["Camera"] instance=ExtResource("5_mmhgt")]
 position = Vector2(0, -224)
 scale = Vector2(0.969, 1)
-
-[node name="BG" type="ParallaxBackground" parent="."]
-
-[node name="01" type="ParallaxLayer" parent="BG"]
-motion_mirroring = Vector2(1021, 1021)
-
-[node name="sprite" type="Sprite2D" parent="BG/01"]
-position = Vector2(-1, -60)
-texture = ExtResource("7_ssub2")
-centered = false
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer"]

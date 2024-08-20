@@ -91,6 +91,10 @@ func _on_success(affected: Array[Adventurer]):
 	for adventurer in affected:
 		adventurer.damage.emit(10)
 
+func _on_failure(affected: Array[Adventurer]):
+	for adventurer in affected:
+		adventurer.heal.emit(10)
+		print(adventurer.current_life)
 
 func _win_condition():
 	return snuffed_torches >= 5

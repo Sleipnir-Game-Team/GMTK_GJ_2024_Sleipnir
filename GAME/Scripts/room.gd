@@ -77,6 +77,9 @@ func _process(_delta: float) -> void:
 func _on_body_entered(body):
 	print('Adventurer entered room %s' % name)
 	
+	if body is Adventurer:
+		body.entered_room.emit(body, self)
+		
 	if _active_event:
 		_active_event.add_adventurer(body)
 		
@@ -86,8 +89,6 @@ func _on_body_entered(body):
 	else:
 		print('Room has no active event.')
 
-	if body is Adventurer:
-		body.entered_room.emit(body, self)
 
 func _on_body_left(body):
 	if body is Adventurer:
