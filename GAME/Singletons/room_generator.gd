@@ -34,7 +34,7 @@ func get_core_room():
 
 func _fill_paths():
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_paths')
-	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_sprites')
+	#get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_sprites')
 
 func expand():
 	get_tree().get_first_node_in_group("Camera").get_child(0).expand(200)

@@ -13,6 +13,7 @@ var sprite_rotation
 var actual_state := 0
 var next_state
 var test := 0
+var has_expanded := false
 
 signal activate
 signal deactivate
@@ -44,6 +45,7 @@ func _ready() -> void:
 	
 	if _is_entrance:
 		sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala entrada 2.jpg")
+		
 
 
 func _process(_delta: float) -> void:
@@ -72,6 +74,10 @@ func _process(_delta: float) -> void:
 	elif _long_lasting_event:
 		# Troca pelo duradouro
 		_start_long_lasting_event()
+	
+	
+	if has_expanded:
+		update_sprites()
 
 
 func _on_body_entered(body):
@@ -107,6 +113,7 @@ func add_temporary_event(event: Event):
 
 ## Checks if there are adjacent rooms and spawns corresponding paths
 func update_paths():
+	has_expanded = true
 	_detect_adjacent_rooms()
 	_spawn_paths()
 
@@ -131,8 +138,6 @@ func _detect_adjacent_rooms():
 	paths_dict["right"] = right_detector.is_colliding()
 
 func update_sprites():
-	paths_dict["down"] = down_detector.is_colliding()
-	paths_dict["right"] = right_detector.is_colliding()
 	paths_dict["up"] = up_detector.is_colliding()
 	paths_dict["left"] = left_detector.is_colliding()
 	SpriteManager.room_sprites_management(paths_dict)
@@ -146,6 +151,8 @@ func update_sprites():
 			sprite.set_rotation_degrees(sprite_rotation)
 	
 	SpriteManager.room_sprite_value = 0
+	print(paths_dict)
+	has_expanded = false
 
 func _spawn_paths():
 	if paths_dict["down"]:
@@ -188,7 +195,6 @@ func _add_adjacent_rooms():
 		
 		var sibling = RoomGenerator.get_random_room().instantiate()
 		sibling.position = position
-		
 		
 		remove_from_group('Last_Rooms')
 		add_sibling(sibling)
