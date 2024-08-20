@@ -22,6 +22,13 @@ func _on_expand_clicked():
 	SleipnirMaestro.toggle_layer_off(2)
 
 
+func _on_risk_range_body_entered(body: Node2D) -> void:
+	SleipnirMaestro.toggle_layer_on(2)
+
+func _on_risk_range_body_exited(body: Node2D) -> void:
+	SleipnirMaestro.toggle_layer_off(2)
+
+
 func _on_alarm_range_body_entered(body: Node2D) -> void:
 	if not Globals.alarm_is_active:
 		Globals.alarm_is_active = true
@@ -31,6 +38,6 @@ func _on_alarm_range_body_entered(body: Node2D) -> void:
 func _on_alarm_range_body_exited(body: Node2D) -> void:
 	if Globals.alarm_is_active and not alarm_range.has_overlapping_bodies():
 		Globals.alarm_is_active = false
-		
+
 func get_dangerous():
 	pass

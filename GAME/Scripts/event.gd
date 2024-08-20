@@ -10,7 +10,6 @@ var adventurers: Array[Adventurer] = []
 
 var _enabled := false
 
-# TODO FUNCIONAR ISSO AQUI PRO SOL BOTAR MÚSICA FODA
 @export var interactive := false
 
 

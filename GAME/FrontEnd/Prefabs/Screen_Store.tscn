@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://lo66eujh4vy7" path="res://Inventory/Items/damage_potion.tres" id="7_k26v7"]
 [ext_resource type="Texture2D" uid="uid://drea2y2lo3xyo" path="res://Assets/Level/Items/Arte/Poder Troca de sala.png" id="8_4s63q"]
 [ext_resource type="Texture2D" uid="uid://c610x5bhjg0dg" path="res://Assets/Level/Items/Arte/Poder de ativar armadilhas.png" id="9_2rlim"]
-[ext_resource type="Resource" path="res://Inventory/Items/stun_potion.tres" id="9_b5dwi"]
+[ext_resource type="Resource" uid="uid://dot07s4kqiydm" path="res://Inventory/Items/stun_potion.tres" id="9_b5dwi"]
 [ext_resource type="Texture2D" uid="uid://c05l3h20pyss0" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Normal@8x.png" id="10_ctxdi"]
 [ext_resource type="Texture2D" uid="uid://b2iej7klajqq0" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Clicked@8x.png" id="11_es0l5"]
 [ext_resource type="Resource" uid="uid://dhve33xubo3gl" path="res://Inventory/Items/print_power_item.tres" id="11_wi4n5"]

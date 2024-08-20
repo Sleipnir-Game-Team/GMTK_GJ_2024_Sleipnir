@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("3_8yuy8")
 max_size = 9
-items = Array[ExtResource("1_kgswt")]([])
+items = Array[ExtResource("1_kgswt")]([null, null, null, null, null, null, null, null, null])

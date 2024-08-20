@@ -3,6 +3,7 @@ extends Node
 signal buy_Item
 signal show_HUD
 signal occult_HUD
+signal update_HotBar(items: Array[Item])
 
 func _process(_delta):
 	#if Input.is_action_just_pressed("Increase_Souls"):
@@ -29,27 +30,28 @@ func manageScreen(screen_path, parent, action):
 			UI_Displayer.openScreen(newScreen, parent)
 		"free":
 			UI_Displayer.freeScreen()
-	
+
 
 func gameOver():
 	manageScreen("res://FrontEnd/Prefabs/Screen_GameOverMenu.tscn", get_tree().root, "change")
-	
+
 
 func buyItem(item):
 	buy_Item.emit(item)
-	
+
 
 func syncSouls(label):
 	UI_Displayer.syncSouls(label)
-	
 
 func desyncSouls():
 	Globals.souls_changed.disconnect(UI_Displayer.on_souls_changed)
 
+
 func showHUD():
 	show_HUD.emit()
-	
 
 func occultHUD():
 	occult_HUD.emit()
-	
+
+func updateHotbar(items: Array[Item]):
+	update_HotBar.emit(items)

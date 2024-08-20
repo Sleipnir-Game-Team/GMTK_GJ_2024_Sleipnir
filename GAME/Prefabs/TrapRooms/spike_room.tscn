@@ -13,6 +13,8 @@ collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_pvm37")
 _long_lasting_event = NodePath("Spikes")
+title_text = "Spike Room"
+body_text = "Good chance for small damage!"
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1.43051e-06, -4.41074e-06)

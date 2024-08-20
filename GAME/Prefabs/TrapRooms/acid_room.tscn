@@ -13,6 +13,8 @@ collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_yl312")
 _long_lasting_event = NodePath("AcidPool")
+title_text = "Acid Room"
+body_text = "Small chance for big damage!"
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1.43051e-06, -4.41074e-06)

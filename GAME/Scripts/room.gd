@@ -5,7 +5,8 @@ class_name Room
 enum Type {BOTTOM, BOTTOM_L, BOTTOM_R};
 
 const Path := preload("res://Prefabs/paths.tscn")
-const RoomScene = preload('res://Prefabs/room.tscn')
+const RoomScene := preload('res://Prefabs/room.tscn')
+const InfoPanel := preload('res://Prefabs/RoomEvents/info_event.tscn')
 
 var paths_dict := {"right" = false, "down" = false, "up" = false, "left" = false}
 var sprite_path
@@ -13,6 +14,7 @@ var sprite_rotation
 var actual_state := 0
 var next_state
 var test := 0
+
 
 signal activate
 signal deactivate
@@ -23,7 +25,10 @@ var _active_event: Event
 @export var _is_entrance: bool
 @export var is_end := false
 
-@onready var collision_shape := $CollisionShape2D
+@export var title_text: String
+@export var body_text: String
+
+@onready var collision_shape := $CollisionShape2D as CollisionShape2D
 @onready var sprite := $sprite as Sprite2D
 
 @onready var down_detector := $down_path_detector as RayCast2D
@@ -36,6 +41,11 @@ var _active_event: Event
 
 func _ready() -> void:
 	print('Room Ready: ' + name)
+	
+	var info = InfoPanel.instantiate()
+	info.title = title_text
+	info.info_text = body_text
+	add_child(info)
 	
 	if len(_event_queue) > 0:
 		_swap_active_event(_event_queue.pop_front())
@@ -109,6 +119,7 @@ func add_temporary_event(event: Event):
 func update_paths():
 	_detect_adjacent_rooms()
 	_spawn_paths()
+	_update_sprites()
 
 func _start_long_lasting_event():
 	if _long_lasting_event != _active_event:
@@ -127,14 +138,12 @@ func _swap_active_event(event: Event):
 		add_child(_active_event)
 
 func _detect_adjacent_rooms():
-	paths_dict["down"] = down_detector.is_colliding()
-	paths_dict["right"] = right_detector.is_colliding()
-
-func update_sprites():
-	paths_dict["down"] = down_detector.is_colliding()
-	paths_dict["right"] = right_detector.is_colliding()
 	paths_dict["up"] = up_detector.is_colliding()
+	paths_dict["right"] = right_detector.is_colliding()
+	paths_dict["down"] = down_detector.is_colliding()
 	paths_dict["left"] = left_detector.is_colliding()
+
+func _update_sprites():
 	SpriteManager.room_sprites_management(paths_dict)
 	sprite_path = SpriteManager.sprite
 	sprite_rotation = SpriteManager.rotation_value

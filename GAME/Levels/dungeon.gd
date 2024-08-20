@@ -10,17 +10,22 @@ var item_being_used: Useable
 
 func _ready():
 	UI_Controller.buy_Item.connect(_on_buy_item)
+	
+	inventory.changed.connect(UI_Controller.updateHotbar)
+	
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
 	RoomGenerator._fill_paths()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not (event is InputEventKey and event.pressed): return
+	if item_being_used != null or not (event is InputEventKey and event.pressed): return
 	
 	var position: int
 	
 	match event.keycode:
 		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9:
 			position = event.keycode - KEY_1
+		_:
+			return
 	
 	var my_item = inventory.get_item(position)
 	if not my_item: return

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="4_ghvxf"]
 [ext_resource type="PackedScene" uid="uid://dlco6vy7t2sw4" path="res://Prefabs/RoomEvents/expand_button.tscn" id="5_hgtm5"]
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="6_he40c"]
-[ext_resource type="AudioStream" uid="uid://bsmhii0qcxnn5" path="res://Assets/Placeholder/alarme placeholder (1).mp3" id="7_7tdov"]
+[ext_resource type="AudioStream" uid="uid://cir6l63lifh6b" path="res://Assets/Placeholder/alarme placeholder (1).mp3" id="7_7tdov"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plhch"]
 radius = 270.0
@@ -23,6 +23,8 @@ collision_mask = 8
 script = ExtResource("1_pvm37")
 _long_lasting_event = NodePath("DungeonCore")
 is_end = true
+title_text = "Dungeon Core"
+body_text = "It's you!"
 
 [node name="sprite" type="Sprite2D" parent="."]
 position = Vector2(1.43051e-06, -4.41074e-06)
@@ -98,5 +100,7 @@ position = Vector2(0, 112)
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_left"]
 [connection signal="clicked" from="DungeonCore/ExpandButton" to="DungeonCore" method="_on_expand_clicked"]
+[connection signal="body_entered" from="DungeonCore/risk_range" to="DungeonCore" method="_on_risk_range_body_entered"]
+[connection signal="body_exited" from="DungeonCore/risk_range" to="DungeonCore" method="_on_risk_range_body_exited"]
 [connection signal="body_entered" from="DungeonCore/alarm_range" to="DungeonCore" method="_on_alarm_range_body_entered"]
 [connection signal="body_exited" from="DungeonCore/alarm_range" to="DungeonCore" method="_on_alarm_range_body_exited"]
