@@ -22,4 +22,4 @@ func freeScreen():
 
 func syncSouls(label):
 	label.text = str(Globals.souls)
-	Globals.souls_changed.connect(func (souls):label.text=str(souls))
+	Globals.souls_changed.connect(func (souls): label.text = str(souls))

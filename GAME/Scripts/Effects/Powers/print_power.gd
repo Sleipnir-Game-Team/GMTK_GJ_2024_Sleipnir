@@ -15,7 +15,7 @@ func _handle_selection(selected: Array[Dictionary]):
 	else:
 		print('[PRINTPOWER] CLICOU FORA MANÉ')
 	
-	queue_free()
+	finish()
 
 
 func _get_query() -> PhysicsPointQueryParameters2D:

@@ -26,6 +26,7 @@ func _ready() -> void:
 	
 	if interactive:
 		room.activate.connect(_on_interactive_event_activated)
+		finish.connect(remove_from_group.bind('running_interactive_events'))
 	
 	for event in _deactivate_events():
 		room.deactivate.connect(event)
@@ -65,8 +66,7 @@ func set_enabled(enable):
 
 
 func _on_interactive_event_activated():
-	#:sorriso:
-	pass
+	add_to_group('running_interactive_events')
 
 
 func add_adventurer(adventurer: Adventurer):

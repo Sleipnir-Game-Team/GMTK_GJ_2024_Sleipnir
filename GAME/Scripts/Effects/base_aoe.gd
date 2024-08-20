@@ -2,7 +2,6 @@ class_name BaseAOE
 
 extends Useable
 
-
 @export var sprite: Sprite2D
 @export var area: Area2D
 
@@ -21,7 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_affect(affected)
 	
 	elif event.is_action_pressed('cancel_potion'):
-		_cancel()
+		finish()
 	
 	elif event is InputEventMouseMotion:
 		sprite.global_position = get_global_mouse_position()

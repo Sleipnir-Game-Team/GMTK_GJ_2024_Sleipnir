@@ -1,6 +1,6 @@
 extends TextureButton
 
-@export var itemType:int
+@export var item : Item
 
 func _on_pressed():
-	UI_Controller.buyItem(itemType)
+	UI_Controller.buyItem(item)

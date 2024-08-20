@@ -4,53 +4,45 @@ const RoomScene = preload('res://Prefabs/room.tscn')
 
 const INITIAL_SIZE = Vector2i(3, 3)
 
+var item_being_used: Useable
+
 @export var inventory: Inventory
 
-
-func _init() -> void:
-	pass
-
 func _ready():
+	UI_Controller.buy_Item.connect(_on_buy_item)
 	_create_grid(INITIAL_SIZE.x, INITIAL_SIZE.y)
 	RoomGenerator._fill_paths()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not (event is InputEventKey and event.pressed): return
+	
+	var position: int
+	
+	match event.keycode:
+		KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9:
+			position = event.keycode - KEY_1
+	
+	var my_item = inventory.get_item(position)
+	if not my_item: return
+	
+	item_being_used = my_item.useable.instantiate() as Useable
+	item_being_used.finished.connect(inventory.remove_item.bind(position), CONNECT_ONE_SHOT)
+	item_being_used.use()
+	add_sibling(item_being_used)
 
-# TODO REMOVER ESSA PORRA AQUI
-# NA VERDADE TALVEZ NÃO SEJA REMOVIDO (???)
-# NA VERDADE VAI SER SIM!!!
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed:
-			match event.keycode:
-				KEY_Z:
-					inventory.add_item(load("res://Inventory/Items/print_potion_item.tres"))
-				KEY_X:
-					inventory.add_item(load("res://Inventory/Items/print_power_item.tres"))
-				KEY_C:
-					inventory.add_item(load("res://Inventory/Items/stun_potion.tres"))
-				KEY_V:
-					inventory.add_item(load("res://Inventory/Items/damage_potion.tres"))
-				KEY_1, KEY_2, KEY_3, KEY_4:
-					var my_item = inventory.get_item(0)
-					
-					if not my_item: return
-					
-					print('Inventory Item: %s' % my_item)
-					
-					var effect = my_item.useable
-					print('Inventory Effect: %s' % effect)
-					
-					var instance = effect.instantiate() as Useable
-					print('Inventory Instance: %s' % instance)
-					instance.use()
-					add_sibling(instance)
 
+## Check if item can be bought, remove souls and add it to inventory
+func _on_buy_item(item: Item):
+	if Globals.souls >= item.price and inventory.has_space():
+		Globals.souls -= item.price
+		inventory.add_item(item)
 
 ## Gain 20 points every 10 seconds of being alive
 func _on_score_timer() -> void:
 	Globals.score += 20
 
 
+## Create initial playing grid
 func _create_grid(rows: int, columns: int):
 	# Create a room to calculate the distance between each room
 	var distance = null

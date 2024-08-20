@@ -9,3 +9,4 @@ script = ExtResource("1_vsj1l")
 name = "Print Potion"
 texture = ExtResource("2_dfrxh")
 useable = ExtResource("3_dverj")
+price = 1

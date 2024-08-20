@@ -8,6 +8,7 @@ var using := false:
 	set = set_using
 
 signal used
+signal finished
 
 
 func use():
@@ -24,5 +25,6 @@ func set_using(new_using: bool) -> void:
 func _trigger() -> void:
 	using = true
 
-func _cancel() -> void:
-	using = false
+func finish() -> void:
+	finished.emit()
+	queue_free()
