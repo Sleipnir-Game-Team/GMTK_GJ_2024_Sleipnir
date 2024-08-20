@@ -4,6 +4,9 @@ var introText = "type|img;url|res://Assets/Cutscene/Intro 1.jpg\ntype|txt;text|E
 var actions = []
 
 func _ready():
+	#if SfxGlobals.get_sfx_node('AmbienciaFogo')._is_playing():
+		#SfxGlobals.stop_global('AmbienciaFogo')
+	
 	UI_Controller.cutsceneNext.connect(on_cutsceneNext)
 	UI_Controller.updateCutsceneImg.connect(updateCutsceneImg)
 	UI_Controller.updateCutsceneTxt.connect(updateCutsceneTxt)
@@ -15,19 +18,17 @@ func _ready():
 			actionDict[itemDividido[0]] = itemDividido[1]
 		actions.append(actionDict)
 	UI_Controller.startCutscene()
-	
+
 
 func on_cutsceneNext():
 	UI_Controller.processAction(actions.pop_front())
-	
 
 func updateCutsceneImg(image):
 	$TextureRect.texture = load(image)
-	
 
 func updateCutsceneTxt(text):
 	$Label.set_text(text)
-	
+
 
 func _input(event):
 	if event is InputEventMouseButton or event is InputEventKey:

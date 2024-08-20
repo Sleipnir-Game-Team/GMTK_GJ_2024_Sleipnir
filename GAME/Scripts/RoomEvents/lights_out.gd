@@ -58,9 +58,12 @@ func light_torch():
 	if location.name.ends_with('Left'):
 		torch.scale = Vector2(-1, 1)
 	
+	# TODO PLAY ONLY IF VISIBLE
+	AudioManager.play_sfx($Acender)
 	add_child(torch)
 
 func snuff_torch(torch: Torch, location_name: String):
+	AudioManager.play_sfx($Apagar)
 	torches[location_name] = false
 	lit_torches -= 1
 	snuffed_torches += 1
@@ -101,12 +104,13 @@ func _win_condition():
 
 func _loss_condition():
 	return timed_out
-	
+
 func _activate_events():
 	return [torch_timer.start]
 
 func _deactivate_events():
 	return [torch_timer.stop, cleanup]
-	
+
+
 func get_dangerous():
 	pass

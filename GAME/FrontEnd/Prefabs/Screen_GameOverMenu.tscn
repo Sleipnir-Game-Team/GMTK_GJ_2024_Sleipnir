@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://ia1rgt3183n6"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_GameOverMenu.gd" id="1_uxph4"]
-[ext_resource type="Texture2D" uid="uid://bsaco116u5vpw" path="res://Assets/Menu/UI/V6/Game Over Background.png" id="2_5k3fn"]
-[ext_resource type="Texture2D" uid="uid://brc781mdoi420" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Normal@8x.png" id="3_png34"]
-[ext_resource type="Texture2D" uid="uid://k2jcsx0ai7bm" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Clicked@8x.png" id="4_8aoes"]
-[ext_resource type="Texture2D" uid="uid://bba2yfd2elifk" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Hover@8x.png" id="5_dkgxx"]
-[ext_resource type="Texture2D" uid="uid://c5r4hk4ynvrid" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Normal@8x.png" id="6_wf18d"]
-[ext_resource type="Texture2D" uid="uid://bo5flapsilgnt" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Clicked@8x.png" id="7_3oj3l"]
-[ext_resource type="Texture2D" uid="uid://b58exk7coh6nu" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Hover@8x.png" id="8_x33om"]
+[ext_resource type="Texture2D" uid="uid://de2dijo7v7sin" path="res://Assets/Menu/UI/V6/Game Over Background.png" id="2_5k3fn"]
+[ext_resource type="Texture2D" uid="uid://bye32s17sl8sc" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Normal@8x.png" id="3_png34"]
+[ext_resource type="Texture2D" uid="uid://bwyayc8xjks1j" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Clicked@8x.png" id="4_8aoes"]
+[ext_resource type="Texture2D" uid="uid://bxtjn47mjcw70" path="res://Assets/Menu/UI/V6/game over/gameover_button_try again/Game Over Try Again Hover@8x.png" id="5_dkgxx"]
+[ext_resource type="Texture2D" uid="uid://b4mhphwf0rsrh" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Normal@8x.png" id="6_wf18d"]
+[ext_resource type="Texture2D" uid="uid://cq4e3alnxfpkt" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Clicked@8x.png" id="7_3oj3l"]
+[ext_resource type="Texture2D" uid="uid://cj7aebg5mwxsj" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Hover@8x.png" id="8_x33om"]
 [ext_resource type="Texture2D" uid="uid://b2gec1al3ka56" path="res://Assets/Menu/UI/V5/Game Over.jpg" id="9_0f4eu"]
 
 [node name="ScreenGameOverMenu" type="Control"]
@@ -62,5 +62,7 @@ offset_bottom = 701.0
 texture = ExtResource("9_0f4eu")
 expand_mode = 2
 
+[connection signal="mouse_entered" from="Button_Retry" to="." method="_on_button_retry_mouse_entered"]
 [connection signal="pressed" from="Button_Retry" to="." method="_on_button_retry_pressed"]
+[connection signal="mouse_entered" from="Button_MainMenu" to="." method="_on_button_main_menu_mouse_entered"]
 [connection signal="pressed" from="Button_MainMenu" to="." method="_on_button_main_menu_pressed"]

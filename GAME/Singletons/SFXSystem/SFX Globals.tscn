@@ -1,11 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://lg6kuv3fkktu"]
+[gd_scene load_steps=21 format=3 uid="uid://lg6kuv3fkktu"]
 
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SFXGlobals.gd" id="1_p5jl5"]
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="2_snj2o"]
 [ext_resource type="AudioStream" uid="uid://dl8sjkef33y0q" path="res://Assets/Menu/Audio/Loja 1-LojaCompra.mp3" id="3_1lyqo"]
 [ext_resource type="AudioStream" uid="uid://k6rx5q2hgv4v" path="res://Assets/Menu/Audio/Loja 2-LojaReject.mp3" id="4_j8dhk"]
-[ext_resource type="AudioStream" uid="uid://b4x1l1hty5a4w" path="res://Assets/Menu/Audio/Porta 1-PortaHover1.mp3" id="5_0xoqx"]
-[ext_resource type="AudioStream" uid="uid://sq4hm3j14pxf" path="res://Assets/Menu/Audio/Porta 2-PortaHover2.mp3" id="6_nnhyb"]
 [ext_resource type="AudioStream" uid="uid://c2mwu5px82gh6" path="res://Assets/Menu/Audio/Porta 3-PortaHover3.mp3" id="7_nwttq"]
 [ext_resource type="AudioStream" uid="uid://beqjfmy71nnbh" path="res://Assets/Menu/Audio/UI 1-ButtonHover1.mp3" id="8_rdfsr"]
 [ext_resource type="AudioStream" uid="uid://dn870i5o6j0qr" path="res://Assets/Menu/Audio/UI 2-ButtonHover2.mp3" id="9_susvw"]
@@ -14,7 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://b3krpnva0gs2j" path="res://Assets/Menu/Audio/UI 6-Return3.mp3" id="12_soy2a"]
 [ext_resource type="AudioStream" uid="uid://f2wiukpyog7" path="res://Assets/Menu/Audio/UI 7-ButtonClick1.mp3" id="13_v3u17"]
 [ext_resource type="AudioStream" uid="uid://dklfrygqvxebj" path="res://Assets/Menu/Audio/UI 8-ButtonClick2.mp3" id="14_2fast"]
-[ext_resource type="AudioStream" uid="uid://dld322l3jaa3y" path="res://Assets/Level/Adventurers/Audio/passos 1 Adventurer_Step1.mp3" id="15_emhjr"]
+[ext_resource type="AudioStream" uid="uid://dqdlwjf7cqksk" path="res://Assets/Level/Enviroment/Audio/AmbientaçãoDungeon.ogg" id="15_5mgfm"]
+[ext_resource type="AudioStream" uid="uid://bggswnfmh4kan" path="res://Assets/Level/Enviroment/Audio/AmbientaçãoFogo.ogg" id="16_61duj"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i0vtr"]
 random_pitch = 1.5
@@ -26,11 +25,9 @@ streams_count = 1
 stream_0/stream = ExtResource("4_j8dhk")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvv6h"]
-random_pitch = 1.5
-streams_count = 3
-stream_0/stream = ExtResource("5_0xoqx")
-stream_1/stream = ExtResource("6_nnhyb")
-stream_2/stream = ExtResource("7_nwttq")
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("7_nwttq")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s5br3"]
 random_pitch = 1.5
@@ -75,6 +72,7 @@ bus = &"Sound Effects"
 [node name="PortaHover" type="Node" parent="UI"]
 script = ExtResource("2_snj2o")
 Count = 5
+print_log = true
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="UI/PortaHover"]
 stream = SubResource("AudioStreamRandomizer_fvv6h")
@@ -106,5 +104,10 @@ bus = &"Sound Effects"
 
 [node name="Level" type="Node" parent="."]
 
-[node name="Ambiencia" type="AudioStreamPlayer" parent="Level"]
-stream = ExtResource("15_emhjr")
+[node name="AmbienciaDungeon" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("15_5mgfm")
+bus = &"Ambience"
+
+[node name="AmbienciaFogo" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("16_61duj")
+bus = &"Ambience"

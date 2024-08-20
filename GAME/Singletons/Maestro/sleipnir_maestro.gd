@@ -39,7 +39,7 @@ var _transition_type : int             # qual transição vai rolar
 var _last_bar_time : float             # quando a ultima bar tocou
 var _last_beat_time : float            # quando a ultima beat tocou
 var _silence_path : String = "res://Singletons/Maestro/silence-500ms.mp3"  # path do placeholder de silencio
-var _song_path : String = "res://Assets/Placeholder/MusicalLayers Level PlaceHolder/" # path das músicas
+var _song_path : String = "res://Singletons/Maestro/Songs/" # path das músicas
 var _sync_streams : Dictionary         #ATTENTION é pra ser dicionário de streams pro AudioStreamSync  
 
 # funções públicas VVVVVVVVV

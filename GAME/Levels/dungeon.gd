@@ -8,6 +8,9 @@ var item_being_used: Useable
 
 @export var inventory: Inventory
 
+@onready var BuffPotionSFX := $BuffPotion as SoundQueue
+@onready var StunPotionSFX := $StunPotion
+
 func _ready():
 	UI_Controller.buy_Item.connect(_on_buy_item)
 	
@@ -32,6 +35,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	item_being_used = my_item.useable.instantiate() as Useable
 	item_being_used.finished.connect(inventory.remove_item.bind(position), CONNECT_ONE_SHOT)
+	print('ITEM NAME ', item_being_used.name)
+	
+	match my_item.name:
+		'BuffPotion':
+			item_being_used.finished.connect(AudioManager.play_sfx.bind(BuffPotionSFX), CONNECT_ONE_SHOT)
+		'StunPotion':
+			item_being_used.finished.connect(AudioManager.play_sfx.bind(StunPotionSFX), CONNECT_ONE_SHOT)
 	item_being_used.use()
 	add_sibling(item_being_used)
 
@@ -39,8 +49,11 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Check if item can be bought, remove souls and add it to inventory
 func _on_buy_item(item: Item):
 	if Globals.souls >= item.price and inventory.has_space():
+		SfxGlobals.play_global('LojaCompra')
 		Globals.souls -= item.price
 		inventory.add_item(item)
+	else:
+		SfxGlobals.play_global('LojaReject')
 
 ## Gain 20 points every 10 seconds of being alive
 func _on_score_timer() -> void:

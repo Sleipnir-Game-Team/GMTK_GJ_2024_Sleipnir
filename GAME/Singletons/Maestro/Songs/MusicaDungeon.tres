@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=7 format=3 uid="uid://cmx06g6umxc1u"]
+
+[ext_resource type="AudioStream" uid="uid://bocep6p3cjg7g" path="res://Assets/Level/Musica/Level Theme Base Layer.ogg" id="1_1tn6j"]
+[ext_resource type="Script" path="res://Singletons/Maestro/SongData.gd" id="1_2ou1u"]
+[ext_resource type="AudioStream" uid="uid://be4o07fihnjuc" path="res://Assets/Level/Musica/Level Theme Danger Layer.ogg" id="2_vo7wt"]
+[ext_resource type="AudioStream" uid="uid://b4gyx727aeuby" path="res://Assets/Level/Musica/Level Theme Urgency Layer.ogg" id="3_wwupf"]
+[ext_resource type="AudioStream" uid="uid://bdxxug3dgotdf" path="res://Assets/Level/Musica/Alarme.mp3" id="4_u40it"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_wqrk2"]
+stream_count = 3
+stream_0/stream = ExtResource("1_1tn6j")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_wwupf")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("2_vo7wt")
+stream_2/volume = -60.0
+
+[resource]
+script = ExtResource("1_2ou1u")
+default_first_section = "ambient"
+default_track_transition = 0
+fade_beats = 0
+fade_mode = 0
+BPM = 90
+MainClips = SubResource("AudioStreamSynchronized_wqrk2")
+TriggerClips = Array[Resource]([ExtResource("4_u40it")])

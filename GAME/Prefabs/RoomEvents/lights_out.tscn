@@ -1,9 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://cisoc3y2otam5"]
+[gd_scene load_steps=12 format=3 uid="uid://cisoc3y2otam5"]
 
 [ext_resource type="Script" path="res://Scripts/RoomEvents/lights_out.gd" id="1_3nxgi"]
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="2_8pa40"]
+[ext_resource type="AudioStream" uid="uid://cqme1hyi33f3j" path="res://Assets/Level/Enviroment/Audio/tochas 1 Fogo_Acendendo1 mixed.mp3" id="3_mssxg"]
+[ext_resource type="AudioStream" uid="uid://dtmdoil7mhkyf" path="res://Assets/Level/Enviroment/Audio/tochas 2 Fogo_Acendendo2- mixed.mp3" id="4_d67gm"]
+[ext_resource type="AudioStream" uid="uid://cfpvd8cqo7ud5" path="res://Assets/Level/Enviroment/Audio/tochas 3 Fogo_Acendendo3-mixed.mp3" id="5_motfk"]
+[ext_resource type="AudioStream" uid="uid://bv5yov0415vjc" path="res://Assets/Level/Enviroment/Audio/tochas 4 Fogo_Acendendo4-mixed.mp3" id="6_80ceo"]
+[ext_resource type="AudioStream" uid="uid://8pqwoxr3q5gr" path="res://Assets/Level/Enviroment/Audio/tochas 5 Fogo_Apagando1-mixed.mp3" id="7_ixn3m"]
+[ext_resource type="AudioStream" uid="uid://ba1lefkd7qtic" path="res://Assets/Level/Enviroment/Audio/tochas 6 Fogo_Apagando2-mixed.mp3" id="8_kylls"]
+[ext_resource type="AudioStream" uid="uid://cvp0fqq2lnjh" path="res://Assets/Level/Enviroment/Audio/tochas 7 Fogo_Apagando3-mixed.mp3" id="9_pluba"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ddexa"]
+random_pitch = 1.5
+streams_count = 4
+stream_0/stream = ExtResource("3_mssxg")
+stream_1/stream = ExtResource("4_d67gm")
+stream_2/stream = ExtResource("5_motfk")
+stream_3/stream = ExtResource("6_80ceo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_67ias"]
+random_pitch = 1.5
+streams_count = 3
+stream_0/stream = ExtResource("7_ixn3m")
+stream_1/stream = ExtResource("8_kylls")
+stream_2/stream = ExtResource("9_pluba")
 
 [node name="LightsOut" type="Node2D"]
 script = ExtResource("1_3nxgi")
+interactive = true
 
 [node name="Duration" type="Timer" parent="."]
 wait_time = 6.0
@@ -23,6 +47,23 @@ position = Vector2(20, 20)
 
 [node name="BottomLeft" type="Marker2D" parent="."]
 position = Vector2(-20, 20)
+
+[node name="Acender" type="Node" parent="."]
+script = ExtResource("2_8pa40")
+Count = 4
+
+[node name="AcenderTocha" type="AudioStreamPlayer" parent="Acender"]
+stream = SubResource("AudioStreamRandomizer_ddexa")
+volume_db = -6.0
+bus = &"Sound Effects"
+
+[node name="Apagar" type="Node" parent="."]
+script = ExtResource("2_8pa40")
+Count = 4
+
+[node name="ApagarTocha" type="AudioStreamPlayer" parent="Apagar"]
+stream = SubResource("AudioStreamRandomizer_67ias")
+bus = &"Sound Effects"
 
 [connection signal="failure" from="." to="." method="_on_failure"]
 [connection signal="finish" from="." to="." method="_on_finish"]

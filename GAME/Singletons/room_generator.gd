@@ -7,6 +7,7 @@ var TrapRooms = []
 const TRAP_ROOM_PATH := 'res://Prefabs/TrapRooms/'
 var trap_directory := DirAccess.open(TRAP_ROOM_PATH)
 
+
 func _ready() -> void:
 	var traps = trap_directory.get_files()
 	

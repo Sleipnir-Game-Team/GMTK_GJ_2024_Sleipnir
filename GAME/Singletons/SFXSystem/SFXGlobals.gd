@@ -25,6 +25,14 @@ func _ready():
 	child_search.clear()
 	child_nodes = get_all(self)
 
+
+func get_sfx_node(sfx_name: String):
+	return child_nodes[child_search.find(sfx_name)]
+
 func play_global(sfx_name: String): ## Método para tocar um SFX Global
 	#print_rich("[color=tomato][SFXGlobals](sent)[/color] ",child_nodes[child_search.find(sfx_name)])
 	AudioManager.play_sfx(child_nodes[child_search.find(sfx_name)], 4)
+	
+func stop_global(sfx_name: String): ## Método para parar um SFX Global
+	#print_rich("[color=tomato][SFXGlobals](sent)[/color] ",child_nodes[child_search.find(sfx_name)])
+	AudioManager.stop_sfx(child_nodes[child_search.find(sfx_name)])

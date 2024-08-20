@@ -54,7 +54,7 @@ func _ready() -> void:
 	
 	if _is_entrance:
 		sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala entrada 2.jpg")
-		
+
 
 
 func _process(_delta: float) -> void:

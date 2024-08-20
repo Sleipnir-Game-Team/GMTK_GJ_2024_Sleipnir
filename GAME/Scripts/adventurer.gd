@@ -71,6 +71,8 @@ func stun():
 	
 
 func _find_possible_moves():
+	_stop_urgency()
+	
 	var possible_moves = []
 	
 	if right_detector.is_colliding():
@@ -78,11 +80,7 @@ func _find_possible_moves():
 			
 	if down_detector.is_colliding():
 		possible_moves.append(down_detector.get_collider())
-		#if down_detector.get_collider().is_end == true and !Globals.alarm_is_active:
-			#Globals.alarm_is_active = true
-			#AudioManager.play_sfx(sfx_proximity)
-		#else:
-			#AudioManager.stop_sfx(sfx_proximity)
+	
 	
 	if len(possible_moves) > 0:
 		target_room = possible_moves.pick_random()
@@ -153,3 +151,8 @@ func _handle_leave_event(_adventurer, room):
 func _on_stun_time_timeout() -> void:
 	animation_handler.play(character_type_name+" walk")
 	move_in_direction(actual_direction)
+
+
+func _stop_urgency():
+	if get_tree().get_node_count_in_group('running_interactive_events') == 0:
+		SleipnirMaestro.toggle_layer_off(1)

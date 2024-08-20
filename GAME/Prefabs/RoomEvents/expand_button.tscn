@@ -1,18 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlco6vy7t2sw4"]
 
 [ext_resource type="Script" path="res://Scripts/RoomEvents/expand_button.gd" id="1_cvs77"]
-[ext_resource type="Texture2D" uid="uid://xayau8kb40qe" path="res://Assets/Placeholder/heart_img.png" id="1_p8l7c"]
+[ext_resource type="Texture2D" uid="uid://d0hfinyktog72" path="res://Assets/Menu/UI/V4/menu_buttons/expansion/Expansion Normal@8x.png" id="2_07omw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpd6v"]
-size = Vector2(17.9934, 16.5517)
+size = Vector2(11.0345, 11.0345)
 
 [node name="ExpandButton" type="Area2D"]
 script = ExtResource("1_cvs77")
 
 [node name="expand_sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_p8l7c")
+texture = ExtResource("2_07omw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, 3.57628e-07)
 scale = Vector2(1.45, 1.45)
 shape = SubResource("RectangleShape2D_kpd6v")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

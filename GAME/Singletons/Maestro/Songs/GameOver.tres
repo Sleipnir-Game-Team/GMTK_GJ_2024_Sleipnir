@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=4 format=3 uid="uid://b75yu157s3sp3"]
+
+[ext_resource type="AudioStream" uid="uid://jisqx1imu2di" path="res://Assets/Menu/Musica/Gameover.ogg" id="1_56bxg"]
+[ext_resource type="Script" path="res://Singletons/Maestro/SongData.gd" id="2_agglb"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_khqyq"]
+stream_count = 1
+stream_0/stream = ExtResource("1_56bxg")
+stream_0/volume = 0.0
+
+[resource]
+script = ExtResource("2_agglb")
+default_first_section = "ambient"
+default_track_transition = 0
+fade_beats = 0
+fade_mode = 0
+BPM = 132
+MainClips = SubResource("AudioStreamSynchronized_khqyq")
+TriggerClips = Array[Resource]([])

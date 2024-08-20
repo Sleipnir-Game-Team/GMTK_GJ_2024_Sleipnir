@@ -28,8 +28,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func set_using(using: bool) -> void:
-	sprite.global_position = get_global_mouse_position()
-	area.global_position = get_global_mouse_position()
 	sprite.visible = using
 	super(using)
 

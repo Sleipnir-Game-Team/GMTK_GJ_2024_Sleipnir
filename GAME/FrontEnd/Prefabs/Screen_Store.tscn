@@ -132,4 +132,5 @@ texture_hover = ExtResource("12_xmq3s")
 ignore_texture_size = true
 stretch_mode = 5
 
+[connection signal="mouse_entered" from="CanvasLayer/Button_Back" to="." method="_on_button_back_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Button_Back" to="." method="_on_button_back_pressed"]

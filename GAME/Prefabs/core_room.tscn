@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc31cfh4usat7"]
+[gd_scene load_steps=13 format=3 uid="uid://dc31cfh4usat7"]
 
 [ext_resource type="Script" path="res://Scripts/room.gd" id="1_pvm37"]
 [ext_resource type="Texture2D" uid="uid://ctq77ensd6jhd" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Sala 1.jpg" id="2_emofw"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="4_ghvxf"]
 [ext_resource type="PackedScene" uid="uid://dlco6vy7t2sw4" path="res://Prefabs/RoomEvents/expand_button.tscn" id="5_hgtm5"]
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="6_he40c"]
-[ext_resource type="AudioStream" uid="uid://cir6l63lifh6b" path="res://Assets/Placeholder/alarme placeholder (1).mp3" id="7_7tdov"]
+[ext_resource type="AudioStream" uid="uid://bxn1b77n18uxl" path="res://Assets/Level/Enviroment/Audio/Dungeon 1-DungeonExpand1.mp3" id="7_th40d"]
+[ext_resource type="AudioStream" uid="uid://c8pjgb2u4bpnq" path="res://Assets/Level/Enviroment/Audio/Dungeon 2-DungeonExpand2.mp3" id="8_fi0cu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plhch"]
 radius = 270.0
@@ -16,6 +17,12 @@ radius = 180.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16aaf"]
 size = Vector2(86, 90)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mmdhh"]
+random_pitch = 1.5
+streams_count = 2
+stream_0/stream = ExtResource("7_th40d")
+stream_1/stream = ExtResource("8_fi0cu")
 
 [node name="CoreRoom" type="Area2D" node_paths=PackedStringArray("_long_lasting_event") groups=["Room"]]
 collision_layer = 2
@@ -31,7 +38,8 @@ position = Vector2(1.43051e-06, -4.41074e-06)
 scale = Vector2(0.0286667, 0.03)
 texture = ExtResource("2_emofw")
 
-[node name="DungeonCore" parent="." instance=ExtResource("3_iclcr")]
+[node name="DungeonCore" parent="." node_paths=PackedStringArray("expand_sfx") instance=ExtResource("3_iclcr")]
+expand_sfx = NodePath("../Expand")
 
 [node name="core_sprite" type="Sprite2D" parent="DungeonCore"]
 position = Vector2(-0.101917, -0.0754954)
@@ -39,9 +47,12 @@ scale = Vector2(0.031978, 0.0305793)
 texture = ExtResource("4_ghvxf")
 
 [node name="ExpandButton" parent="DungeonCore" instance=ExtResource("5_hgtm5")]
-position = Vector2(56, 56)
+position = Vector2(0, 70)
+scale = Vector2(2, 2)
 
 [node name="risk_range" type="Area2D" parent="DungeonCore"]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonCore/risk_range"]
 shape = SubResource("CircleShape2D_plhch")
@@ -54,13 +65,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DungeonCore/alarm_range"]
 shape = SubResource("CircleShape2D_d3oq2")
 debug_color = Color(0.534877, 0.536802, 0.528045, 0.42)
-
-[node name="sfx" type="Node" parent="DungeonCore"]
-script = ExtResource("6_he40c")
-print_log = true
-
-[node name="alarm_audio" type="AudioStreamPlayer" parent="DungeonCore/sfx"]
-stream = ExtResource("7_7tdov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_16aaf")
@@ -96,6 +100,13 @@ position = Vector2(112, 0)
 
 [node name="down_path_spawn" type="Marker2D" parent="."]
 position = Vector2(0, 112)
+
+[node name="Expand" type="Node" parent="."]
+script = ExtResource("6_he40c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Expand"]
+stream = SubResource("AudioStreamRandomizer_mmdhh")
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_left"]

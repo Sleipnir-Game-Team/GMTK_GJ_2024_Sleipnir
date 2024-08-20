@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=4 format=3 uid="uid://c6vtnmx6seq8q"]
+
+[ext_resource type="Script" path="res://Singletons/Maestro/SongData.gd" id="1_5k3kh"]
+[ext_resource type="AudioStream" uid="uid://c3qcebinqui03" path="res://Assets/Menu/Musica/Menu.ogg" id="1_kav0j"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_odqxg"]
+stream_count = 1
+stream_0/stream = ExtResource("1_kav0j")
+stream_0/volume = 0.0
+
+[resource]
+script = ExtResource("1_5k3kh")
+default_first_section = "ambient"
+default_track_transition = 0
+fade_beats = 0
+fade_mode = 0
+BPM = 118
+MainClips = SubResource("AudioStreamSynchronized_odqxg")
+TriggerClips = Array[Resource]([])

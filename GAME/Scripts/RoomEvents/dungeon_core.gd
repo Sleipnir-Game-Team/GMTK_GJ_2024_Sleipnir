@@ -1,11 +1,15 @@
 extends Event
 
+@export var expand_sfx: SoundQueue
+
 @onready var risk_range := $risk_range as Area2D
 @onready var alarm_range := $alarm_range as Area2D
-@onready var sfx_proximity := $sfx as SoundQueue
 
 func _enter_tree() -> void:
+	SfxGlobals.play_global('AmbienciaDungeon')
+	
 	if not SleipnirMaestro.current_song == 'MusicaDungeon':
+		SleipnirMaestro.stop()
 		SleipnirMaestro.change_song("MusicaDungeon")
 		SleipnirMaestro.play()
 
@@ -18,21 +22,26 @@ func _activate_events():
 
 
 func _on_expand_clicked():
+	AudioManager.play_sfx(expand_sfx)
+	
 	RoomGenerator.expand()
-	SleipnirMaestro.toggle_layer_off(2)
+	
+	if SleipnirMaestro.current_song == 'MusicaDungeon':
+		SleipnirMaestro.toggle_layer_off(2)
 
 
 func _on_risk_range_body_entered(body: Node2D) -> void:
 	SleipnirMaestro.toggle_layer_on(2)
 
 func _on_risk_range_body_exited(body: Node2D) -> void:
-	SleipnirMaestro.toggle_layer_off(2)
+	if SleipnirMaestro.current_song == 'MusicaDungeon':
+		SleipnirMaestro.toggle_layer_off(2)
 
 
 func _on_alarm_range_body_entered(body: Node2D) -> void:
 	if not Globals.alarm_is_active:
 		Globals.alarm_is_active = true
-		SleipnirMaestro.trigger("alarme placeholder")
+		SleipnirMaestro.trigger("Alarme")
 		SleipnirMaestro.toggle_layer_on(2)
 
 func _on_alarm_range_body_exited(body: Node2D) -> void:

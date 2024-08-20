@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqimv51rx276l"]
+[gd_scene load_steps=12 format=3 uid="uid://bqimv51rx276l"]
 
 [ext_resource type="Script" path="res://Levels/dungeon.gd" id="1_wh42s"]
 [ext_resource type="Resource" uid="uid://x1db7ig0d0un" path="res://Inventory/player_inventory.tres" id="2_03dth"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c44i6dk05il76" path="res://Prefabs/camera_scene.tscn" id="5_mmhgt"]
 [ext_resource type="PackedScene" uid="uid://c7vtme1x25fm" path="res://FrontEnd/Prefabs/HUD.tscn" id="7_178xj"]
 [ext_resource type="Texture2D" uid="uid://bbejn4j200dcf" path="res://Assets/Level/Enviroment/Arte/Enviroment V2/Dungeon Background F.jpg" id="7_ssub2"]
+[ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="9_re2wc"]
+[ext_resource type="AudioStream" uid="uid://cqfoiokuhqg1u" path="res://Assets/Level/Items/Audio/PotionBuff.ogg" id="10_a1ubw"]
+[ext_resource type="AudioStream" uid="uid://bbd3a0t7n2nq4" path="res://Assets/Level/Items/Audio/Poção 2-PotionStun.mp3" id="11_uorxf"]
 
 [node name="Dungeon" type="Node2D"]
 position = Vector2(296, 312)
@@ -44,5 +47,20 @@ texture = ExtResource("7_ssub2")
 centered = false
 
 [node name="Hud" parent="." instance=ExtResource("7_178xj")]
+
+[node name="BuffPotion" type="Node" parent="."]
+script = ExtResource("9_re2wc")
+Count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BuffPotion"]
+stream = ExtResource("10_a1ubw")
+volume_db = -3.0
+
+[node name="StunPotion" type="Node" parent="."]
+script = ExtResource("9_re2wc")
+Count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StunPotion"]
+stream = ExtResource("11_uorxf")
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer"]

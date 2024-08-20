@@ -10,6 +10,7 @@ Clock = NodePath("Conductor")
 log_level = 0
 
 [node name="Main" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 
 [node name="Triggers" type="Node" parent="."]
 
