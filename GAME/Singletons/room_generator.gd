@@ -37,6 +37,6 @@ func _fill_paths():
 	get_tree().call_group_flags(SceneTree.GROUP_CALL_DEFERRED, 'Room', 'update_paths')
 
 func expand():
-	get_tree().get_first_node_in_group("Camera").get_child(0).expand(200)
+	get_tree().get_first_node_in_group("Camera").get_child(0).expand(273)
 	get_tree().call_group_flags(0, 'Last_Rooms', '_add_adjacent_rooms')
 	_fill_paths()

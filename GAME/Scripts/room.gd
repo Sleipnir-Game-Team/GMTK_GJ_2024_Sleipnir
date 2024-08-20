@@ -18,6 +18,8 @@ var test := 0
 
 signal activate
 signal deactivate
+signal enable_expasion
+signal disable_expasion
 
 var _active_event: Event
 @export var _long_lasting_event: Event
@@ -202,4 +204,6 @@ func _add_adjacent_rooms():
 		remove_from_group('Last_Rooms')
 		add_sibling(sibling)
 		add_sibling(new_core)
+		new_core.disable_expasion.emit()
 		queue_free()
+		

@@ -50,3 +50,18 @@ func _on_alarm_range_body_exited(body: Node2D) -> void:
 
 func get_dangerous():
 	pass
+
+
+func _on_disable_expasion():
+	Logger.debug("Expansion disabled")
+	$ExpandButton/CollisionShape2D.disabled = true
+	$ExpandButton/expand_sprite.modulate = Color.hex(0xfffffff51)
+	$Cooldown.timeout.connect(get_parent().enable_expasion.emit)
+	$Cooldown.start()
+	
+
+
+func _on_enable_expasion():
+	Logger.debug("Expansion disabled")
+	$ExpandButton/CollisionShape2D.disabled = false
+	$ExpandButton/expand_sprite.modulate = Color.hex(0xffffffff)

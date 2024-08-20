@@ -66,6 +66,9 @@ monitorable = false
 shape = SubResource("CircleShape2D_d3oq2")
 debug_color = Color(0.534877, 0.536802, 0.528045, 0.42)
 
+[node name="Cooldown" type="Timer" parent="DungeonCore"]
+wait_time = 60.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_16aaf")
 
@@ -110,6 +113,8 @@ bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_left"]
+[connection signal="disable_expasion" from="." to="DungeonCore" method="_on_disable_expasion"]
+[connection signal="enable_expasion" from="." to="DungeonCore" method="_on_enable_expasion"]
 [connection signal="clicked" from="DungeonCore/ExpandButton" to="DungeonCore" method="_on_expand_clicked"]
 [connection signal="body_entered" from="DungeonCore/risk_range" to="DungeonCore" method="_on_risk_range_body_entered"]
 [connection signal="body_exited" from="DungeonCore/risk_range" to="DungeonCore" method="_on_risk_range_body_exited"]
