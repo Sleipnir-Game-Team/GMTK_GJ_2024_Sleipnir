@@ -1,17 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://behxc8ejlkdq3"]
+[gd_scene load_steps=16 format=3 uid="uid://behxc8ejlkdq3"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_Store.gd" id="1_y1gu8"]
-[ext_resource type="Texture2D" uid="uid://c2m0kja23uhd1" path="res://Assets/Menu/UI/V3/shop/Shop Background.png" id="2_g0j3l"]
+[ext_resource type="Texture2D" uid="uid://c47hpymkbpcn" path="res://Assets/Menu/UI/V4/shop/Shop Background Modal.png" id="2_8rtbt"]
 [ext_resource type="PackedScene" uid="uid://g0ywdlba5kdt" path="res://FrontEnd/Prefabs/button_BuyItem.tscn" id="3_okv4i"]
 [ext_resource type="Texture2D" uid="uid://dhv1p76asjure" path="res://Assets/Level/Items/Arte/Poção de periculosidade.png" id="4_8ctf4"]
 [ext_resource type="Texture2D" uid="uid://dfql4uaya0wc8" path="res://Assets/Level/Enviroment/Arte/Enviroment V1/Baú .png" id="6_tod6u"]
 [ext_resource type="Texture2D" uid="uid://cappgx0lrw6an" path="res://Assets/Level/Items/Arte/Poção de stun.png" id="7_65ppi"]
 [ext_resource type="Texture2D" uid="uid://bafv226nyo6qx" path="res://Assets/Level/Items/Arte/Almas-Moeda.png" id="7_g7fvh"]
-[ext_resource type="Resource" uid="uid://lo66eujh4vy7" path="res://Inventory/Items/damage_potion.tres" id="7_t7ugs"]
+[ext_resource type="Resource" uid="uid://lo66eujh4vy7" path="res://Inventory/Items/damage_potion.tres" id="7_k26v7"]
 [ext_resource type="Texture2D" uid="uid://drea2y2lo3xyo" path="res://Assets/Level/Items/Arte/Poder Troca de sala.png" id="8_4s63q"]
 [ext_resource type="Texture2D" uid="uid://c610x5bhjg0dg" path="res://Assets/Level/Items/Arte/Poder de ativar armadilhas.png" id="9_2rlim"]
-[ext_resource type="Texture2D" uid="uid://dyjn2nuu65yxx" path="res://Assets/Menu/UI/V3/shop/AGAShop Get Big Button Normal@8x.png" id="10_vjwex"]
-[ext_resource type="Texture2D" uid="uid://bigdkq2csb5el" path="res://Assets/Menu/UI/V3/shop/AGAShop Get Big Button Pressed@8x.png" id="11_uv4j3"]
+[ext_resource type="Resource" path="res://Inventory/Items/stun_potion.tres" id="9_b5dwi"]
+[ext_resource type="Texture2D" uid="uid://c05l3h20pyss0" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Normal@8x.png" id="10_ctxdi"]
+[ext_resource type="Texture2D" uid="uid://b2iej7klajqq0" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Clicked@8x.png" id="11_es0l5"]
+[ext_resource type="Resource" uid="uid://dhve33xubo3gl" path="res://Inventory/Items/print_power_item.tres" id="11_wi4n5"]
+[ext_resource type="Texture2D" uid="uid://cnol67ij4kyql" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Hover@8x.png" id="12_xmq3s"]
 
 [node name="ScreenStore" type="Control"]
 layout_mode = 3
@@ -32,57 +35,78 @@ script = ExtResource("1_y1gu8")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 154.0
-offset_top = 74.0
-offset_right = -166.0
-offset_bottom = -106.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_g0j3l")
+texture = ExtResource("2_8rtbt")
 expand_mode = 2
 
+[node name="Label" type="Label" parent="CanvasLayer/BackGround_BG"]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 81.0
+offset_right = 1066.0
+offset_bottom = 171.0
+text = "Poções"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/BackGround_BG"]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 756.0
+offset_right = 1076.0
+offset_bottom = 831.0
+text = "Poderes"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="Button_BuyItem" parent="CanvasLayer" instance=ExtResource("3_okv4i")]
-offset_left = -256.0
-offset_top = -364.0
-offset_right = -102.0
-offset_bottom = -230.0
+offset_left = -237.0
+offset_top = -308.0
+offset_right = -87.0
+offset_bottom = -191.0
 texture_normal = ExtResource("4_8ctf4")
 texture_pressed = ExtResource("7_g7fvh")
 texture_hover = ExtResource("6_tod6u")
-item = ExtResource("7_t7ugs")
+item = ExtResource("7_k26v7")
 
 [node name="Button_BuyItem2" parent="CanvasLayer" instance=ExtResource("3_okv4i")]
-offset_left = -79.0
-offset_top = -374.0
-offset_right = 92.0
-offset_bottom = -212.0
+offset_left = -62.0
+offset_top = -316.0
+offset_right = 90.0
+offset_bottom = -185.0
 texture_normal = ExtResource("7_65ppi")
 texture_pressed = ExtResource("7_g7fvh")
 texture_hover = ExtResource("6_tod6u")
+item = ExtResource("9_b5dwi")
 
 [node name="Button_BuyItem4" parent="CanvasLayer" instance=ExtResource("3_okv4i")]
-offset_left = -260.0
-offset_top = -13.0
-offset_right = -106.0
-offset_bottom = 121.0
+offset_left = -238.0
+offset_top = 8.0
+offset_right = -98.0
+offset_bottom = 125.0
 texture_normal = ExtResource("8_4s63q")
 texture_pressed = ExtResource("7_g7fvh")
 texture_hover = ExtResource("6_tod6u")
+item = ExtResource("11_wi4n5")
 
 [node name="Button_BuyItem5" parent="CanvasLayer" instance=ExtResource("3_okv4i")]
-offset_left = -80.0
-offset_top = -18.0
-offset_right = 77.0
-offset_bottom = 108.0
+offset_left = -71.0
+offset_top = 7.0
+offset_right = 82.0
+offset_bottom = 125.0
 texture_normal = ExtResource("9_2rlim")
 texture_pressed = ExtResource("7_g7fvh")
 texture_hover = ExtResource("6_tod6u")
+item = ExtResource("11_wi4n5")
 
 [node name="Player_Points" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 638.0
-offset_top = 787.0
-offset_right = 907.0
-offset_bottom = 906.0
+offset_left = 623.0
+offset_top = 907.0
+offset_right = 861.0
+offset_bottom = 1003.0
 
 [node name="Currency_Sprite" type="TextureRect" parent="CanvasLayer/Player_Points"]
 layout_mode = 2
@@ -98,11 +122,14 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Button_Back" type="TextureButton" parent="CanvasLayer"]
-offset_left = 955.0
-offset_top = 793.0
-offset_right = 1232.0
-offset_bottom = 910.0
-texture_normal = ExtResource("10_vjwex")
-texture_pressed = ExtResource("11_uv4j3")
+offset_left = 1199.0
+offset_top = 909.0
+offset_right = 1308.0
+offset_bottom = 1004.0
+texture_normal = ExtResource("10_ctxdi")
+texture_pressed = ExtResource("11_es0l5")
+texture_hover = ExtResource("12_xmq3s")
 ignore_texture_size = true
 stretch_mode = 5
+
+[connection signal="pressed" from="CanvasLayer/Button_Back" to="." method="_on_button_back_pressed"]

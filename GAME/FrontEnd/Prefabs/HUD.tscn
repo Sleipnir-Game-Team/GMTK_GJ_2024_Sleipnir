@@ -1,0 +1,166 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7vtme1x25fm"]
+
+[ext_resource type="Script" path="res://FrontEnd/Scripts/HUD.gd" id="1_mhek6"]
+[ext_resource type="Texture2D" uid="uid://3xk8xqe0t14f" path="res://Assets/Menu/UI/V5/Hotbar@8x.png" id="2_rk08j"]
+[ext_resource type="Texture2D" uid="uid://bafv226nyo6qx" path="res://Assets/Level/Items/Arte/Almas-Moeda.png" id="5_sb01u"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_mhek6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 322.0
+offset_top = 911.0
+offset_right = -328.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HotBar" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -15.0
+offset_right = 1304.0
+offset_bottom = 187.0
+mouse_filter = 2
+texture = ExtResource("2_rk08j")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item1" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 38.0
+offset_top = 55.0
+offset_right = 145.0
+offset_bottom = 161.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item2" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 187.0
+offset_top = 55.0
+offset_right = 294.0
+offset_bottom = 161.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item3" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 341.0
+offset_top = 56.0
+offset_right = 448.0
+offset_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item4" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 491.0
+offset_top = 55.0
+offset_right = 598.0
+offset_bottom = 161.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item5" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 642.0
+offset_top = 54.0
+offset_right = 749.0
+offset_bottom = 160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item6" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 794.0
+offset_top = 57.0
+offset_right = 901.0
+offset_bottom = 163.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item7" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 946.0
+offset_top = 54.0
+offset_right = 1053.0
+offset_bottom = 160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item8" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 1100.0
+offset_top = 57.0
+offset_right = 1207.0
+offset_bottom = 163.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Item9" type="TextureRect" parent="Control/HotBar"]
+layout_mode = 2
+offset_left = 1250.0
+offset_top = 55.0
+offset_right = 1357.0
+offset_bottom = 161.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Player_Points" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1122.0
+offset_top = -907.0
+offset_right = 327.0
+offset_bottom = -907.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Currency_Sprite" type="TextureRect" parent="Control/Player_Points"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+texture = ExtResource("5_sb01u")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="Control/Player_Points"]
+layout_mode = 2
+size_flags_horizontal = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
