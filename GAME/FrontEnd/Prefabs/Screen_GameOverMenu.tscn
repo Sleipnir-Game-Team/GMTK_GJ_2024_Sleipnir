@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ia1rgt3183n6"]
+[gd_scene load_steps=12 format=3 uid="uid://ia1rgt3183n6"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_GameOverMenu.gd" id="1_uxph4"]
 [ext_resource type="Texture2D" uid="uid://de2dijo7v7sin" path="res://Assets/Menu/UI/V6/Game Over Background.png" id="2_5k3fn"]
@@ -9,6 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://cq4e3alnxfpkt" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Clicked@8x.png" id="7_3oj3l"]
 [ext_resource type="Texture2D" uid="uid://cj7aebg5mwxsj" path="res://Assets/Menu/UI/V6/game over/gameover_button_main menu/Game Over Main Menu Hover@8x.png" id="8_x33om"]
 [ext_resource type="Texture2D" uid="uid://b2gec1al3ka56" path="res://Assets/Menu/UI/V5/Game Over.jpg" id="9_0f4eu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7urs8"]
+font_size = 30
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ug70"]
+font_size = 30
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="ScreenGameOverMenu" type="Control"]
 layout_mode = 3
@@ -61,6 +71,42 @@ offset_right = 1277.0
 offset_bottom = 701.0
 texture = ExtResource("9_0f4eu")
 expand_mode = 2
+
+[node name="Label_PlayerScore" type="Label" parent="."]
+offset_left = 63.0
+offset_top = 63.0
+offset_right = 200.0
+offset_bottom = 118.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_7urs8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player_Score" type="Label" parent="."]
+offset_left = 178.0
+offset_top = 60.0
+offset_right = 394.0
+offset_bottom = 126.0
+label_settings = SubResource("LabelSettings_0ug70")
+vertical_alignment = 1
+
+[node name="Label_PlayerHighScore" type="Label" parent="."]
+offset_left = 1514.0
+offset_top = 82.0
+offset_right = 1677.0
+offset_bottom = 137.0
+text = "High Score:"
+label_settings = SubResource("LabelSettings_7urs8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player_highScore" type="Label" parent="."]
+offset_left = 1681.0
+offset_top = 79.0
+offset_right = 1897.0
+offset_bottom = 145.0
+label_settings = SubResource("LabelSettings_0ug70")
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="Button_Retry" to="." method="_on_button_retry_mouse_entered"]
 [connection signal="pressed" from="Button_Retry" to="." method="_on_button_retry_pressed"]

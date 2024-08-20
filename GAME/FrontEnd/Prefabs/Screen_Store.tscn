@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://behxc8ejlkdq3"]
+[gd_scene load_steps=21 format=3 uid="uid://behxc8ejlkdq3"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/Screen_Store.gd" id="1_y1gu8"]
 [ext_resource type="Texture2D" uid="uid://c47hpymkbpcn" path="res://Assets/Menu/UI/V4/shop/Shop Background Modal.png" id="2_8rtbt"]
@@ -15,6 +15,30 @@
 [ext_resource type="Texture2D" uid="uid://b2iej7klajqq0" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Clicked@8x.png" id="11_es0l5"]
 [ext_resource type="Resource" uid="uid://dhve33xubo3gl" path="res://Inventory/Items/print_power_item.tres" id="11_wi4n5"]
 [ext_resource type="Texture2D" uid="uid://cnol67ij4kyql" path="res://Assets/Menu/UI/V4/menu_buttons/navigation/generic_bigbutton_back/Navigation Back Big Hover@8x.png" id="12_xmq3s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_buwfw"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ghamo"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_lojc4"]
+font_size = 28
+outline_size = 4
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1d6h"]
+font_size = 30
+outline_size = 4
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_chtk7"]
+font_size = 20
+outline_size = 4
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="ScreenStore" type="Control"]
 layout_mode = 3
@@ -46,18 +70,20 @@ offset_left = 840.0
 offset_top = 81.0
 offset_right = 1066.0
 offset_bottom = 171.0
-text = "Poções"
+text = "Potions"
+label_settings = SubResource("LabelSettings_buwfw")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="Label2" type="Label" parent="CanvasLayer/BackGround_BG"]
 layout_mode = 0
-offset_left = 863.0
-offset_top = 756.0
-offset_right = 1076.0
-offset_bottom = 831.0
-text = "Poderes"
+offset_left = 830.0
+offset_top = 750.0
+offset_right = 1109.0
+offset_bottom = 838.0
+text = "Powers "
+label_settings = SubResource("LabelSettings_ghamo")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -131,6 +157,38 @@ texture_pressed = ExtResource("11_es0l5")
 texture_hover = ExtResource("12_xmq3s")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 747.0
+offset_top = 350.0
+offset_right = 851.0
+offset_bottom = 373.0
+text = "$ 15,00"
+label_settings = SubResource("LabelSettings_lojc4")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 915.0
+offset_top = 351.0
+offset_right = 1019.0
+offset_bottom = 393.0
+text = "$ 20,00"
+label_settings = SubResource("LabelSettings_a1d6h")
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 726.0
+offset_top = 666.0
+offset_right = 861.0
+offset_bottom = 708.0
+text = "UNAVAILABLE"
+label_settings = SubResource("LabelSettings_chtk7")
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+offset_left = 894.0
+offset_top = 667.0
+offset_right = 1029.0
+offset_bottom = 709.0
+text = "UNAVAILABLE"
+label_settings = SubResource("LabelSettings_chtk7")
 
 [connection signal="mouse_entered" from="CanvasLayer/Button_Back" to="." method="_on_button_back_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Button_Back" to="." method="_on_button_back_pressed"]

@@ -4,6 +4,9 @@ func _ready():
 	SleipnirMaestro.stop()
 	SleipnirMaestro.change_song("GameOver")
 	SleipnirMaestro.play()
+	$player_Score.text = str(Globals.score)
+	$player_highScore.text = str(Globals.high_score)
+
 
 func _on_button_retry_pressed():
 	UI_Controller.manageScreen("res://Levels/dungeon.tscn", get_tree().root, "change")

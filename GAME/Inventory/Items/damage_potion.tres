@@ -9,4 +9,4 @@ script = ExtResource("1_2hsop")
 name = "BuffPotion"
 texture = ExtResource("2_hqlrk")
 useable = ExtResource("3_7e83x")
-price = 1
+price = 15

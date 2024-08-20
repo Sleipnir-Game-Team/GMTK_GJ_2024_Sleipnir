@@ -4,6 +4,7 @@ signal buy_Item
 signal show_HUD
 signal occult_HUD
 signal update_HotBar(items: Array[Item])
+signal update_Score
 
 signal cutsceneNext
 signal updateCutsceneImg
@@ -60,6 +61,8 @@ func occultHUD():
 func updateHotbar(items: Array[Item]):
 	update_HotBar.emit(items)
 	
+#func updateScore(score):
+	#update_Score.emit(score)
 
 func startCutscene():
 	cutsceneNext.emit()

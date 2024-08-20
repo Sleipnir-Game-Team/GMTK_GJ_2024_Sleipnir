@@ -12,6 +12,8 @@ var item_being_used: Useable
 @onready var StunPotionSFX := $StunPotion
 
 func _ready():
+	Globals.souls = 0
+	Globals.score = 0
 	UI_Controller.buy_Item.connect(_on_buy_item)
 	
 	inventory.changed.connect(UI_Controller.updateHotbar)

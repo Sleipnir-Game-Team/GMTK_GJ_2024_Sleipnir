@@ -67,7 +67,7 @@ shape = SubResource("CircleShape2D_d3oq2")
 debug_color = Color(0.534877, 0.536802, 0.528045, 0.42)
 
 [node name="Cooldown" type="Timer" parent="DungeonCore"]
-wait_time = 60.0
+wait_time = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_16aaf")

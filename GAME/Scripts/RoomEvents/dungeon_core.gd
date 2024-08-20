@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _activate_events():
-	return [UI_Controller.gameOver]
+	return [UI_Controller.desyncSouls, UI_Controller.gameOver]
 
 
 func _on_expand_clicked():

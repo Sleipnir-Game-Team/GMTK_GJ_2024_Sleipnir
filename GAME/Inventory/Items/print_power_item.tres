@@ -9,3 +9,4 @@ script = ExtResource("1_08m3d")
 name = "Print Power"
 texture = ExtResource("2_ntyg0")
 useable = ExtResource("3_b6npb")
+price = 1

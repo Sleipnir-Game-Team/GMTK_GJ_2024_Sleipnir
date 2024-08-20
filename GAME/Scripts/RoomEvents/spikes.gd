@@ -30,7 +30,7 @@ func add_adventurer(adventurer: Adventurer):
 
 func get_dangerous():
 	trigger_chance = 1
-	damage = 8
+	damage = 10
 	spikes_sprite.texture = load("res://Assets/Level/Enviroment/Arte/Enviroment V1/Armadilhas espinhos alt.png")
 	danger_time.start()
 	

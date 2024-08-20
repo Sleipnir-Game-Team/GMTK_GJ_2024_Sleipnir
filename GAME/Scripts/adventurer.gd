@@ -102,7 +102,7 @@ func die():
 	animation_handler.animation_finished.connect(queue_free)
 	
 	Globals.score += points_worth
-	Globals.souls += 1
+	Globals.souls += 5
 
 func return_to_walk():
 	animation_handler.play(character_type_name+' walk')

@@ -1,8 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7vtme1x25fm"]
+[gd_scene load_steps=9 format=3 uid="uid://c7vtme1x25fm"]
 
 [ext_resource type="Script" path="res://FrontEnd/Scripts/HUD.gd" id="1_mhek6"]
 [ext_resource type="Texture2D" uid="uid://3xk8xqe0t14f" path="res://Assets/Menu/UI/V5/Hotbar@8x.png" id="2_rk08j"]
 [ext_resource type="Texture2D" uid="uid://bafv226nyo6qx" path="res://Assets/Level/Items/Arte/Almas-Moeda.png" id="5_sb01u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wxfhv"]
+font_size = 40
+outline_size = 4
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qeblc"]
+font_size = 64
+outline_size = 3
+shadow_size = 19
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sc84x"]
+font_size = 40
+outline_size = 3
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cacmy"]
+font_size = 30
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5pv5"]
+font_size = 30
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_mhek6")
@@ -20,11 +48,17 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="HotBar" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = -96.0
-offset_top = -15.0
-offset_right = 1304.0
-offset_bottom = 187.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 51.0
+offset_right = 255.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.603441, 0.587382)
 mouse_filter = 2
 texture = ExtResource("2_rk08j")
 expand_mode = 2
@@ -32,111 +66,210 @@ stretch_mode = 5
 
 [node name="Item1" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 38.0
-offset_top = 55.0
-offset_right = 145.0
-offset_bottom = 161.0
+offset_left = 81.201
+offset_top = 42.5617
+offset_right = 175.201
+offset_bottom = 131.562
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/HotBar/Item1"]
+layout_mode = 0
+offset_left = -6.62866
+offset_top = -62.9914
+offset_right = 100.371
+offset_bottom = -7.99139
+text = "1"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item2" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 187.0
-offset_top = 55.0
-offset_right = 294.0
-offset_bottom = 161.0
+offset_left = 203.831
+offset_top = 49.3716
+offset_right = 297.831
+offset_bottom = 131.372
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label2" type="Label" parent="Control/HotBar/Item2"]
+layout_mode = 0
+offset_left = -4.97153
+offset_top = -73.2062
+offset_right = 102.028
+offset_bottom = -18.2062
+text = "2"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item3" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 341.0
-offset_top = 56.0
-offset_right = 448.0
-offset_bottom = 162.0
+offset_left = 333.09
+offset_top = 44.2641
+offset_right = 427.09
+offset_bottom = 135.264
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label3" type="Label" parent="Control/HotBar/Item3"]
+layout_mode = 0
+offset_left = -8.28586
+offset_top = -66.3963
+offset_right = 98.7141
+offset_bottom = -11.3963
+text = "3"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item4" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 491.0
-offset_top = 55.0
-offset_right = 598.0
-offset_bottom = 161.0
+offset_left = 467.0
+offset_top = 46.0
+offset_right = 545.0
+offset_bottom = 131.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label4" type="Label" parent="Control/HotBar/Item4"]
+layout_mode = 0
+offset_left = -17.909
+offset_top = -68.1321
+offset_right = 89.091
+offset_bottom = -13.1321
+text = "4"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item5" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 642.0
-offset_top = 54.0
-offset_right = 749.0
-offset_bottom = 160.0
+offset_left = 590.0
+offset_top = 44.0
+offset_right = 671.0
+offset_bottom = 133.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label5" type="Label" parent="Control/HotBar/Item5"]
+layout_mode = 0
+offset_left = -13.3075
+offset_top = -64.4297
+offset_right = 93.6925
+offset_bottom = -9.42967
+text = "5"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item6" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 794.0
-offset_top = 57.0
-offset_right = 901.0
-offset_bottom = 163.0
+offset_left = 714.237
+offset_top = 47.6691
+offset_right = 802.237
+offset_bottom = 137.669
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label6" type="Label" parent="Control/HotBar/Item6"]
+layout_mode = 0
+offset_left = -11.6001
+offset_top = -68.0987
+offset_right = 95.3999
+offset_bottom = -13.0987
+text = "6"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item7" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 946.0
-offset_top = 54.0
-offset_right = 1053.0
-offset_bottom = 160.0
+offset_left = 847.0
+offset_top = 46.0
+offset_right = 925.0
+offset_bottom = 133.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label7" type="Label" parent="Control/HotBar/Item7"]
+layout_mode = 0
+offset_left = -15.1047
+offset_top = -66.4296
+offset_right = 91.8953
+offset_bottom = -11.4296
+text = "7"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Item8" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 1100.0
-offset_top = 57.0
-offset_right = 1207.0
-offset_bottom = 163.0
+offset_left = 973.0
+offset_top = 48.0
+offset_right = 1053.0
+offset_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
 
+[node name="Label8" type="Label" parent="Control/HotBar/Item8"]
+layout_mode = 0
+offset_left = -16.8172
+offset_top = -68.4296
+offset_right = 90.1828
+offset_bottom = -13.4296
+text = "8"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Item9" type="TextureRect" parent="Control/HotBar"]
 layout_mode = 2
-offset_left = 1250.0
-offset_top = 55.0
-offset_right = 1357.0
-offset_bottom = 161.0
+offset_left = 1099.0
+offset_top = 48.0
+offset_right = 1177.0
+offset_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Label9" type="Label" parent="Control/HotBar/Item9"]
+layout_mode = 0
+offset_left = -15.2159
+offset_top = -68.4296
+offset_right = 91.7841
+offset_bottom = -13.4296
+text = "9"
+label_settings = SubResource("LabelSettings_wxfhv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player_Points" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -161,6 +294,37 @@ expand_mode = 2
 [node name="Label" type="Label" parent="Control/Player_Points"]
 layout_mode = 2
 size_flags_horizontal = 0
+text = "10"
+label_settings = SubResource("LabelSettings_qeblc")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1171.0
+offset_top = -753.0
+offset_right = 1489.0
+offset_bottom = -665.0
+text = "O to Open Store"
+label_settings = SubResource("LabelSettings_sc84x")
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -320.0
+offset_top = -872.0
+offset_right = -183.0
+offset_bottom = -817.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_cacmy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player_Score" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -205.0
+offset_top = -875.0
+offset_right = 11.0
+offset_bottom = -809.0
+label_settings = SubResource("LabelSettings_n5pv5")
+vertical_alignment = 1

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c7vtme1x25fm" path="res://FrontEnd/Prefabs/HUD.tscn" id="7_178xj"]
 [ext_resource type="Texture2D" uid="uid://bbejn4j200dcf" path="res://Assets/Level/Enviroment/Arte/Enviroment V2/Dungeon Background F.jpg" id="7_ssub2"]
 [ext_resource type="Script" path="res://Singletons/SFXSystem/SoundQueue/SoundQueue.gd" id="9_re2wc"]
-[ext_resource type="AudioStream" uid="uid://cqfoiokuhqg1u" path="res://Assets/Level/Items/Audio/PotionBuff.ogg" id="10_a1ubw"]
+[ext_resource type="AudioStream" uid="uid://csbvst614hvgf" path="res://Assets/Level/Items/Audio/PotionBuff.ogg" id="10_a1ubw"]
 [ext_resource type="AudioStream" uid="uid://bbd3a0t7n2nq4" path="res://Assets/Level/Items/Audio/Poção 2-PotionStun.mp3" id="11_uorxf"]
 
 [node name="Dungeon" type="Node2D"]
